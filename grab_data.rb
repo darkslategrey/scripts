@@ -12,19 +12,42 @@ require 'logger'
 
 
 
+class SrcBase
+  attr_accessor :valid_string
 
-class Recherche
-  attr_accessor :query, :result, :selService1, :selService2, :txtLieux
-
-
-  def initialize(selService1, txtLieux)
-    self.result      = Array.new    
-    self.selService1 = selService1
-    self.txtLieux    = txtLieux
-    @@agent = Mechanize.new
+  def get_liens
+    doc = Hpricot(self.valid_string)
+    (doc/'//td[@class="lienOrganisme"]').each do |lo|
+      puts lo
+    end
+  end
+    
   end
 
-  def launch
+  
+end
+
+class SrcPage < SrcBase
+
+  def initialize(filename) 
+    file = File.open(filename, "rb")
+    self.valid_string = Iconv.new('UTF-8//IGNORE', 'UTF-8').iconv(file.read)
+  end
+
+end
+
+class SrcNet < SrcBase
+
+  attr_accessor :txtLieux, :selService1
+
+  def initialize(selService1, txtLieux)
+    self.selService1  = selService1
+    self.txtLieux     = txtLieux
+    @@agent           = Mechanize.new
+    self.valid_string = self.get_page
+  end
+
+  def get_page
     page = @@agent.post('https://nova.servicesalapersonne.gouv.fr/extranet/rechercheV2/resultats.php', 
                       { 'btRechercher' =>  1,
                         'selService1' => self.selService1,
@@ -35,16 +58,25 @@ class Recherche
                         'rbCesu' => 0,
                         'btRechercher' => '1' 
                       })
-    ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
-    valid_string = ic.iconv(page.body.to_s)
-    puts valid_string
-
-    doc = Hpricot(valid_string)
-    (doc/'//td[@class="lienOrganisme"]').each do |lo|
-      puts lo
-    end
-
+    Iconv.new('UTF-8//IGNORE', 'UTF-8').iconv(page.body.to_s)
   end
+
+end
+
+class Recherche
+  attr_accessor :query, :result, :src
+
+
+  def initialize(selService1, txtLieux, filename='', dev=false)
+    self.result      = Array.new    
+    self.src         = dev ? SrcPage.new(filename) : SrcNet.new(selService1, txtLieux)
+  end
+
+  def launch
+    liens = src.get_liens
+  end
+
+
 
   def to_s
     "query: #{self.query}" + "\nresult: #{self.result}"
@@ -87,7 +119,7 @@ class Grabber
 
     selService1_h.each_pair { |k,v| 
       @@logger.info("Launch search for <#{v}>")
-      recherche = Recherche.new(k, 75018)
+      recherche = Recherche.new(k, 75018, './page.html', true)
       recherche.launch
       break
     }

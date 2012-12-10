@@ -8,6 +8,7 @@ require 'mechanize'
 require 'hpricot'
 require 'rexml/document'
 require 'iconv'
+require 'logger'
 
 
 
@@ -60,6 +61,7 @@ class Grabber
 
   def initialize
     self.recherches = Array.new
+    @@logger = Logger.new(STDOUT)
   end
 
 
@@ -84,6 +86,7 @@ class Grabber
       35 => "Assistance administrative à domicile" }
 
     selService1_h.each_pair { |k,v| 
+      @@logger.info("Launch search for <#{v}>")
       recherche = Recherche.new(k, 75018)
       recherche.launch
       break

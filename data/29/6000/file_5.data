@@ -83,9 +83,9 @@
 
 
 		function ajoutOrganisme() {
-			url = "detail.php?id=23940";
+			url = "detail.php?id=1128";
 			
-			Call("http://www.servicesalapersonne.gouv.fr/ANSP/OA/AddToMyLinks.aspx", "OA", "HAS HALLES AUX SERVICES(23940)", url) ;
+			Call("http://www.servicesalapersonne.gouv.fr/ANSP/OA/AddToMyLinks.aspx", "OA", "ADAGIO Cte d&#39;Azur(1128)", url) ;
 
 		}
 
@@ -116,7 +116,7 @@
 		<div id="ligneTitreResultatsDetail">
 			<div id="imagePro3">&nbsp;</div>
 			<div id="centreTitreHautGauche" class="centreTitreHautGauche"><br />
-				HAS HALLES AUX SERVICES							
+				ADAGIO Cte d&#39;Azur							
 			</div>
 			<div id="centreTitreHautDroite" class="centreTitreHautDroite">&nbsp;</div>
      						<div id="recapitulatifActionsDetail">
@@ -148,14 +148,12 @@
 			<div id="titre1" class="titreDetail">Contact</div>
 			<div id="contact">
 				<div id="contactColonne1" class="colonneDetail" style="width:33%">
-					12, avenue du Stade<br />06220 VALLAURIS<br /><br />						<img src="img/icone_mobile.jpg" alt="icone mobile" /> T&eacute;l. : 
-						<span class="txtRose12Gras">0492380042</span>
-										</div>
+									</div>
 				<div id="contactColonne2" class="colonneDetail" style="width:67%">
-											<img src="img/icone_fax.jpg" alt="icone fax" /> Fax : <span class="txtRose12"> 04 92 38 00 42</span><br />
+											<img src="img/icone_fax.jpg" alt="icone fax" /> Fax : <span class="txtRose12"> 04 92 00 05 15</span><br />
 											<img src="img/icone_contact.jpg" alt="icone contact" /> Contact : 
 					<span class="txtRose12">
-						<a href="mailto:s-cerone@halles-aux-services.fr" class="lienRose" style="font-weight:bold;">Monsieur Stphane CERONE</a><span style="font-size:smaller;">&nbsp;&nbsp;&nbsp;s-cerone@halles-aux-services.fr</span>					</span> 
+						<a href="mailto:tfournier@adagio.fr" class="lienRose" style="font-weight:bold;">Monsieur Thomas Fournier</a><span style="font-size:smaller;">&nbsp;&nbsp;&nbsp;tfournier@adagio.fr</span>					</span> 
 				</div>
 			</div>
 			<div class="cleaner"><br /></div>
@@ -163,13 +161,13 @@
 			<div id="plusDInfo">
 				<div id="plusDInfoColonne1" class="colonneDetail" style="width:33%">
 					<p class="txtRose12" style="padding-left: 35px;">
-						Agr&eacute;ment qualit&eacute;					</p>
+						D&eacute;clar&eacute; et Agr&eacute;&eacute;					</p>
 					
 											<p class="txtRose12"  style="padding-left: 35px;">Mode d'intervention : 
 							<strong>
 							prestataire 							</strong>
 						</p>
-												<p><img src="img/icone_url.jpg" alt="icone url" /> <a href="http://www.halles-aux-services.fr" class="lienRose" target="_blank">www.halles-aux-services.fr</a></p>
+												<p><img src="img/icone_url.jpg" alt="icone url" /> <a href="http://www.adagio.fr" class="lienRose" target="_blank">www.adagio.fr</a></p>
 										</div>
 				<div id="plusDInfoColonne2" class="colonneDetail" style="width:33%">
 					<p class="txtRose12" style="padding-left: 35px;">Socit  Responsabilit Limite (SARL)</p>					
@@ -179,11 +177,7 @@
 						
 											<p class="txtRose12" style="padding-left: 35px;">&Eacute;tablissement principal : <strong>oui</strong></p>
 						
-											<p>
-						<img src="img/icone_agenda.jpg" alt="icone plaquette" />
-												<a href="../../plaquettes/org21586.bmp" class="lienRose" target="_blank">T&eacute;l&eacute;charger la plaquette </a>(BMP)
-						</p>
-										</div>
+									</div>
 				<div id="pluDInfoColonne3" class="colonneDetail" style="width:34%">
 					&nbsp;						<img src="img/logo-cesu-detail.jpg" alt="Ch&egrave;que emploi service universel accept&eacute;" title="Ch&egrave;que emploi service universel accept&eacute;" />
 						</strong>
@@ -195,23 +189,23 @@
 			<div id="titre3" class="titreDetail">Services propos&eacute;s</div>
 			<div id="servicesProposes">
 								<div id="servicesColonne1" class="colonneDetailRose">
-					<img src="../../admin/activite/files/assistance-administrative.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance administrative domicile','A'); window.open(getUrlFromService(35)); return false;" class="lienRoseService">Assistance administrative domicile</a><br /><img src="../../admin/activite/files/accompagnement.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Accompagnement hors domicile PA et/ou PH','A'); window.open(getUrlFromService(29)); return false;" class="lienRoseService"><strong>Accompagnement hors domicile PA et/ou PH</strong></a><br /><img src="../../admin/activite/files/conduite.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Conduite du vhicule personnel','A'); window.open(getUrlFromService(26)); return false;" class="lienRoseService">Conduite du vhicule personnel</a><br /><img src="../../admin/activite/files/aide-mobilite.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Aide mobilit et transport de personnes','A'); window.open(getUrlFromService(25)); return false;" class="lienRoseService">Aide mobilit et transport de personnes</a><br /><img src="../../admin/activite/files/garde-malade.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Garde-malade, sauf soins','A'); window.open(getUrlFromService(24)); return false;" class="lienRoseService">Garde-malade, sauf soins</a><br />				</div>
+					<img src="../../admin/activite/files/animaux.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Soins et promenades d&#39;animaux de compagnie','A'); window.open(getUrlFromService(32)); return false;" class="lienRoseService">Soins et promenades d&#39;animaux de compagnie</a><br /><img src="../../admin/activite/files/livraison-courses.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Livraison de courses domicile','A'); window.open(getUrlFromService(30)); return false;" class="lienRoseService">Livraison de courses domicile</a><br /><img src="../../admin/activite/files/assistance-administrative.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance administrative domicile','A'); window.open(getUrlFromService(35)); return false;" class="lienRoseService">Assistance administrative domicile</a><br /><img src="../../admin/activite/files/travaux-menager.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Entretien de la maison et travaux mnagers','A'); window.open(getUrlFromService(14)); return false;" class="lienRoseService">Entretien de la maison et travaux mnagers</a><br />				</div>
 				<div id="servicesColonne2" class="colonneDetailRose">
-					<img src="../../admin/activite/files/aide-personnes.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance aux personnes ges','A'); window.open(getUrlFromService(18)); return false;"  class="lienRoseService">Assistance aux personnes ges</a><br /><img src="../../admin/activite/files/livraison-courses.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Livraison de courses domicile','A'); window.open(getUrlFromService(30)); return false;"  class="lienRoseService">Livraison de courses domicile</a><br /><img src="../../admin/activite/files/linge.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Collecte et livraison de linge repass','A'); window.open(getUrlFromService(17)); return false;"  class="lienRoseService">Collecte et livraison de linge repass</a><br /><img src="../../admin/activite/files/prepa_repas.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Commissions et prparation de repas','A'); window.open(getUrlFromService(15)); return false;"  class="lienRoseService">Commissions et prparation de repas</a><br /><img src="../../admin/activite/files/travaux-menager.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Entretien de la maison et travaux mnagers','A'); window.open(getUrlFromService(14)); return false;"  class="lienRoseService">Entretien de la maison et travaux mnagers</a><br />				</div>
+					<img src="../../admin/activite/files/prepa_repas.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Commissions et prparation de repas','A'); window.open(getUrlFromService(15)); return false;"  class="lienRoseService">Commissions et prparation de repas</a><br /><img src="../../admin/activite/files/assistance-handicapes.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance aux personnes handicapes','A'); window.open(getUrlFromService(22)); return false;"  class="lienRoseService">Assistance aux personnes handicapes</a><br /><img src="../../admin/activite/files/accompagnement.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Accompagnement hors domicile PA et/ou PH','A'); window.open(getUrlFromService(29)); return false;"  class="lienRoseService"><strong>Accompagnement hors domicile PA et/ou PH</strong></a><br /><img src="../../admin/activite/files/conduite.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Conduite du vhicule personnel','A'); window.open(getUrlFromService(26)); return false;"  class="lienRoseService">Conduite du vhicule personnel</a><br />				</div>
 				<div id="servicesColonne3" class="colonneDetailRose">
-					<img src="../../admin/activite/files/assistance-handicapes.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance aux personnes handicapes','A'); window.open(getUrlFromService(22)); return false;"  class="lienRoseService">Assistance aux personnes handicapes</a><br /><img src="../../admin/activite/files/assitance-informatique.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance informatique  domicile','A'); window.open(getUrlFromService(31)); return false;"  class="lienRoseService">Assistance informatique  domicile</a><br /><img src="../../admin/activite/files/soutien-scolaire.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Soutien scolaire  domicile','A'); window.open(getUrlFromService(19)); return false;"  class="lienRoseService">Soutien scolaire  domicile</a><br /><img src="../../admin/activite/files/bricolage.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Travaux de petit bricolage','A'); window.open(getUrlFromService(9)); return false;"  class="lienRoseService">Travaux de petit bricolage</a><br /><img src="../../admin/activite/files/jardinage.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Petits travaux de jardinage','A'); window.open(getUrlFromService(5)); return false;"  class="lienRoseService">Petits travaux de jardinage</a><br />				</div>
+					<img src="../../admin/activite/files/aide-mobilite.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Aide mobilit et transport de personnes','A'); window.open(getUrlFromService(25)); return false;"  class="lienRoseService">Aide mobilit et transport de personnes</a><br /><img src="../../admin/activite/files/garde-malade.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Garde-malade, sauf soins','A'); window.open(getUrlFromService(24)); return false;"  class="lienRoseService">Garde-malade, sauf soins</a><br /><img src="../../admin/activite/files/aide-personnes.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance aux personnes ges','A'); window.open(getUrlFromService(18)); return false;"  class="lienRoseService">Assistance aux personnes ges</a><br /><img src="../../admin/activite/files/livraison-repa.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Livraison de repas  domicile','A'); window.open(getUrlFromService(16)); return false;"  class="lienRoseService">Livraison de repas  domicile</a><br />				</div>
 			</div>
 			<div class="cleaner"><br /></div>
 			<div id="titre4" class="titreDetail">Zones d'intervention</div>
 			<div id="zonesIntervention">
 								<div id="servicesColonne1" class="colonneDetail">
-					LE GOLFE JUAN (06220)<br />					&nbsp;
+					CAGNES SUR MER (06800)<br />LA COLLE SUR LOUP (06480)<br />LA GAUDE (06610)<br />LA TRINITE (06340)<br />					&nbsp;
 				</div>
 				<div id="servicesColonne2" class="colonneDetail">
-					VALLAURIS (06220)<br />					&nbsp;
+					NICE (06000)<br />ST ANDRE (06730)<br />ST JEANNET (06640)<br />ST LAURENT DU VAR (06700)<br />					&nbsp;
 				</div>
 				<div id="servicesColonne3" class="colonneDetail">
-					Alpes-Maritimes<br />					&nbsp;
+					ST PAUL (06570)<br />TOURETTE SUR LOUP (06140)<br />VENCE (06140)<br />					&nbsp;
 				</div>
 			</div>
 					</div>

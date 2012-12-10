@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Trouver un organisme agr&eacute;&eacute;</title>
+<link rel="stylesheet" href="css/recherche.css" type="text/css" />
+<style type="text/css">
+	p {margin: 0; padding: 5px 0 5px 0;}
+</style>
+<!--
+<script type="text/javascript" language="javascript" src="includes/functions.js"></script>
+<script type="text/javascript" language="javascript" src="includes/ajax.js"></script>
+-->
+<script>
+		tabServiceUrl = new Array();
+		tabServiceUrl[6] = "http://www.servicesalapersonne.gouv.fr/garde-d-enfants-a-domicile-(1488).cml";
+		tabServiceUrl[12] = "http://www.servicesalapersonne.gouv.fr/garde-d-enfants-a-domicile-(1488).cml";
+		tabServiceUrl[27] = "http://www.servicesalapersonne.gouv.fr/accompagnement-d-enfants-dans-leurs-deplacements-(1490).cml";
+		tabServiceUrl[28] = "http://www.servicesalapersonne.gouv.fr/accompagnement-d-enfants-dans-leurs-deplacements-(1490).cml";
+		tabServiceUrl[19] = "http://www.servicesalapersonne.gouv.fr/soutien-scolaire-(1491).cml";
+		tabServiceUrl[20] = "http://www.servicesalapersonne.gouv.fr/cours-a-domicile-(1492).cml";
+		tabServiceUrl[31] = "http://www.servicesalapersonne.gouv.fr/assistance-informatique-et-internet-(1493).cml";
+		tabServiceUrl[35] = "http://www.servicesalapersonne.gouv.fr/assistance-administrative-(1494).cml";
+		tabServiceUrl[14] = "http://www.servicesalapersonne.gouv.fr/travaux-menagers-(1496).cml";
+		tabServiceUrl[17] = "http://www.servicesalapersonne.gouv.fr/collecte-et-livraison-de-linge-repasse-(1497).cml";
+		tabServiceUrl[5] = "http://www.servicesalapersonne.gouv.fr/petits-travaux-de-jardinage-debroussaillage-(1499).cml";
+		tabServiceUrl[9] = "http://www.servicesalapersonne.gouv.fr/petit-bricolage-(1500).cml";
+		tabServiceUrl[34] = "http://www.servicesalapersonne.gouv.fr/gardiennage-entretien-et-surveillance-temporaires-des-residences-principale-et-secondaires-(1501).cml";
+		tabServiceUrl[15] = "http://www.servicesalapersonne.gouv.fr/preparation-de-repas-(4645).cml";
+		tabServiceUrl[16] = "http://www.servicesalapersonne.gouv.fr/preparation-de-repas-a-domicile-(1498).cml";
+		tabServiceUrl[30] = "http://www.servicesalapersonne.gouv.fr/livraison-de-repas-ou-de-courses-a-domicile-(1580).cml";
+		tabServiceUrl[24] = "http://www.servicesalapersonne.gouv.fr/garde-malade-(1495).cml";
+		tabServiceUrl[18] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-agees-(sauf-actes-medicaux)-(1503).cml";
+		tabServiceUrl[22] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-handicapees-(dont-interprete-en-langue-des-signes-technicien-de-l-ecrit-et-codeur-en-langage-(1504).cml";
+		tabServiceUrl[25] = "http://www.servicesalapersonne.gouv.fr/aide-a-la-mobilite-et-transport-(1464).cml";
+		tabServiceUrl[29] = "http://www.servicesalapersonne.gouv.fr/accompagnement-dans-les-promenades-et-les-actes-de-la-vie-courante-(1507).cml";
+		tabServiceUrl[26] = "http://www.servicesalapersonne.gouv.fr/conduite-du-vehicule-personnel-(pour-des-trajets-domicile-travail-en-vacances-ou-pour-des-demarches-administratives)-(1508).cml";
+		tabServiceUrl[33] = "http://www.servicesalapersonne.gouv.fr/soins-esthetiques-(1505).cml";
+		tabServiceUrl[32] = "http://www.servicesalapersonne.gouv.fr/soins-et-promenade-d-animaux-domestiques-(sauf-actes-veterinaires-et-toilettage)-(1509).cml";
+		tabServiceUrl[36] = "http://www.servicesalapersonne.gouv.fr/teleassistance-et-visioassistance-(5361).cml";
+		tabServiceUrl[23] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-handicapees-(dont-interprete-en-langue-des-signes-technicien-de-l-ecrit-et-codeur-en-langage-(1504).cml";
+
+		tabClickTag = new Array();
+		tabClickTag[6] = "fiche_garde_enfant_moins_trois_ans";
+		tabClickTag[12] = "fiche_garde_enfant_plus_trois_ans";
+		tabClickTag[27] = "fiche_accompagnement_enfant_moins_trois_ans";
+		tabClickTag[28] = "fiche_accompagnement_enfant_plus_trois_ans";
+		tabClickTag[19] = "fiche_soutien_scolaire";
+		tabClickTag[20] = "fiche_cours_domicile";
+		tabClickTag[31] = "fiche_assistance_info_internet";
+		tabClickTag[35] = "fiche_assistance_administrative";
+		tabClickTag[14] = "fiche_menage_repassage";
+		tabClickTag[5] = "fiche_petit_jardinage";
+		tabClickTag[9] = "fiche_petit_bricolage";
+		tabClickTag[15] = "fiche_preparation_repas_commissions";
+		tabClickTag[16] = "fiche_livraison_repas_domicile";
+		tabClickTag[17] = "fiche_collecte_livraison_linge";
+		tabClickTag[30] = "fiche_livraison_courses";
+		tabClickTag[34] = "fiche_maintenance_vigilance_residences";
+		tabClickTag[36] = "fiche_tele_visioassistance";
+		tabClickTag[18] = "fiche_aide_personnes_agees";
+		tabClickTag[24] = "fiche_garde_malade";
+		tabClickTag[25] = "fiche_aide_mobilite_transport";
+		tabClickTag[26] = "fiche_conduite_vehicule_perso";
+		tabClickTag[29] = "fiche_transport_accompagnement_pa_hd";
+		tabClickTag[22] = "fiche_assistance_pers_handicapees";
+		tabClickTag[23] = "fiche_interpretes_langues_signes";
+		tabClickTag[32] = "fiche_soins_promenades_animaux";
+		tabClickTag[33] = "fiche_soins_esthetiques";
+		
+		function getUrlFromService(idService) {
+			return tabServiceUrl[idService];
+		}	
+		
+		function getClickTagFromService(idService) {
+			return tabClickTag[idService];
+		}	
+		
+		function Call(pageAppelante, typeAppel, titre, url) {
+			var opt = 'resizable=yes,location=no,menubar=no,scrollbars=no,status=no,toolbar=no,fullscreen=no,dependent=yes,width=600,height=250,left=200,top=200';
+			window.open(pageAppelante + '?b=' + typeAppel + '&t=' + encodeURIComponent(titre) + '&u=' + encodeURIComponent(url), 'addMyLink', opt);
+		}
+
+
+		function ajoutOrganisme() {
+			url = "detail.php?id=2881";
+			
+			Call("http://www.servicesalapersonne.gouv.fr/ANSP/OA/AddToMyLinks.aspx", "OA", "ASSOCIATION INTERM. DOMICILE SERVICES(2881)", url) ;
+
+		}
+
+		
+	</script>
+</head>
+<body>
+
+<!-- 20090108 - Marqueurs Xiti -->
+<script type="text/javascript">
+	<!--
+	xtnv=document;xtsd="http://logi141";xtsite="315767";xtn2="2";xtpage="Proximite::Web.ANSP.Public.Quotidien.Cote.Ann.Result.Fiche";xtdi="";
+	//-->
+</script>
+<script type="text/javascript" src="http://www.servicesalapersonne.gouv.fr/ANSP_xtcore.js"></script>
+<object>
+	<noscript>
+		<div id="xiti-logo-noscript">
+			<img width="1" height="1" src="http://logi141.xiti.com/hit.xiti?s=315767&amp;s2=2&amp;p=Proximite::Web.ANSP.Public.Quotidien.Cote.Ann.Result.Fiche&amp;di=&amp;" alt="XiTi" />
+		</div>
+	</noscript>
+</object>
+<!-- ************************* -->
+
+<div id="conteneur" class="conteneur">
+	<div id="bordGauche">&nbsp;</div>
+	<div id="contenu">
+		<div id="ligneTitreResultatsDetail">
+			<div id="imagePro3">&nbsp;</div>
+			<div id="centreTitreHautGauche" class="centreTitreHautGauche"><br />
+				ASSOCIATION INTERM. DOMICILE SERVICES							
+			</div>
+			<div id="centreTitreHautDroite" class="centreTitreHautDroite">&nbsp;</div>
+     						<div id="recapitulatifActionsDetail">
+					<div id="retourIcone"></div>
+					<div id="retourTexte"><a href="resultats.php" class="lienActions">retour  la liste</a></div>
+					<div id="retourFin"></div>
+					<div class="cleaner"></div>
+					<div id="imprimerIcone"></div>
+					<div id="imprimerTexte"><a href="#" onclick="window.print();" class="lienActions">imprimer la fiche</a></div>
+					<div id="imprimerFin"></div>
+					<div class="cleaner"></div>
+					<div id="favorisIcone"></div>
+					<div id="favorisTexte"><a href="#" onclick="ajoutOrganisme();" class="lienActions">ajouter &agrave; mes favoris</a></div>
+					<div id="favorisFin"></div>
+					<div class="cleaner"></div>
+					<div id="modifierIconeDetail"></div>
+					<div id="modifierDetail"><a href="recherche.php" class="lienActions">modifier la recherche</a></div>
+					<div id="modifierFinDetail"></div>
+					<div class="cleaner"></div>
+					<div id="nouvelleIconeDetail"></div>
+					<div id="nouvelleTexteDetail"><a href="recherche.php?init=1" class="lienActions">nouvelle recherche</a></div>
+					<div id="nouvelleFinDetail"></div>
+					<div class="cleaner"></div>
+				</div>
+						</div>
+		<div class="cleaner"></div>
+		<div id="bordGaucheDetail">&nbsp;</div>
+		<div id="colonneResultatsDetail">
+			<div id="titre1" class="titreDetail">Contact</div>
+			<div id="contact">
+				<div id="contactColonne1" class="colonneDetail" style="width:33%">
+											<img src="img/icone_mobile.jpg" alt="icone mobile" /> T&eacute;l. : 
+						<span class="txtRose12Gras">0380519641</span>
+										</div>
+				<div id="contactColonne2" class="colonneDetail" style="width:67%">
+											<img src="img/icone_fax.jpg" alt="icone fax" /> Fax : <span class="txtRose12"> 03 80 51 04 02</span><br />
+											<img src="img/icone_contact.jpg" alt="icone contact" /> Contact : 
+					<span class="txtRose12">
+						<a href="mailto:lparriaux@fede21.admr.org" class="lienRose" style="font-weight:bold;">Madame Florence AUBRUN</a><span style="font-size:smaller;">&nbsp;&nbsp;&nbsp;lparriaux@fede21.admr.org</span>					</span> 
+				</div>
+			</div>
+			<div class="cleaner"><br /></div>
+			<div id="titre2" class="titreDetail">Plus d'informations</div>
+			<div id="plusDInfo">
+				<div id="plusDInfoColonne1" class="colonneDetail" style="width:33%">
+					<p class="txtRose12" style="padding-left: 35px;">
+						D&eacute;clar&eacute; et Non Agr&eacute;&eacute;					</p>
+					
+											<p class="txtRose12"  style="padding-left: 35px;">Mode d'intervention : 
+							<strong>
+							prestataire 							</strong>
+						</p>
+												<p><img src="img/icone_url.jpg" alt="icone url" /> <a href="http://www.domicile-services-21.fr" class="lienRose" target="_blank">www.domicile-services-21.fr</a></p>
+										</div>
+				<div id="plusDInfoColonne2" class="colonneDetail" style="width:33%">
+					<p class="txtRose12" style="padding-left: 35px;">Association Intermdiaire</p>					
+											<p class="txtRose12" style="padding-left: 35px;">Type d'implantation : <strong>&eacute;tablissement</strong></p>
+						
+											<p class="txtRose12" style="padding-left: 35px;">Si&egrave;ge social : <strong>oui</strong></p>
+						
+											<p class="txtRose12" style="padding-left: 35px;">&Eacute;tablissement principal : <strong>oui</strong></p>
+						
+									</div>
+				<div id="pluDInfoColonne3" class="colonneDetail" style="width:34%">
+					&nbsp;						<img src="img/logo-cesu-detail.jpg" alt="Ch&egrave;que emploi service universel accept&eacute;" title="Ch&egrave;que emploi service universel accept&eacute;" />
+						</strong>
+
+				</div>
+							</div>
+			<br/><br/>
+			<div class="cleaner"><br /></div>
+			<div id="titre3" class="titreDetail">Services propos&eacute;s</div>
+			<div id="servicesProposes">
+								<div id="servicesColonne1" class="colonneDetailRose">
+					<img src="../../admin/activite/files/jardinage.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Petits travaux de jardinage','A'); window.open(getUrlFromService(5)); return false;" class="lienRoseService">Petits travaux de jardinage</a><br /><img src="../../admin/activite/files/bricolage.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Travaux de petit bricolage','A'); window.open(getUrlFromService(9)); return false;" class="lienRoseService">Travaux de petit bricolage</a><br /><img src="../../admin/activite/files/prepa_repas.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Commissions et prparation de repas','A'); window.open(getUrlFromService(15)); return false;" class="lienRoseService">Commissions et prparation de repas</a><br />				</div>
+				<div id="servicesColonne2" class="colonneDetailRose">
+					<img src="../../admin/activite/files/travaux-menager.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Entretien de la maison et travaux mnagers','A'); window.open(getUrlFromService(14)); return false;"  class="lienRoseService">Entretien de la maison et travaux mnagers</a><br /><img src="../../admin/activite/files/assistance-administrative.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance administrative domicile','A'); window.open(getUrlFromService(35)); return false;"  class="lienRoseService">Assistance administrative domicile</a><br /><img src="../../admin/activite/files/soutien-scolaire.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Soutien scolaire  domicile','A'); window.open(getUrlFromService(19)); return false;"  class="lienRoseService">Soutien scolaire  domicile</a><br />				</div>
+				<div id="servicesColonne3" class="colonneDetailRose">
+					<img src="../../admin/activite/files/garde-enfants.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Garde d&#39;enfant +3 ans  domicile','A'); window.open(getUrlFromService(6)); return false;"  class="lienRoseService">Garde d&#39;enfant +3 ans  domicile</a><br /><img src="../../admin/activite/files/animaux.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Soins et promenades d&#39;animaux de compagnie','A'); window.open(getUrlFromService(32)); return false;"  class="lienRoseService">Soins et promenades d&#39;animaux de compagnie</a><br /><img src="../../admin/activite/files/acompagner-enfant.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Accomp./dplacement enfants +3 ans','A'); window.open(getUrlFromService(28)); return false;"  class="lienRoseService"><strong>Accomp./dplacement enfants +3 ans</strong></a><br />				</div>
+			</div>
+			<div class="cleaner"><br /></div>
+			<div id="titre4" class="titreDetail">Zones d'intervention</div>
+			<div id="zonesIntervention">
+								<div id="servicesColonne1" class="colonneDetail">
+					AGENCOURT (21700)<br />AIGNAY LE DUC (21510)<br />AISEREY (21110)<br />AISEY SUR SEINE (21400)<br />ALLEREY (21230)<br />ALOXE CORTON (21420)<br />AMPILLY LE SEC (21400)<br />AMPILLY LES BORDES (21450)<br />ANTIGNY LA VILLE (21230)<br />ARC SUR TILLE (21560)<br />ARCEAU (21310)<br />ARCENANT (21700)<br />ARGILLY (21700)<br />ARNAY LE DUC (21230)<br />ARNAY SOUS VITTEAUX (21350)<br />ARRANS (21500)<br />ASNIERES EN MONTAGNE (21500)<br />ATHEE (21130)<br />ATHIE (21500)<br />AUBIGNY EN PLAINE (21170)<br />AUTRICOURT (21570)<br />AUVILLARS SUR SAONE (21250)<br />AUXEY DURESSES (21190)<br />AUXONNE (21130)<br />AVELANGES (21120)<br />AVOSNES (21350)<br />AVOT (21580)<br />BAGNOT (21700)<br />BAIGNEUX LES JUIFS (21450)<br />BALOT (21330)<br />BARD LE REGULIER (21430)<br />BARD LES EPOISSES (21460)<br />BARGES (21910)<br />BARJON (21580)<br />BEAULIEU (21510)<br />BEAUMONT SUR VINGEANNE (21310)<br />BEAUNE (21200)<br />BEAUNOTTE (21510)<br />BEIRE LE CHATEL (21310)<br />BEIRE LE FORT (21110)<br />BELLENEUVE (21310)<br />BELLENOD SUR SEINE (21510)<br />BENEUVRE (21290)<br />BENOISEY (21500)<br />BESSEY LES CITEAUX (21110)<br />BEURIZOT (21350)<br />BEVY (21220)<br />BEZE (21310)<br />BEZOUOTTE (21310)<br />BILLEY (21130)<br />BILLY LES CHANCEAUX (21450)<br />BINGES (21270)<br />BISSEY LA COTE (21520)<br />BISSEY LA PIERRE (21330)<br />BLAGNY SUR VINGEANNE (21310)<br />BLANOT (21430)<br />BLIGNY LE SEC (21440)<br />BLIGNY LES BEAUNE (21200)<br />BONCOURT LE BOIS (21700)<br />BONNENCONTRE (21250)<br />BOUDREVILLE (21520)<br />BOUILLAND (21420)<br />BOUIX (21330)<br />BOURBERAIN (21610)<br />BOUSSELANGE (21250)<br />BOUSSENOIS (21260)<br />BOUSSEY (21350)<br />BOUZE LES BEAUNE (21200)<br />BRAIN (21350)<br />BRAZEY EN MORVAN (21430)<br />BRAZEY EN PLAINE (21470)<br />BREMUR ET VAUROIS (21400)<br />BRESSEY SUR TILLE (21560)<br />BRETENIERES (21110)<br />BRETIGNY (21490)<br />BRION SUR OURCE (21570)<br />BROCHON (21220)<br />BROIN (21250)<br />BROINDON (21220)<br />BUFFON (21500)<br />BUNCEY (21400)<br />BURE LES TEMPLIERS (21290)<br />BUSSEAUT (21510)<br />BUSSEROTTE MONTENAILLE (21580)<br />BUSSIERES (21580)<br />BUXEROLLES (21290)<br />CENSEREY (21430)<br />CESSEY SUR TILLE (21110)<br />CHAIGNAY (21120)<br />CHAMBAIN (21290)<br />CHAMBEIRE (21110)<br />CHAMBLANC (21250)<br />CHAMBOEUF (21220)<br />CHAMBOLLE MUSIGNY (21220)<br />CHAMESSON (21400)<br />CHAMP D OISEAU (21500)<br />CHAMPAGNE SUR VINGEANNE (21310)<br />CHAMPAGNY (21440)<br />CHAMPDOTRE (21130)<br />CHAMPEAU EN MORVAN (21210)<br />CHAMPIGNOLLES (21230)<br />CHAMPRENAULT (21690)<br />CHANCEAUX (21440)<br />CHANNAY (21330)<br />CHARIGNY (21140)<br />CHARMES (21310)<br />CHARNY (21350)<br />CHARREY SUR SAONE (21170)<br />CHARREY SUR SEINE (21400)<br />CHASSEY (21150)<br />CHATILLON SUR SEINE (21400)<br />CHAUGEY (21290)<br />CHAUME ET COURCHAMP (21610)<br />CHAUME LES BAIGNEUX (21450)<br />CHAUMONT LE BOIS (21400)<br />CHAUX (21700)<br />CHAZEUIL (21260)<br />CHEMIN D AISEY (21400)<br />CHENOVE (21300)<br />CHEUGE (21310)<br />CHEVANNAY (21540)<br />CHEVANNES (21220)<br />CHEVIGNY EN VALIERE (21200)<br />CHIVRES (21820)<br />CHOREY (21200)<br />CIREY LES PONTAILLER (21270)<br />CLAMEREY (21390)<br />CLEMENCEY (21220)<br />CLENAY (21490)<br />CLERY (21270)<br />CLOMOT (21230)<br />COLLONGES LES BEVY (21220)<br />COLLONGES LES PREMIERES (21110)<br />COMBERTAULT (21200)<br />COMBLANCHIEN (21700)<br />CORBERON (21250)<br />CORCELLES LES ARTS (21190)<br />CORCELLES LES CITEAUX (21910)<br />CORGENGOUX (21250)<br />CORGOLOIN (21700)<br />CORROMBLES (21460)<br />CORSAINT (21460)<br />COUCHEY (21160)<br />COULMIER LE SEC (21400)<br />COURBAN (21520)<br />COURCELLES FREMOY (21460)<br />COURCELLES LES MONTBARD (21500)<br />COURCELLES LES SEMUR (21140)<br />COURLON (21580)<br />COURTIVRON (21120)<br />COUTERNON (21560)<br />CRECEY SUR TILLE (21120)<br />CREPAND (21500)<br />CRIMOLOIS (21800)<br />CUISEREY (21310)<br />CULETRE (21230)<br />CURLEY (21220)<br />CURTIL ST SEINE (21380)<br />CURTIL VERGY (21220)<br />CUSSEY LES FORGES (21580)<br />CUSSY LE CHATEL (21230)<br />DAMPIERRE EN MONTAGNE (21350)<br />DAMPIERRE ET FLEE (21310)<br />DETAIN ET BRUANT (21220)<br />DIANCEY (21430)<br />DIENAY (21120)<br />DOMPIERRE EN MORVAN (21390)<br />DRAMBON (21270)<br />DUESME (21510)<br />EBATY (21190)<br />ECHALOT (21510)<br />ECHENON (21170)<br />ECHEVANNES (21120)<br />ECHEVRONNE (21420)<br />ECHIGEY (21110)<br />EPAGNY (21380)<br />EPERNAY SOUS GEVREY (21220)<br />EPOISSES (21460)<br />ERINGES (21500)<br />ESBARRES (21170)<br />ESSAROIS (21290)<br />ETAIS (21500)<br />					&nbsp;
+				</div>
+				<div id="servicesColonne2" class="colonneDetail">
+					ETALANTE (21510)<br />ETEVAUX (21270)<br />ETORMAY (21450)<br />ETROCHEY (21400)<br />FAIN LES MONTBARD (21500)<br />FAIN LES MOUTIERS (21500)<br />FAUVERNEY (21110)<br />FAVEROLLES LES LUCEY (21290)<br />FENAY (21600)<br />FIXIN (21220)<br />FLACEY (21490)<br />FLAGEY ECHEZEAUX (21640)<br />FLAGEY LES AUXONNE (21130)<br />FLAMMERANS (21130)<br />FLEE (21140)<br />FLEUREY SUR OUCHE (21410)<br />FOISSY (21230)<br />FONCEGRIVE (21260)<br />FONTAINE FRANCAISE (21610)<br />FONTAINES EN DUESMOIS (21450)<br />FONTAINES LES SECHES (21330)<br />FONTANGY (21390)<br />FONTENELLE (21610)<br />FORLEANS (21460)<br />FRAIGNOT ET VESVROTTE (21580)<br />FRANCHEVILLE (21440)<br />FRANXAULT (21170)<br />FRENOIS (21120)<br />FRESNES (21500)<br />FUSSEY (21700)<br />GEMEAUX (21120)<br />GENAY (21140)<br />GENLIS (21110)<br />GERGUEIL (21410)<br />GERLAND (21700)<br />GEVREY CHAMBERTIN (21220)<br />GEVROLLES (21520)<br />GILLY LES CITEAUX (21640)<br />GISSEY LE VIEIL (21350)<br />GLANON (21250)<br />GOMMEVILLE (21400)<br />GRANCEY LE CHATEAU NEUVEL (21580)<br />GRANCEY SUR OURCE (21570)<br />GRISELLES (21330)<br />GROSBOIS LES TICHEY (21250)<br />GURGY LA VILLE (21290)<br />GURGYLE CHATEAU (21290)<br />HEUILLEY SUR SAONE (21270)<br />IS SUR TILLE (21120)<br />IZIER (21110)<br />JALLANGES (21250)<br />JANCIGNY (21310)<br />JEUX LES BARD (21460)<br />JOUEY (21230)<br />JOURS LES BAIGNEUX (21450)<br />JUILLENAY (21210)<br />JUILLY (21140)<br />L ETANG VERGY (21220)<br />LA CHAUME (21520)<br />LA MOTTE TERNANT (21210)<br />LA ROCHE EN BRENIL (21530)<br />LA VILLENEUVE LES CONVERS (21450)<br />LABERGEMENT FOIGNEY (21110)<br />LABERGEMENT LES AUXONNE (21130)<br />LABERGEMENT LES SEURRE (21820)<br />LABRUYERE (21250)<br />LACANCHE (21230)<br />LADOIX SERRIGNY (21550)<br />LAIGNES (21330)<br />LAMARCHE SUR SAONE (21760)<br />LAMARGELLE (21440)<br />LANTHES (21250)<br />LANTILLY (21140)<br />LAPERRIERE SUR SAONE (21170)<br />LARREY (21330)<br />LE FETE (21230)<br />LE MEIX (21580)<br />LECHATELET (21250)<br />LERY (21440)<br />LES GOULLES (21520)<br />LES MAILLYS (21130)<br />LEUGLAY (21290)<br />LEVERNOIS (21200)<br />LICEY SUR VINGEANNE (21610)<br />LIERNAIS (21430)<br />LIGNEROLLES (21520)<br />LONGCHAMP (21110)<br />LONGEAULT (21110)<br />LONGECOURT EN PLAINE (21110)<br />LONGECOURT LES CULETRE (21230)<br />LOSNE (21170)<br />LOUESME (21520)<br />LUCENAY LE DUC (21150)<br />LUCEY (21290)<br />LUX (21120)<br />MAGNIEN (21230)<br />MAGNY LA VILLE (21140)<br />MAGNY LAMBERT (21450)<br />MAGNY LES AUBIGNY (21170)<br />MAGNY LES VILLERS (21700)<br />MAGNY MONTARLOT (21130)<br />MAGNY ST MEDARD (21310)<br />MAGNY SUR TILLE (21110)<br />MAISEY LE DUC (21400)<br />MALIGNY (21230)<br />MANLAY (21430)<br />MARANDEUIL (21270)<br />MARCELLOIS (21350)<br />MARCENAY (21330)<br />MARCHESEUIL (21430)<br />MARCILLY LES VITTEAUX (21350)<br />MARCILLY SUR TILLE (21120)<br />MAREY LES FUSSEY (21700)<br />MARIGNY LES REULLEE (21200)<br />MARLIENS (21110)<br />MARMAGNE (21500)<br />MARSANNAY LE BOIS (21380)<br />MASSINGY (21400)<br />MASSINGY LES SEMUR (21140)<br />MASSINGY LES VITTEAUX (21350)<br />MAUVILLY (21510)<br />MAVILLY MANDELOT (21190)<br />MAXILLY SUR SAONE (21270)<br />MELOISEY (21190)<br />MENESBLE (21290)<br />MENESSAIRE (21430)<br />MERCEUIL (21190)<br />MESSANGES (21220)<br />MESSIGNY ET VANTOUX (21380)<br />MEUILLEY (21700)<br />MEULSON (21510)<br />MEURSANGES (21200)<br />MEURSAULT (21190)<br />MILLERY (21140)<br />MIMEURE (21230)<br />MINOT (21510)<br />MIREBEAU SUR BEZE (21310)<br />MOITRON (21510)<br />MOLESMES (21330)<br />MOLOY (21120)<br />MOLPHEY (21210)<br />MONTAGNY LES BEAUNE (21200)<br />MONTAGNY LES SEURRE (21250)<br />MONTBARD (21500)<br />MONTBERTHAULT (21460)<br />MONTHELIE (21190)<br />MONTIGNY MONTFORT (21500)<br />MONTIGNY MORNAY VILLENEUV (21610)<br />MONTIGNY SUR ARMANCON (21140)<br />MONTIGNY SUR AUBE (21520)<br />MONTLAY EN AUXOIS (21210)<br />MONTLIOT ET COURCELLES (21400)<br />MONTMAIN (21250)<br />MONTMANCON (21270)<br />MONTMOYEN (21290)<br />MONTOT (21170)<br />MOREY ST DENIS (21220)<br />MOSSON (21400)<br />MOUTIERS ST JEAN (21500)<br />MUSIGNY (21230)<br />NAN SOUS THIL (21390)<br />NANTOUX (21190)<br />NESLE ET MASSOULT (21330)<br />NEUVELLE LES GRANCEY (21580)<br />NICEY (21330)<br />NOD SUR SEINE (21400)<br />NOGENT LES MONBARD (21500)<br />NOIRON SOUS GEVREY (21910)<br />NOIRON SUR BEZE (21310)<br />NOIRON SUR SEINE (21400)<br />NOLAY (21340)<br />NUITS ST GEORGES (21700)<br />OBTREE (21400)<br />OIGNY (21450)<br />OISILLY (21310)<br />ORAIN (21610)<br />ORIGNY (21510)<br />ORRET (21450)<br />ORVILLE (21260)<br />OUGES (21600)<br />PAGNY LA VILLE (21250)<br />PAGNY LE CHATEAU (21250)<br />					&nbsp;
+				</div>
+				<div id="servicesColonne3" class="colonneDetail">
+					PANGES (21540)<br />PELLEREY (21440)<br />PERNAND VERGELESSE (21420)<br />PERRIGNY LES DIJON (21160)<br />PERRIGNY SUR L OGNON (21270)<br />PICHANGES (21120)<br />PLANAY (21500)<br />PLUVAULT (21110)<br />PLUVET (21110)<br />POINCON LES LARREY (21330)<br />POISEUL LA GRANGE (21440)<br />POISEUL LA VILLE ET LAPER (21450)<br />POISEUL LES SAULX (21120)<br />POMMARD (21630)<br />PONCEY LES ATHEE (21130)<br />PONCEY SUR L IGNON (21440)<br />PONT (21130)<br />PONT ET MASSENE (21140)<br />PONTAILLER SUR SAONE (21270)<br />POSANGES (21350)<br />POTHIERES (21400)<br />POUILLY SUR SAONE (21250)<br />POUILLY SUR VINGEANNE (21610)<br />PREMEAUX PRISSEY (21700)<br />PREMIERES (21110)<br />PRUSLY SUR OURCE (21400)<br />PUITS (21400)<br />QUEMIGNY POISOT (21220)<br />QUEMIGNY SUR SEINE (21510)<br />QUINCEROT (21500)<br />QUINCEY (21700)<br />QUINCY LE VICOMTE (21500)<br />RECEY SUR OURCE (21290)<br />REMILLY SUR TILLE (21560)<br />RENEVE (21310)<br />REULLE VERGY (21220)<br />RIEL LES EAUX (21570)<br />ROCHEFORT (21510)<br />ROUGEMONT (21500)<br />ROUVRAY (21530)<br />ROUVRES EN PLAINE (21110)<br />RUFFEY LES BEAUNE (21200)<br />RUFFEY LES ECHIREY (21490)<br />SACQUENAY (21260)<br />SAFFRES (21350)<br />SALIVES (21580)<br />SAMEREY (21170)<br />SAULIEU (21210)<br />SAULON LA CHAPELLE (21910)<br />SAULON LA RUE (21910)<br />SAULX LE DUC (21120)<br />SAUSSY (21380)<br />SAVIGNY LE SEC (21380)<br />SAVIGNY LES BEAUNE (21420)<br />SAVILLY (21430)<br />SAVOISY (21500)<br />SAVOLLES (21310)<br />SAVOUGES (21910)<br />SEGROIS (21220)<br />SEIGNY (21150)<br />SELONGEY (21260)<br />SEMEZANGES (21220)<br />SEMOND (21450)<br />SEMUR EN AUXOIS (21140)<br />SENAILLY (21500)<br />SEURRE (21250)<br />SINCEY LES ROUVRAY (21530)<br />SOIRANS (21110)<br />SOISSONS SUR NACEY (21270)<br />SOUHEY (21140)<br />SOUSSEY SUR BRIONNE (21350)<br />SPOY (21120)<br />ST ANDEUX (21530)<br />ST BERNARD (21700)<br />ST BROING LES MOINES (21290)<br />ST DIDIER (21210)<br />ST EUPHRONE (21140)<br />ST GERMAIN DE MODEON (21530)<br />ST GERMAIN LE ROCHEUX (21510)<br />ST GERMAIN LES SENAILLY (21500)<br />ST HELIER (21690)<br />ST JEAN DE LOSNE (21170)<br />ST LEGER TRIEY (21270)<br />ST MARC SUR SEINE (21450)<br />ST MARTIN DE LA MER (21210)<br />ST MARTIN DU MONT (21440)<br />ST MAURICE SUR VINGEANN (21610)<br />ST MESMIN (21540)<br />ST NICOLAS LES CITEAUX (21700)<br />ST PHILIBERT (21220)<br />ST PIERRE EN VAUX (21230)<br />ST PRIX LES ARNAY (21230)<br />ST REMY (21500)<br />ST SAUVEUR (21270)<br />ST SEINE EN BACHE (21130)<br />ST SEINE L ABBAYE (21440)<br />ST SYMPHORIEN SUR SAONE (21170)<br />ST THIBAULT (21350)<br />ST USAGE (21170)<br />STE COLOMBE (21350)<br />STE COLOMBE SUR SEINE (21400)<br />STE MARIE LA BLANCHE (21200)<br />SUSSEY (21430)<br />TAILLY (21190)<br />TALMAY (21270)<br />TANAY (21310)<br />TARSUL (21120)<br />TART L ABBAYE (21110)<br />TART LE BAS (21110)<br />TART LE HAUT (21110)<br />TELLECEY (21270)<br />TERNANT (21220)<br />TERREFONDREE (21290)<br />THOIRES (21570)<br />THOISY LA BERCHERE (21210)<br />THOREY EN PLAINE (21110)<br />THOREY SOUS CHARNY (21350)<br />TICHEY (21250)<br />TIL CHATEL (21120)<br />TILLENAY (21130)<br />TORCY ET POULIGNY (21460)<br />TOUILLON (21500)<br />TOUTRY (21460)<br />TRECLUN (21130)<br />TROCHERES (21310)<br />TROUHANS (21170)<br />TROUHAUT (21440)<br />TRUGNY (21250)<br />TURCEY (21540)<br />UNCEY LE FRANC (21350)<br />URCY (21220)<br />VAL SUZON (21121)<br />VANNAIRE (21400)<br />VARANGES (21110)<br />VAROIS ET CHAIGNOT (21490)<br />VAUX SAULES (21440)<br />VELOGNY (21350)<br />VERDONNET (21330)<br />VERNOIS LES VESVRES (21260)<br />VERNOT (21120)<br />VERONNES (21260)<br />VERTAULT (21330)<br />VESVRES (21350)<br />VEUXHAULLES SUR AUBE (21520)<br />VIANGES (21430)<br />VIC DE CHASSENAY (21140)<br />VIELVERGE (21270)<br />VIEUX CHATEAU (21460)<br />VIEVIGNE (21310)<br />VIEVY (21230)<br />VIGNOLES (21200)<br />VILLAINES EN DUESMOIS (21450)<br />VILLAINES LES PREVOTES (21500)<br />VILLARGOIX (21210)<br />VILLARS ET VILLENOTTE (21140)<br />VILLARS FONTAINE (21700)<br />VILLEBERNY (21350)<br />VILLECOMTE (21120)<br />VILLEDIEU (21330)<br />VILLEFERRY (21350)<br />VILLENEUVE SOUS CHARIGNY (21140)<br />VILLERS LES POTS (21130)<br />VILLERS PATRAS (21400)<br />VILLERS ROTIN (21130)<br />VILLEY SUR TILLE (21120)<br />VILLIERS EN MORVAN (21430)<br />VILLIERS LE DUC (21400)<br />VILLOTTE ST SEINE (21690)<br />VILLOTTE SUR OURCE (21400)<br />VILLY EN AUXOIS (21350)<br />VILLY LE MOUTIER (21250)<br />VISERNY (21500)<br />VITTEAUX (21350)<br />VIX (21400)<br />VOLNAY (21190)<br />VONGES (21270)<br />VOSNE ROMANEE (21700)<br />VOUDENAY (21230)<br />VOUGEOT (21640)<br />VOULAINES LES TEMPLIERS (21290)<br />Cte d&#39;Or<br />					&nbsp;
+				</div>
+			</div>
+					</div>
+	</div>
+</div>
+</body>
+</html>

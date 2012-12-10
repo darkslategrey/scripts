@@ -13,7 +13,7 @@ require 'logger'
 require 'fileutils'
 require 'my_grabber.rb'
 
-@@logger = Logger.new(STDOUT)
+@@logger = Logger.new('out.log')
 
 grabber = Grabber.new(false)
 data    = grabber.grab

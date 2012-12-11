@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Trouver un organisme agr&eacute;&eacute;</title>
+<link rel="stylesheet" href="css/recherche.css" type="text/css" />
+<style type="text/css">
+	p {margin: 0; padding: 5px 0 5px 0;}
+</style>
+<!--
+<script type="text/javascript" language="javascript" src="includes/functions.js"></script>
+<script type="text/javascript" language="javascript" src="includes/ajax.js"></script>
+-->
+<script>
+		tabServiceUrl = new Array();
+		tabServiceUrl[6] = "http://www.servicesalapersonne.gouv.fr/garde-d-enfants-a-domicile-(1488).cml";
+		tabServiceUrl[12] = "http://www.servicesalapersonne.gouv.fr/garde-d-enfants-a-domicile-(1488).cml";
+		tabServiceUrl[27] = "http://www.servicesalapersonne.gouv.fr/accompagnement-d-enfants-dans-leurs-deplacements-(1490).cml";
+		tabServiceUrl[28] = "http://www.servicesalapersonne.gouv.fr/accompagnement-d-enfants-dans-leurs-deplacements-(1490).cml";
+		tabServiceUrl[19] = "http://www.servicesalapersonne.gouv.fr/soutien-scolaire-(1491).cml";
+		tabServiceUrl[20] = "http://www.servicesalapersonne.gouv.fr/cours-a-domicile-(1492).cml";
+		tabServiceUrl[31] = "http://www.servicesalapersonne.gouv.fr/assistance-informatique-et-internet-(1493).cml";
+		tabServiceUrl[35] = "http://www.servicesalapersonne.gouv.fr/assistance-administrative-(1494).cml";
+		tabServiceUrl[14] = "http://www.servicesalapersonne.gouv.fr/travaux-menagers-(1496).cml";
+		tabServiceUrl[17] = "http://www.servicesalapersonne.gouv.fr/collecte-et-livraison-de-linge-repasse-(1497).cml";
+		tabServiceUrl[5] = "http://www.servicesalapersonne.gouv.fr/petits-travaux-de-jardinage-debroussaillage-(1499).cml";
+		tabServiceUrl[9] = "http://www.servicesalapersonne.gouv.fr/petit-bricolage-(1500).cml";
+		tabServiceUrl[34] = "http://www.servicesalapersonne.gouv.fr/gardiennage-entretien-et-surveillance-temporaires-des-residences-principale-et-secondaires-(1501).cml";
+		tabServiceUrl[15] = "http://www.servicesalapersonne.gouv.fr/preparation-de-repas-(4645).cml";
+		tabServiceUrl[16] = "http://www.servicesalapersonne.gouv.fr/preparation-de-repas-a-domicile-(1498).cml";
+		tabServiceUrl[30] = "http://www.servicesalapersonne.gouv.fr/livraison-de-repas-ou-de-courses-a-domicile-(1580).cml";
+		tabServiceUrl[24] = "http://www.servicesalapersonne.gouv.fr/garde-malade-(1495).cml";
+		tabServiceUrl[18] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-agees-(sauf-actes-medicaux)-(1503).cml";
+		tabServiceUrl[22] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-handicapees-(dont-interprete-en-langue-des-signes-technicien-de-l-ecrit-et-codeur-en-langage-(1504).cml";
+		tabServiceUrl[25] = "http://www.servicesalapersonne.gouv.fr/aide-a-la-mobilite-et-transport-(1464).cml";
+		tabServiceUrl[29] = "http://www.servicesalapersonne.gouv.fr/accompagnement-dans-les-promenades-et-les-actes-de-la-vie-courante-(1507).cml";
+		tabServiceUrl[26] = "http://www.servicesalapersonne.gouv.fr/conduite-du-vehicule-personnel-(pour-des-trajets-domicile-travail-en-vacances-ou-pour-des-demarches-administratives)-(1508).cml";
+		tabServiceUrl[33] = "http://www.servicesalapersonne.gouv.fr/soins-esthetiques-(1505).cml";
+		tabServiceUrl[32] = "http://www.servicesalapersonne.gouv.fr/soins-et-promenade-d-animaux-domestiques-(sauf-actes-veterinaires-et-toilettage)-(1509).cml";
+		tabServiceUrl[36] = "http://www.servicesalapersonne.gouv.fr/teleassistance-et-visioassistance-(5361).cml";
+		tabServiceUrl[23] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-handicapees-(dont-interprete-en-langue-des-signes-technicien-de-l-ecrit-et-codeur-en-langage-(1504).cml";
+
+		tabClickTag = new Array();
+		tabClickTag[6] = "fiche_garde_enfant_moins_trois_ans";
+		tabClickTag[12] = "fiche_garde_enfant_plus_trois_ans";
+		tabClickTag[27] = "fiche_accompagnement_enfant_moins_trois_ans";
+		tabClickTag[28] = "fiche_accompagnement_enfant_plus_trois_ans";
+		tabClickTag[19] = "fiche_soutien_scolaire";
+		tabClickTag[20] = "fiche_cours_domicile";
+		tabClickTag[31] = "fiche_assistance_info_internet";
+		tabClickTag[35] = "fiche_assistance_administrative";
+		tabClickTag[14] = "fiche_menage_repassage";
+		tabClickTag[5] = "fiche_petit_jardinage";
+		tabClickTag[9] = "fiche_petit_bricolage";
+		tabClickTag[15] = "fiche_preparation_repas_commissions";
+		tabClickTag[16] = "fiche_livraison_repas_domicile";
+		tabClickTag[17] = "fiche_collecte_livraison_linge";
+		tabClickTag[30] = "fiche_livraison_courses";
+		tabClickTag[34] = "fiche_maintenance_vigilance_residences";
+		tabClickTag[36] = "fiche_tele_visioassistance";
+		tabClickTag[18] = "fiche_aide_personnes_agees";
+		tabClickTag[24] = "fiche_garde_malade";
+		tabClickTag[25] = "fiche_aide_mobilite_transport";
+		tabClickTag[26] = "fiche_conduite_vehicule_perso";
+		tabClickTag[29] = "fiche_transport_accompagnement_pa_hd";
+		tabClickTag[22] = "fiche_assistance_pers_handicapees";
+		tabClickTag[23] = "fiche_interpretes_langues_signes";
+		tabClickTag[32] = "fiche_soins_promenades_animaux";
+		tabClickTag[33] = "fiche_soins_esthetiques";
+		
+		function getUrlFromService(idService) {
+			return tabServiceUrl[idService];
+		}	
+		
+		function getClickTagFromService(idService) {
+			return tabClickTag[idService];
+		}	
+		
+		function Call(pageAppelante, typeAppel, titre, url) {
+			var opt = 'resizable=yes,location=no,menubar=no,scrollbars=no,status=no,toolbar=no,fullscreen=no,dependent=yes,width=600,height=250,left=200,top=200';
+			window.open(pageAppelante + '?b=' + typeAppel + '&t=' + encodeURIComponent(titre) + '&u=' + encodeURIComponent(url), 'addMyLink', opt);
+		}
+
+
+		function ajoutOrganisme() {
+			url = "detail.php?id=151";
+			
+			Call("http://www.servicesalapersonne.gouv.fr/ANSP/OA/AddToMyLinks.aspx", "OA", "PROXIMITE ADMR(151)", url) ;
+
+		}
+
+		
+	</script>
+</head>
+<body>
+
+<!-- 20090108 - Marqueurs Xiti -->
+<script type="text/javascript">
+	<!--
+	xtnv=document;xtsd="http://logi141";xtsite="315767";xtn2="2";xtpage="Proximite::Web.ANSP.Public.Quotidien.Cote.Ann.Result.Fiche";xtdi="";
+	//-->
+</script>
+<script type="text/javascript" src="http://www.servicesalapersonne.gouv.fr/ANSP_xtcore.js"></script>
+<object>
+	<noscript>
+		<div id="xiti-logo-noscript">
+			<img width="1" height="1" src="http://logi141.xiti.com/hit.xiti?s=315767&amp;s2=2&amp;p=Proximite::Web.ANSP.Public.Quotidien.Cote.Ann.Result.Fiche&amp;di=&amp;" alt="XiTi" />
+		</div>
+	</noscript>
+</object>
+<!-- ************************* -->
+
+<div id="conteneur" class="conteneur">
+	<div id="bordGauche">&nbsp;</div>
+	<div id="contenu">
+		<div id="ligneTitreResultatsDetail">
+			<div id="imagePro3">&nbsp;</div>
+			<div id="centreTitreHautGauche" class="centreTitreHautGauche"><br />
+				PROXIMITE ADMR							
+			</div>
+			<div id="centreTitreHautDroite" class="centreTitreHautDroite">&nbsp;</div>
+     						<div id="recapitulatifActionsDetail">
+					<div id="retourIcone"></div>
+					<div id="retourTexte"><a href="resultats.php" class="lienActions">retour  la liste</a></div>
+					<div id="retourFin"></div>
+					<div class="cleaner"></div>
+					<div id="imprimerIcone"></div>
+					<div id="imprimerTexte"><a href="#" onclick="window.print();" class="lienActions">imprimer la fiche</a></div>
+					<div id="imprimerFin"></div>
+					<div class="cleaner"></div>
+					<div id="favorisIcone"></div>
+					<div id="favorisTexte"><a href="#" onclick="ajoutOrganisme();" class="lienActions">ajouter &agrave; mes favoris</a></div>
+					<div id="favorisFin"></div>
+					<div class="cleaner"></div>
+					<div id="modifierIconeDetail"></div>
+					<div id="modifierDetail"><a href="recherche.php" class="lienActions">modifier la recherche</a></div>
+					<div id="modifierFinDetail"></div>
+					<div class="cleaner"></div>
+					<div id="nouvelleIconeDetail"></div>
+					<div id="nouvelleTexteDetail"><a href="recherche.php?init=1" class="lienActions">nouvelle recherche</a></div>
+					<div id="nouvelleFinDetail"></div>
+					<div class="cleaner"></div>
+				</div>
+						</div>
+		<div class="cleaner"></div>
+		<div id="bordGaucheDetail">&nbsp;</div>
+		<div id="colonneResultatsDetail">
+			<div id="titre1" class="titreDetail">Contact</div>
+			<div id="contact">
+				<div id="contactColonne1" class="colonneDetail" style="width:33%">
+									</div>
+				<div id="contactColonne2" class="colonneDetail" style="width:67%">
+											<img src="img/icone_fax.jpg" alt="icone fax" /> Fax : <span class="txtRose12"> 04 74 23 09 18</span><br />
+											<img src="img/icone_contact.jpg" alt="icone contact" /> Contact : 
+					<span class="txtRose12">
+						<span class="txtRose10">Madame Liliane GOBET</span>					</span> 
+				</div>
+			</div>
+			<div class="cleaner"><br /></div>
+			<div id="titre2" class="titreDetail">Plus d'informations</div>
+			<div id="plusDInfo">
+				<div id="plusDInfoColonne1" class="colonneDetail" style="width:33%">
+					<p class="txtRose12" style="padding-left: 35px;">
+						D&eacute;clar&eacute; et Agr&eacute;&eacute;					</p>
+					
+											<p class="txtRose12"  style="padding-left: 35px;">Mode d'intervention : 
+							<strong>
+							mandataire 							</strong>
+						</p>
+												<p><img src="img/icone_url.jpg" alt="icone url" /> <a href="http://www.admr.org" class="lienRose" target="_blank">www.admr.org</a></p>
+										</div>
+				<div id="plusDInfoColonne2" class="colonneDetail" style="width:33%">
+					<p class="txtRose12" style="padding-left: 35px;">Association loi 1901</p>					
+											<p class="txtRose12" style="padding-left: 35px;">Type d'implantation : <strong>&eacute;tablissement</strong></p>
+						
+											<p class="txtRose12" style="padding-left: 35px;">Si&egrave;ge social : <strong>oui</strong></p>
+						
+											<p class="txtRose12" style="padding-left: 35px;">&Eacute;tablissement principal : <strong>oui</strong></p>
+						
+									</div>
+				<div id="pluDInfoColonne3" class="colonneDetail" style="width:34%">
+					&nbsp;						<img src="img/logo-cesu-detail.jpg" alt="Ch&egrave;que emploi service universel accept&eacute;" title="Ch&egrave;que emploi service universel accept&eacute;" />
+						</strong>
+
+				</div>
+							</div>
+			<br/><br/>
+			<div class="cleaner"><br /></div>
+			<div id="titre3" class="titreDetail">Services propos&eacute;s</div>
+			<div id="servicesProposes">
+								<div id="servicesColonne1" class="colonneDetailRose">
+					<img src="../../admin/activite/files/garde-enfants.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Garde d&#39;enfant -3 ans  domicile','A'); window.open(getUrlFromService(12)); return false;" class="lienRoseService">Garde d&#39;enfant -3 ans  domicile</a><br /><img src="../../admin/activite/files/acompagner-enfant.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Accomp./dplacement enfants +3 ans','A'); window.open(getUrlFromService(28)); return false;" class="lienRoseService">Accomp./dplacement enfants +3 ans</a><br />				</div>
+				<div id="servicesColonne2" class="colonneDetailRose">
+					<img src="../../admin/activite/files/acompagner-enfant.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Accompagnement/dplacement enfants -3 ans','A'); window.open(getUrlFromService(27)); return false;"  class="lienRoseService"><strong>Accompagnement/dplacement enfants -3 ans</strong></a><br /><img src="../../admin/activite/files/garde-enfants.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Garde d&#39;enfant +3 ans  domicile','A'); window.open(getUrlFromService(6)); return false;"  class="lienRoseService">Garde d&#39;enfant +3 ans  domicile</a><br />				</div>
+				<div id="servicesColonne3" class="colonneDetailRose">
+					<img src="../../admin/activite/files/travaux-menager.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Entretien de la maison et travaux mnagers','A'); window.open(getUrlFromService(14)); return false;"  class="lienRoseService">Entretien de la maison et travaux mnagers</a><br /><img src="../../admin/activite/files/prepa_repas.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Commissions et prparation de repas','A'); window.open(getUrlFromService(15)); return false;"  class="lienRoseService">Commissions et prparation de repas</a><br />				</div>
+			</div>
+			<div class="cleaner"><br /></div>
+			<div id="titre4" class="titreDetail">Zones d'intervention</div>
+			<div id="zonesIntervention">
+								<div id="servicesColonne1" class="colonneDetail">
+					ABBECOURT (02300)<br />AMAREINS FRANCHELEINS CES (01090)<br />AMBERIEU EN BUGEY (01500)<br />AMBERIEUX EN DOMBES (01330)<br />ANDERT ET CONDON (01300)<br />ANGLEFORT (01350)<br />ARBIGNIEU (01300)<br />ARBIGNY (01190)<br />ARMIX (01510)<br />ARS SUR FORMANS (01480)<br />ARTEMARE (01510)<br />ASNIERES SUR SAONE (01570)<br />ATTIGNAT (01340)<br />BAGE LA VILLE (01380)<br />BAGE LE CHATEL (01380)<br />BALAN (01360)<br />BANEINS (01990)<br />BEAUPONT (01270)<br />BEAUREGARD (01480)<br />BELIGNEUX (01360)<br />BELLEY (01300)<br />BELMONT LUTHEZIEU (01260)<br />BENY (01370)<br />BEON (01350)<br />BEREZIAT (01340)<br />BEY (01290)<br />BEYNOST (01700)<br />BIRIEUX (01330)<br />BIZIAT (01290)<br />BLYES (01150)<br />BOHAS MEYRIAT RIGNAT (01250)<br />BOISSEY (01190)<br />BOLOZON (01450)<br />BOULIGNEUX (01330)<br />BOURG EN BRESSE (01000)<br />BOURG ST CHRISTOPHE (01800)<br />BOZ (01190)<br />BREGNIER CORDON (01300)<br />BRENAZ (01260)<br />BRENOD (01110)<br />BRENS (01300)<br />BRESSOLLES (01360)<br />BRION (01460)<br />BRIORD (01470)<br />BUELLAS (01310)<br />CEIGNES (01430)<br />CERDON (01450)<br />CERTINES (01240)<br />CESSY (01170)<br />CEYZERIAT (01250)<br />CEYZERIEU (01350)<br />CHALAMONT (01320)<br />CHALEINS (01480)<br />CHAMPAGNE EN VALROMEY (01260)<br />CHANAY (01420)<br />CHANEINS (01990)<br />CHANOZ CHATENAY (01400)<br />CHARBONNIERES LES BAINS (69260)<br />CHARNOZ SUR AIN (01800)<br />CHATENAY (01320)<br />CHATILLON LA PALUD (01320)<br />CHATILLON SUR CHALARONNE (01400)<br />CHAVANNES SUR REYSSOUZE (01190)<br />CHAVANNES SUR SURAN (01250)<br />CHAVEYRIAT (01660)<br />CHAVORNAY (01510)<br />CHAZEY BONS (01300)<br />CHAZEY SUR AIN (01150)<br />CHEIGNIEU LA BALME (01510)<br />CHEVROUX (01190)<br />CIVRIEUX (01390)<br />CIZE (01250)<br />COLIGNY (01270)<br />CONDEISSIAT (01400)<br />CONFRANCON (01310)<br />CONTREVOZ (01300)<br />CORBONOD (01420)<br />CORMORANCHE SUR SAONE (01290)<br />CORMOZ (01560)<br />CORVEISSIAT (01250)<br />COURMANGOUX (01370)<br />COURTES (01560)<br />CRANS (01320)<br />CRAS SUR REYSSOUZE (01340)<br />CRESSIN ROCHEFORT (01350)<br />CROTTET (01620)<br />CRUZILLES LES MEPILLAT (01290)<br />CULOZ (01350)<br />CURCIAT DONGALON (01560)<br />CURTAFOND (01310)<br />CUZIEU (01300)<br />DAGNEUX (01120)<br />DOMMARTIN (01380)<br />DOMPIERRE SUR CHALARONNE (01400)<br />DOMPIERRE SUR VEYLE (01240)<br />DOMSURE (01270)<br />					&nbsp;
+				</div>
+				<div id="servicesColonne2" class="colonneDetail">
+					DOUVRES (01500)<br />DROM (01250)<br />DRUILLAT (01160)<br />ETREZ (01340)<br />FARAMANS (01800)<br />FAREINS (01480)<br />FEILLENS (01570)<br />FLAXIEU (01350)<br />FOISSIAT (01340)<br />FRANS (01480)<br />GARNERANS (01140)<br />GENOUILLEUX (01090)<br />GERMAGNAT (01250)<br />GORREVOD (01190)<br />GRAND CORENT (01250)<br />GRIEGES (01290)<br />GUEREINS (01090)<br />HAUTECOURT ROMANECHE (01250)<br />HOTONNES (01260)<br />ILLIAT (01140)<br />JASSANS RIOTTIER (01480)<br />JASSERON (01250)<br />JAYAT (01340)<br />JOURNANS (01250)<br />JOYEUX (01800)<br />L ABERGEMENT CLEMENCIAT (01400)<br />LA BOISSE (01120)<br />LA BURBANCHE (01510)<br />LA CHAPELLE DU CHATELARD (01240)<br />LA TRANCLIERE (01160)<br />LAGNIEU (01150)<br />LAIZ (01290)<br />LAPEYROUSE (01330)<br />LAVOURS (01350)<br />LE GRAND ABERGEMENT (01260)<br />LE MONTELLIER (01800)<br />LE PETIT ABERGEMENT (01260)<br />LE PLANTAY (01330)<br />LENT (01240)<br />LESCHEROUX (01560)<br />LEYMENT (01150)<br />LOCHIEU (01260)<br />LOMPNIEU (01260)<br />LOYETTES (01360)<br />LURCY (01090)<br />LYON 5EME ARRONDISSEMENT (69005)<br />MAGNIEU (01300)<br />MALAFRETAZ (01340)<br />MANTENAY MONTLIN (01560)<br />MANZIAT (01570)<br />MARBOZ (01851)<br />MARIGNIEU (01300)<br />MARLIEUX (01240)<br />MARSONNAS (01340)<br />MASSIEUX (01600)<br />MASSIGNIEU DE RIVES (01300)<br />MEILLONNAS (01370)<br />MESSIMY SUR SAONE (01480)<br />MEXIMIEUX (01800)<br />MEZERIAT (01660)<br />MIRIBEL (01700)<br />MISERIEUX (01600)<br />MOGNENEINS (01140)<br />MONTAGNAT (01250)<br />MONTCEAUX (01090)<br />MONTCET (01310)<br />MONTLUEL (01120)<br />MONTMERLE SUR SAONE (01090)<br />MONTRACOL (01310)<br />MONTREVEL EN BRESSE (01340)<br />NATTAGES (01300)<br />NEUVILLE LES DAMES (01400)<br />NEUVILLE SUR AIN (01160)<br />NEYRON (01700)<br />NIEVROZ (01120)<br />OZAN (01190)<br />PARCIEUX (01600)<br />PARVES (01300)<br />PERONNAS (01960)<br />PEROUGES (01800)<br />PERREX (01540)<br />PEYRIEU (01300)<br />PEYZIEUX SUR SAONE (01140)<br />PIRAJOUX (01270)<br />PIZAY (01120)<br />POLLIAT (01310)<br />POLLIEU (01350)<br />PONCIN (01450)<br />PONT D AIN (01160)<br />PONT DE VAUX (01190)<br />PONT DE VEYLE (01290)<br />POUILLAT (01250)<br />PRESSIAT (01370)<br />PRIAY (01160)<br />PUGIEU (01510)<br />RAMASSE (01250)<br />					&nbsp;
+				</div>
+				<div id="servicesColonne3" class="colonneDetail">
+					RANCE (01390)<br />RELEVANT (01990)<br />REPLONGES (01620)<br />REVONNAS (01250)<br />REYRIEUX (01600)<br />REYSSOUZE (01190)<br />RIGNIEUX LE FRANC (01800)<br />ROMANS (01400)<br />ROSSILLON (01510)<br />RUFFIEU (01260)<br />SALAVRE (01270)<br />SANDRANS (01400)<br />SAVIGNEUX (01480)<br />SERMOYER (01190)<br />SERRIERES SUR AIN (01450)<br />SERVAS (01240)<br />SERVIGNAT (01560)<br />SEYSSEL (01420)<br />SIMANDRE SUR SURAN (01250)<br />SONGIEU (01260)<br />ST ANDRE D HUIRIAT (01290)<br />ST ANDRE DE BAGE (01380)<br />ST ANDRE LE BOUCHOUX (01240)<br />ST ANDRE SUR VIEUX JONC (01240)<br />ST BENIGNE (01190)<br />ST BERNARD (01600)<br />ST CHAMP (01300)<br />ST CYR SUR MENTHON (01380)<br />ST DENIS LES BOURG (01000)<br />ST DIDIER D AUSSIAT (01340)<br />ST DIDIER DE FORMANS (01600)<br />ST DIDIER SUR CHALARONNE (01140)<br />ST ELOI (01800)<br />ST ETIENNE DU BOIS (01370)<br />ST ETIENNE SUR CHALARONNE (01140)<br />ST ETIENNE SUR REYSSOUZE (01190)<br />ST GENIS SUR MENTHON (01380)<br />ST GEORGES SUR RENON (01400)<br />ST GERMAIN LES PAROISSES (01300)<br />ST GERMAIN SUR RENON (01240)<br />ST JEAN DE NIOST (01800)<br />ST JEAN DE THURIGNEUX (01390)<br />ST JEAN LE VIEUX (01640)<br />ST JEAN SUR REYSSOUZE (01560)<br />ST JEAN SUR VEYLE (01290)<br />ST JULIEN SUR REYSSOUZE (01560)<br />ST JULIEN SUR VEYLE (01540)<br />ST JUST (01250)<br />ST LAURENT SUR SAONE (01620)<br />ST MARTIN DE BAVEL (01510)<br />ST MARTIN DU MONT (01160)<br />ST MARTIN LE CHATEL (01310)<br />ST MAURICE DE BEYNOST (01700)<br />ST MAURICE DE GOURDANS (01800)<br />ST NIZIER LE BOUCHOUX (01560)<br />ST NIZIER LE DESERT (01320)<br />ST PAUL DE VARAX (01240)<br />ST REMY (01310)<br />ST SULPICE (01340)<br />ST TRIVIER DE COURTES (01560)<br />ST TRIVIER SUR MOIGNANS (01990)<br />ST VULBAS (01150)<br />STE EUPHEMIE (01600)<br />STE JULIE (01150)<br />STE OLIVE (01330)<br />SULIGNAT (01400)<br />SUTRIEU (01260)<br />TALISSIEU (01510)<br />THIL (01120)<br />THOISSEY (01140)<br />TOSSIAT (01250)<br />TOUSSIEUX (01600)<br />TREFFORT CUISIAT (01370)<br />TREVOUX (01600)<br />VALEINS (01140)<br />VANDEINS (01660)<br />VARAMBON (01160)<br />VERJON (01270)<br />VERNOUX (01560)<br />VERSAILLEUX (01330)<br />VESCOURS (01560)<br />VESINES (01570)<br />VIEU (01260)<br />VILLARS LES DOMBES (01330)<br />VILLEMOTIER (01270)<br />VILLENEUVE (01480)<br />VILLEREVERSURE (01250)<br />VILLETTE SUR AIN (01320)<br />VILLIEU LOYES MOLLON (01800)<br />VIRIAT (01440)<br />VIRIEU LE GRAND (01510)<br />VIRIEU LE PETIT (01260)<br />VIRIGNIN (01300)<br />VONGNES (01350)<br />VONNAS (01540)<br />					&nbsp;
+				</div>
+			</div>
+					</div>
+	</div>
+</div>
+</body>
+</html>

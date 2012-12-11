@@ -1,0 +1,782 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>Trouver un organisme agr&eacute;&eacute;</title>
+	<link type="text/css" rel="stylesheet" href="css/recherche.css" />
+	<script language="javascript" src="../../js/mootools-1.2.4-core-yc.js"></script>
+	<script type="text/JavaScript">
+
+		String.prototype.trim = function() {
+			return this.replace(/(?:^\s+|\s+$)/g, "");
+		}
+		
+		function valider(){
+			
+			var msg="Veuillez saisir :\r\n";
+		
+			if(document.frmRecherche.selService1.value == "" && document.frmRecherche.selService2.value == "")
+				msg += "- au moins un service\r\n";
+			
+			if(document.frmRecherche.txtLieu.value == "")
+				//msg += "- au moins une localisation\r\n"; [mj 20090511]
+				msg += "- une localisation\r\n";
+
+
+			/*
+			var exprVille, exprCp;
+			exprVille = new RegExp("^[a-zA-Z \'\-]*$","g");
+			exprCp = new RegExp("^[0-9]{5}$","g");
+			var i, ville, villeOk, cpOk, txtLieu, tabLieux, erreurLieu;
+
+			tabLieux = new Array();
+			txtLieu = "";
+			if (document.frmRecherche.txtLieu.value != "") {
+				txtLieu = document.frmRecherche.txtLieu.value;
+				tabLieux = txtLieu.split(',');
+			}
+
+			erreurLieu=false;
+			i=0;
+
+			while (i<tabLieux.length && !erreurLieu) {
+				ville = tabLieux[i];
+				
+				villeOk = exprVille.test(ville);
+				cpOk = exprCp.test(ville.trim());
+				alert("Ville : " + ville + " / V " + villeOk + " / CP " + cpOk);
+				if (!villeOk && !cpOk) {
+					msg += "- des noms de villes ou codes postaux corrects\r\n";
+					erreurLieu = true;
+				}
+				i++;
+			}
+			*/
+			
+			/*
+			if(document.frmRecherche.txtVille.value == "" && document.frmRecherche.txtCodePostal.value == "" && document.frmRecherche.txtDepartement.value == "")
+				msg+="- au moins une localisation\r\n";
+			
+			var exp = new RegExp("^[a-zA-Z\' \/,\-]*$","g");
+			if(document.frmRecherche.txtVille.value != "" && !exp.test(document.frmRecherche.txtVille.value))
+				msg+="- des noms de villes corrects\r\n";
+			
+			if (document.frmRecherche.txtCodePostal.value != "") {
+				tmp = document.frmRecherche.txtCodePostal.value.replace(/, /g, ",").replace(/ ,/g, ",");
+				tabCp = tmp.split(",");
+				//tabCp = document.frmRecherche.txtCodePostal.value.split(",");
+				for(i=0; i<tabCp.length; i++) {
+					if ((tabCp[i] != "" && tabCp[i].length != 5) || (tabCp[i] == "")) {
+						msg+="- des codes postaux corrects\r\n";
+						break;
+					}
+					//if( document.frmRecherche.txtCodePostal.value != "" && (isNaN(document.frmRecherche.txtCodePostal.value) || document.frmRecherche.txtCodePostal.value.length!=5)) {
+				}
+			}
+
+			if (document.frmRecherche.txtDepartement.value != "") {
+				tmp2 = document.frmRecherche.txtDepartement.value.replace(", ", ",");
+				tmp = tmp2.replace(" ,", ",");
+				tabDpt = tmp.split(",");
+				for(i=0; i<tabDpt.length; i++) {
+					if ( (tabDpt[i] != "" && ( (tabDpt[i].substring(0, 2) == "97" && tabDpt[i].length != 3) || (tabDpt[i].substring(0, 2) != "97" && tabDpt[i].length != 2) )) || (tabDpt[i] == "")) {
+						msg+="- des numros de dpartement corrects\r\n";
+						break;
+					}
+					//if( document.frmRecherche.txtCodePostal.value != "" && (isNaN(document.frmRecherche.txtCodePostal.value) || document.frmRecherche.txtCodePostal.value.length!=5)) {
+				}
+			}
+			*/
+						
+			if(msg!="Veuillez saisir :\r\n") {
+				alert(msg);
+				return false;
+			}
+			else
+				return true;
+		}
+	
+		function boutonOn() {
+			document.images["imageRecherche"].src="img/bt_trouver_on.jpg";
+		}
+		function boutonOff() {
+			document.images["imageRecherche"].src="img/bt_trouver_off.jpg";
+		}
+
+		tabServiceUrl = new Array();
+		tabServiceUrl[6] = "http://www.servicesalapersonne.gouv.fr/garde-d-enfants-a-domicile-(1488).cml";
+		tabServiceUrl[12] = "http://www.servicesalapersonne.gouv.fr/garde-d-enfants-a-domicile-(1488).cml";
+		tabServiceUrl[27] = "http://www.servicesalapersonne.gouv.fr/accompagnement-d-enfants-dans-leurs-deplacements-(1490).cml";
+		tabServiceUrl[28] = "http://www.servicesalapersonne.gouv.fr/accompagnement-d-enfants-dans-leurs-deplacements-(1490).cml";
+		tabServiceUrl[19] = "http://www.servicesalapersonne.gouv.fr/soutien-scolaire-(1491).cml";
+		tabServiceUrl[20] = "http://www.servicesalapersonne.gouv.fr/cours-a-domicile-(1492).cml";
+		tabServiceUrl[31] = "http://www.servicesalapersonne.gouv.fr/assistance-informatique-et-internet-(1493).cml";
+		tabServiceUrl[35] = "http://www.servicesalapersonne.gouv.fr/assistance-administrative-(1494).cml";
+		tabServiceUrl[14] = "http://www.servicesalapersonne.gouv.fr/travaux-menagers-(1496).cml";
+		tabServiceUrl[5] = "http://www.servicesalapersonne.gouv.fr/petits-travaux-de-jardinage-debroussaillage-(1499).cml";
+		tabServiceUrl[9] = "http://www.servicesalapersonne.gouv.fr/petit-bricolage-(1500).cml";
+		tabServiceUrl[15] = "http://www.servicesalapersonne.gouv.fr/preparation-de-repas-(4645).cml";
+		tabServiceUrl[16] = "http://www.servicesalapersonne.gouv.fr/preparation-de-repas-a-domicile-(1498).cml";
+		tabServiceUrl[17] = "http://www.servicesalapersonne.gouv.fr/collecte-et-livraison-de-linge-repasse-(1497).cml";
+		tabServiceUrl[30] = "http://www.servicesalapersonne.gouv.fr/livraison-de-repas-ou-de-courses-a-domicile-(1580).cml";
+		tabServiceUrl[34] = "http://www.servicesalapersonne.gouv.fr/gardiennage-entretien-et-surveillance-temporaires-des-residences-principale-et-secondaires-(1501).cml";
+		tabServiceUrl[36] = "http://www.servicesalapersonne.gouv.fr/teleassistance-et-visioassistance-(5361).cml";
+		tabServiceUrl[18] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-agees-(sauf-actes-medicaux)-(1503).cml";
+		tabServiceUrl[24] = "http://www.servicesalapersonne.gouv.fr/garde-malade-(1495).cml";
+		tabServiceUrl[25] = "http://www.servicesalapersonne.gouv.fr/aide-a-la-mobilite-et-transport-(1464).cml";
+		tabServiceUrl[26] = "http://www.servicesalapersonne.gouv.fr/conduite-du-vehicule-personnel-(pour-des-trajets-domicile-travail-en-vacances-ou-pour-des-demarches-administratives)-(1508).cml";
+		tabServiceUrl[29] = "http://www.servicesalapersonne.gouv.fr/accompagnement-dans-les-promenades-et-les-actes-de-la-vie-courante-(1507).cml";
+		tabServiceUrl[22] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-handicapees-(dont-interprete-en-langue-des-signes-technicien-de-l-ecrit-et-codeur-en-langage-(1504).cml";
+		tabServiceUrl[23] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-handicapees-(dont-interprete-en-langue-des-signes-technicien-de-l-ecrit-et-codeur-en-langage-(1504).cml";
+		tabServiceUrl[32] = "http://www.servicesalapersonne.gouv.fr/soins-et-promenade-d-animaux-domestiques-(sauf-actes-veterinaires-et-toilettage)-(1509).cml";
+		tabServiceUrl[33] = "http://www.servicesalapersonne.gouv.fr/soins-esthetiques-(1505).cml";
+
+		tabClickTag = new Array();
+		tabClickTag[6] = "fiche_garde_enfant_moins_trois_ans";
+		tabClickTag[12] = "fiche_garde_enfant_plus_trois_ans";
+		tabClickTag[27] = "fiche_accompagnement_enfant_moins_trois_ans";
+		tabClickTag[28] = "fiche_accompagnement_enfant_plus_trois_ans";
+		tabClickTag[19] = "fiche_soutien_scolaire";
+		tabClickTag[20] = "fiche_cours_domicile";
+		tabClickTag[31] = "fiche_assistance_info_internet";
+		tabClickTag[35] = "fiche_assistance_administrative";
+		tabClickTag[14] = "fiche_menage_repassage";
+		tabClickTag[5] = "fiche_petit_jardinage";
+		tabClickTag[9] = "fiche_petit_bricolage";
+		tabClickTag[15] = "fiche_preparation_repas_commissions";
+		tabClickTag[16] = "fiche_livraison_repas_domicile";
+		tabClickTag[17] = "fiche_collecte_livraison_linge";
+		tabClickTag[30] = "fiche_livraison_courses";
+		tabClickTag[34] = "fiche_maintenance_vigilance_residences";
+		tabClickTag[36] = "fiche_tele_visioassistance";
+		tabClickTag[18] = "fiche_aide_personnes_agees";
+		tabClickTag[24] = "fiche_garde_malade";
+		tabClickTag[25] = "fiche_aide_mobilite_transport";
+		tabClickTag[26] = "fiche_conduite_vehicule_perso";
+		tabClickTag[29] = "fiche_transport_accompagnement_pa_hd";
+		tabClickTag[22] = "fiche_assistance_pers_handicapees";
+		tabClickTag[23] = "fiche_interpretes_langues_signes";
+		tabClickTag[32] = "fiche_soins_promenades_animaux";
+		tabClickTag[33] = "fiche_soins_esthetiques";
+
+		
+		function getUrlFromService(idService) {
+			return tabServiceUrl[idService];
+		}
+
+		function getClickTagFromService(idService) {
+			return tabClickTag[idService];
+		}
+
+		function affichageFicheService(selectId, divId) {
+			selecteur = document.getElementById(selectId);
+			calque = document.getElementById(divId);
+			
+			if (selectId) {
+				label = selecteur.options[selecteur.selectedIndex].text;
+				if (selecteur.value != "") {
+					calque.innerHTML='<a href="' + getUrlFromService(selecteur.value) + '" target="_blank" class="lienViolet" onclick="xt_med(\'C\',\'2\',\'' + getClickTagFromService(selecteur.value) + '\',\'A\')"><img src="img/puceViolette.jpg" border="0" />&nbsp;consultez la fiche "' + label + '"</a>';
+					//calque.innerHTML='<a href="' + getUrlFromService(selecteur.value) + '" target="_blank" class="lienViolet"><img src="img/puceViolette.jpg" border="0" />&nbsp;consultez la fiche "' + label + '"</a>';
+					calque.style.display='';
+				}
+				else {
+					calque.innerHTML='';
+					calque.style.display='none';
+				}
+				
+			}
+		}
+
+		function checkDivs() {
+			if (document.getElementById("divFicheService1").value != "") affichageFicheService("selService1", "divFicheService1");
+			if (document.getElementById("divFicheService2").value != "") affichageFicheService("selService2", "divFicheService2");
+		}
+
+		function ouvrir(adresse, listeOptions) {
+			window.open(adresse, 'popup', listeOptions);
+		}
+
+		function afficherLexique(page) {
+			taille = document.getElementById('contenu').scrollHeight + 500;
+			
+			document.getElementById("selService1").style.visibility='hidden';
+			document.getElementById("selService2").style.visibility='hidden';
+			
+			afficher(page);
+		}
+
+
+		function afficher(rubrique) {
+			taille = document.body.scrollHeight + "px";
+			nouvelleAdresse = "";
+			
+			document.getElementById('lexique').style.display='';
+			
+			hauteurLexique = 280;
+			if (rubrique != '') { document.getElementById('lexique').style.top = ((positionMouseY-40-hauteurLexique)+'px'); }
+			else document.getElementById('lexique').style.top = (positionMouseY+15) + 'px';
+
+			if (document.location.href.indexOf("#")==-1) nouvelleAdresse = document.location.href + "#"; else nouvelleAdresse = document.location;
+			document.location = nouvelleAdresse;
+
+			actualiser(rubrique);
+			
+		}
+		
+		function masquer() {
+			document.getElementById("divLexique").style.display='none';
+			document.getElementById("lexique").style.display='none';
+
+			document.getElementById("selService1").style.visibility='visible';
+			document.getElementById("selService2").style.visibility='visible';
+
+
+			rubrique = "";
+			actualiser(rubrique);
+		}
+		
+		function actualiser(rubrique) {
+			if (rubrique == "") rubrique = "asso";
+			afficher_texte(rubrique);
+		}
+
+
+		//-->
+	</script>
+</head>
+
+<body onload="checkDivs()">
+
+<!-- 20090108 - Marqueurs Xiti -->
+<script type="text/javascript">
+	<!--
+	xtnv=document;xtsd="http://logi141";xtsite="315767";xtn2="2";xtpage="Proximite::Web.ANSP.Public.Quotidien.Cote.Ann";xtdi="";
+	//-->
+</script>
+<script type="text/javascript" src="http://www.servicesalapersonne.gouv.fr/ANSP_xtcore.js"></script>
+<object>
+	<noscript>
+		<div id="xiti-logo-noscript">
+			<img width="1" height="1" src="http://logi141.xiti.com/hit.xiti?s=315767&amp;s2=2&amp;p=Proximite::Web.ANSP.Public.Quotidien.Cote.Ann&amp;di=&amp;" alt="XiTi" />
+		</div>
+	</noscript>
+</object>
+<!-- ************************* -->
+
+
+<script>
+	function marqueurSpecialServices() {
+		service1 = document.getElementById("selService1").options[document.getElementById("selService1").selectedIndex].text;
+		if (service1 == "Service 1 -->") service1 = "";
+		
+		service2 = document.getElementById("selService2").options[document.getElementById("selService2").selectedIndex].text;
+		if (service2 == "Service 2 -->") service2 = "";
+
+		xt_med('C', '2', service1 + '::' + service2, 'A');
+	}
+</script>
+
+<form name="frmRecherche" method="post" action="resultats.php" onsubmit="return valider()">
+
+	<div id="conteneur" class="conteneur">
+		<div id="bordGauche">&nbsp;</div>
+		
+		<div id="contenu">
+		
+			<div id="colonneGauche" class="colonneGauche">&nbsp;</div>
+	
+			<div id="colonneCentre" class="colonneCentre">
+				<div id="centreTitre" class="centreTitre">
+					<div id="centreTitreHaut" class="centreTitreHaut">
+						<div id="centreTitreHautGauche" class="centreTitreHautGauche">
+							<span style="position:absolute; bottom:0px; font-weight:bold">Trouvez un organisme d&eacute;clar&eacute; en quelques secondes !</span>
+						</div>
+						<div id="centreTitreHautDroite" class="centreTitreHautDroite">
+							&nbsp;
+						</div>
+					</div>
+					
+					<div class="cleaner"></div>
+					
+					<div id="erreurAucunResultat">
+						<br /><br />
+											</div>
+					
+					<div id="centreTitreBas1" class="centreTitreBas">
+						<span class="alignementVerticalBas">
+							Quel service recherchez-vous ?
+						</span>
+						<span style="position:absolute; bottom:0px; right:0px; font-weight:bold;padding-bottom:3px;">
+							<a href="http://www.servicesalapersonne.gouv.fr/tous-les-services-(1399).cml" target="_blank" class="lienRose" onclick="xt_med('C','2','sommaire_liste_services','A')"><img src="img/puceRose.jpg" border="0" />&nbsp;consultez les fiches services</a>
+						</span>
+					</div>
+	
+					<br />
+	
+					<div id="services">
+												<table style="clear:both; width:100%" cellspacing="0" cellpadding="0">
+						<tr id="service1">
+							<td id="txtService1" class="txtGris11" style="width:40%; text-align:right; vertical-align:middle">
+								Vous pouvez choisir un service...
+							</td>
+							<td id="div_selService1" style="text-align:left; padding-left:5px;">
+								<select name="selService1" id="selService1" style="font-size:11px" onchange="affichageFicheService('selService1', 'divFicheService1')" >
+									<option value="" >Service 1 --></option>
+																				<optgroup class="selectFamille" label="Les Services  la Famille&nbsp;" />
+																							<option value="12" >Garde d&#39;enfant -3 ans  domicile</option>
+																								<option value="6" >Garde d&#39;enfant +3 ans  domicile</option>
+																								<option value="27" >Accompagnement/dplacement enfants -3 ans</option>
+																								<option value="28" >Accomp./dplacement enfants +3 ans</option>
+																								<option value="19" selected>Soutien scolaire  domicile</option>
+																								<option value="20" >Cours particuliers  domicile</option>
+																								<option value="31" >Assistance informatique  domicile</option>
+																								<option value="35" >Assistance administrative domicile</option>
+																							<optgroup class="selectFamille" label="Les Services de la Vie Quotidienne&nbsp;" />
+																							<option value="14" >Entretien de la maison et travaux mnagers</option>
+																								<option value="5" >Petits travaux de jardinage</option>
+																								<option value="9" >Travaux de petit bricolage</option>
+																								<option value="15" >Commissions et prparation de repas</option>
+																								<option value="16" >Livraison de repas  domicile</option>
+																								<option value="17" >Collecte et livraison de linge repass</option>
+																								<option value="30" >Livraison de courses domicile</option>
+																								<option value="34" >Maintenance et vigilance de rsidence</option>
+																								<option value="36" >Tl-assistance et visio-assistance</option>
+																								<option value="38" >Intermdiation</option>
+																							<optgroup class="selectFamille" label="Les Services aux Personnes Dpendantes&nbsp;" />
+																							<option value="18" >Assistance aux personnes ges</option>
+																								<option value="24" >Garde-malade, sauf soins</option>
+																								<option value="25" >Aide mobilit et transport de personnes</option>
+																								<option value="26" >Conduite du vhicule personnel</option>
+																								<option value="29" >Accompagnement hors domicile PA et/ou PH</option>
+																								<option value="22" >Assistance aux personnes handicapes</option>
+																								<option value="23" >Interprte en langue des signes</option>
+																								<option value="32" >Soins et promenades d&#39;animaux de compagnie</option>
+																								<option value="33" >Soins esthtiques</option>
+																								<option value="39" >Soins esthtiques</option>
+																				</select>
+							</td>
+						</tr>
+						
+						<tr id="service2">
+							<td id="txtService2" class="txtGris11" style="text-align:right; vertical-align:middle">
+								ou deux... 
+							</td>
+							<td id="div_selService2" style="text-align:left; padding-left:5px;">
+								<select name="selService2" id="selService2" style="font-size:11px" onchange="affichageFicheService('selService2', 'divFicheService2'); marqueurSpecialServices();" >
+									<option value="" selected>Service 2 --></option>
+																				<optgroup class="selectFamille" label="Les Services  la Famille&nbsp;" />
+																							<option value="12" >Garde d&#39;enfant -3 ans  domicile</option>
+																								<option value="6" >Garde d&#39;enfant +3 ans  domicile</option>
+																								<option value="27" >Accompagnement/dplacement enfants -3 ans</option>
+																								<option value="28" >Accomp./dplacement enfants +3 ans</option>
+																								<option value="19" >Soutien scolaire  domicile</option>
+																								<option value="20" >Cours particuliers  domicile</option>
+																								<option value="31" >Assistance informatique  domicile</option>
+																								<option value="35" >Assistance administrative domicile</option>
+																							<optgroup class="selectFamille" label="Les Services de la Vie Quotidienne&nbsp;" />
+																							<option value="14" >Entretien de la maison et travaux mnagers</option>
+																								<option value="5" >Petits travaux de jardinage</option>
+																								<option value="9" >Travaux de petit bricolage</option>
+																								<option value="15" >Commissions et prparation de repas</option>
+																								<option value="16" >Livraison de repas  domicile</option>
+																								<option value="17" >Collecte et livraison de linge repass</option>
+																								<option value="30" >Livraison de courses domicile</option>
+																								<option value="34" >Maintenance et vigilance de rsidence</option>
+																								<option value="36" >Tl-assistance et visio-assistance</option>
+																								<option value="38" >Intermdiation</option>
+																							<optgroup class="selectFamille" label="Les Services aux Personnes Dpendantes&nbsp;" />
+																							<option value="18" >Assistance aux personnes ges</option>
+																								<option value="24" >Garde-malade, sauf soins</option>
+																								<option value="25" >Aide mobilit et transport de personnes</option>
+																								<option value="26" >Conduite du vhicule personnel</option>
+																								<option value="29" >Accompagnement hors domicile PA et/ou PH</option>
+																								<option value="22" >Assistance aux personnes handicapes</option>
+																								<option value="23" >Interprte en langue des signes</option>
+																								<option value="32" >Soins et promenades d&#39;animaux de compagnie</option>
+																								<option value="33" >Soins esthtiques</option>
+																								<option value="39" >Soins esthtiques</option>
+																				</select>
+							</td>
+						</tr>
+						</table>
+						
+						<div class="cleaner"></div>
+
+						<div id="divFicheService1" class="txtGris10" style="display:none"></div>
+						<div class="cleaner"></div>
+						
+						<div id="divFicheService2" class="txtGris10" style="display:none"></div>					
+						<div class="cleaner"></div>
+		
+					</div>
+
+					<div id="centreTitreBas2" class="centreTitreBas">
+						<span class="alignementVerticalBas">&Agrave; quel endroit ?</span>
+					</div>
+	
+					<br />
+	
+					<div id="lieu">
+						<table style="clear:both; width:100%" cellspacing="0" cellpadding="0">
+						<tr style="width:100%">
+							<td id="lblLieu" class="txtGris11" style="width:40%">
+								Renseignez une ville et/ou un code postal<br />(plusieurs choix possibles)							
+							</td>
+							<td id="lblLieuTxt" style="width:58%; padding-left:5px;">
+								<input type="text" id="txtLieu" name="txtLieu" value="34000" style="width:95%" /><br />
+								<span class="txtGris10">ex.: Lyon, Caen, 19100, 21000</span>
+							</td>
+						</tr>
+						</table>
+					</div>
+
+					<div class="cleaner"><br /></div>
+					
+
+					<div id="centreTitreBas3" class="centreTitreBas">
+						<span class="alignementVerticalBas">Affinez votre recherche (facultatif)</span>
+					</div>
+	
+					<br />
+	
+					<div id="affiner">
+						<table style="width:100%; border:none; border-collapse:collapse" cellspacing="0" cellpadding="0">
+						<tr>
+							<td id="lblNom" class="txtGris11" style="width:40%; height:28px; vertical-align:top; text-align:right; padding-top:5px;">
+								Nom de l'organisme					
+							</td>
+							<td class="txtGris11" id="lblNomTxt" style="padding-left:5px; width:58%; height:28px; vertical-align:middle">
+								<input type="text" name="txtNom" id="txtNom" value="" style="width:95%" /><br />
+								<span class="txtGris10">vous pouvez saisir une partie ou la totalit&eacute; du nom de l'organisme<br /><br /></span>
+							</td>
+						</tr>
+						<tr>
+							<td id="lblCAE" class="txtGris11" style="vertical-align:middle; text-align:right;">
+								Clause d'Activit&eacute; Exclusive
+							</td>
+							<td class="txtGris11" id="lblCAERb" style="padding-left:5px; height:28px; vertical-align:middle">
+								<input type="radio" id="rbCAEOui" name="rbCAE" value="1"   /> Oui
+								<input type="radio" id="rbCAEIndiff" name="rbCAE" value="0" checked /> Indiff&eacute;rent
+							</td>
+						</tr>
+						<tr>
+							<td id="lblCesu" class="txtGris11" style="vertical-align:middle; text-align:right;">
+								<a href="javascript:void(0)" class="lexique" onclick="afficher('cesu');" >Cesu accept&eacute;</a>
+							</td>
+							<td class="txtGris11" id="lblCesuRb" style="padding-left:5px; height:28px; vertical-align:middle">
+								<input type="radio" id="rbCesuOui" name="rbCesu" value="1"  onclick="return xt_click(this,'C','2','cesu_oui','A')" /> Oui
+								<input type="radio" id="rbCesuIndiff" name="rbCesu" value="0" checked onclick="return xt_click(this,'C','2','cesu_non','A')" /> Indiff&eacute;rent
+							</td>
+						</tr>
+						<tr>
+							<td id="lblTypeStruct" class="txtGris11" style="vertical-align:middle; text-align:right;">
+								Type de structure				
+							</td>
+							<td id="lblTypeStructChk" class="txtGris11" style="padding:0px; margin:0px; padding-left:3px; height:28px; vertical-align:middle;">
+								<table class="txtGris11" cellpadding="0" style="margin-top:7px; margin-bottom:7px; padding:0px; width:100%">
+								<tr>
+									<td style="padding:0px; width:45%">
+										<input type="checkbox" id="chkStructE" name="chkStruct[]" value="E"  onclick="return xt_click(this,'C','2','struct_e','A')" /> Entreprise (SA, SARL)
+									</td>
+									<td style="padding:0px; width:55%">
+										<input type="checkbox" id="chkStructEI" name="chkStruct[]" value="EI"  onclick="return xt_click(this,'C','2','struct_ei','A')" /> Entreprise individuelle
+									</td>
+								</tr>
+								<tr>
+									<td style="padding:0px">
+										<input type="checkbox" id="chkStructA" name="chkStruct[]" value="A"  onclick="return xt_click(this,'C','2','struct_a','A')" /> Association
+									</td>
+									<td style="padding:0px">
+										<input type="checkbox" id="chkStructAI" name="chkStruct[]" value="AI"  onclick="return xt_click(this,'C','2','struct_ai','A')" /> <a href="javascript:void(0)" class="lexique" onclick="afficher('asso');" >Association interm&eacute;diaire</a>
+									</td>
+								</tr>
+								<tr>
+									<td style="padding:0px">
+										<input type="checkbox" id="chkStructOP" name="chkStruct[]" value="OP"  onclick="return xt_click(this,'C','2','struct_op','A')" /> Organisme public
+									</td>
+									<td style="padding:0px">&nbsp;
+										
+									</td>
+								</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td id="lblModeInterv" class="txtGris11" style="vertical-align:middle; text-align:right;">
+								Mode d'intervention				
+							</td>
+							<td id="lblModeIntervChk" class="txtGris11" style="padding-left:3px; height:28px; vertical-align:middle">
+								<table class="txtGris11" cellpadding="0" style="margin:0px; padding:0px; width:100%">
+								<tr style="vertical-align:middle">
+									<td style="width:45%;vertical-align:middle">
+										<input type="checkbox" id="chkModeM" name="chkMode[]" value="M"  onclick="return xt_click(this,'C','2','mode_m','A')" /> <a href="javascript:void(0)" class="lexique" onclick="afficher('manda');" >Mode mandataire</a>
+									</td>
+									<td style="vertical-align:middle">
+										<div style="float:left"><input type="checkbox" id="chkModeP" name="chkMode[]" value="P"  onclick="return xt_click(this,'C','2','mode_p','A')" /></div> 
+										<div style="margin-left:25px;"><a href="javascript:void(0)" class="lexique" onclick="afficher('presta');" >Mode prestataire ou<br />pr&ecirc;t de main d'&oelig;uvre</a></div>
+									</td>
+								</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td id="lblIntervention" class="txtGris11" style="vertical-align:middle; text-align:right;">
+								Etablissement dans la ou<br />les communes demand&eacute;es
+							</td>
+							<td id="lblInterventionChk" class="txtGris11" style="padding-left:5px; height:28px; vertical-align:middle">
+								<input type="checkbox" id="chkEtab" name="chkEtab" value="1"  onclick="return xt_click(this,'C','2','etab_oui','A')" />
+							</td>
+						</tr>
+						<tr>
+							<td id="lblCertif" class="txtGris11" style="vertical-align:middle; text-align:right;">
+								<a href="javascript:void(0)" class="lexique"onclick="afficher('certif');" >Organisme certifi&eacute;</a>
+							</td>
+							<td id="lblCertifChk" class="txtGris11" style="padding-left:5px; height:28px; vertical-align:middle">
+								<input type="checkbox" id="chkCertif" name="chkCertif" value="1"  onclick="return xt_click(this,'C','2','certif_oui','A')" />
+							</td>
+						</tr>
+						<tr>
+							<td id="lblReseau" class="txtGris11" style="vertical-align:middle; text-align:right;">
+								Membre d'un <a href="javascript:void(0)" class="lexique"onclick="afficher('reseau');" >r&eacute;seau</a> ou d'une <a href="javascript:void(0)" id="lien_enseigne" class="lexique" onclick="afficher('enseigne');" >enseigne</a>
+							</td>
+							<td id="lblReseauChk" class="txtGris11" style="padding-left:5px; height:28px; vertical-align:middle">
+								<input type="checkbox" id="chkReseau" name="chkReseau" value="1"  onclick="return xt_click(this,'C','2','reseau_oui','A')" />
+							</td>
+						</tr>
+						</table>
+					</div>
+
+					<div class="cleaner"></div>
+
+
+					<img src="img/bt_trouver_off.jpg" name="imageRecherche" width="106" height="16" border="0" id="imageRecherche" onclick="if (valider()) document.frmRecherche.submit();" onmouseover="boutonOn()" onmouseout="boutonOff()" style="cursor:pointer; float:right;"/>
+					<input type="hidden" name="btRechercher" value="1" />
+					
+					<div class="cleaner"></div>
+				
+				</div>
+			</div>
+			
+			<div id="colonneIntervalle" class="colonneIntervalle">
+				&nbsp;
+			</div>
+			
+			<div id="colonneDroite" class="colonneDroite">
+				<div id="blocAide" class="blocAide">
+					<span style="position:absolute; right:5px; text-align:right; font-weight:bold" class="txtGris12">
+						<img src="img/picto-rose.jpg"> aide
+					</span><br />
+					<span class="txtRose12">Trouver un organisme, </span><br />
+					<span class="centreTitreHautGauche">c'est facile !</span><br />
+					<p class="txtGris10" style="height:5px">
+						<img src="img/puceGrise.jpg" border="0" />
+						<a href="javascript:ouvrir('commentcamarche.html', 'resizable=1, location=no, width=640, height=360, menubar=no, status=no, scrollbars=1, menubar=no');" class="lienViolet">comment &ccedil;a marche ?</a>
+					</p>
+				</div>
+
+				<div id="blocLexique" class="blocLexique">
+					<span class="centreTitreHautGauche gris">Lexique</span><br />
+					<p class="txtGris10" style="height:5px">
+						<img src="img/puceGrise.jpg" border="0" />
+						<a href="javascript:void(0)" onclick="afficher('');" class="lienViolet">consulter le lexique</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+
+<script>
+			affichageFicheService('selService1', 'divFicheService1');
+		</script>
+
+<script>
+
+	var positionMouseX=0;
+	var positionMouseY=0;
+	$$('body').addEvent('mousemove', function(event){
+		positionMouseX=event.page.x;
+		positionMouseY=event.page.y;
+	});
+
+</script>
+
+	<div id="divLexique" style="display:none" onclick="masquer();"></div>
+	<div id="lexique" style="display:none">
+		
+<style>
+	#lexique {
+		border:2px solid #A249A5;
+		background-color:#F2E3EC;
+	}
+	.lexique_global {
+		padding:15px;
+		height:100%;		
+	}
+	
+	.lexique_titre {
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		font-size: 22px;
+		font-weight: bold;
+		color: #A249A5;
+		padding-bottom:10px;
+		border-bottom: 2px dotted #666666;
+	}
+
+	.lexique_titre_rubrique {
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		font-size: 20px;
+		font-weight: bold;
+		color: #000000;
+	}
+	
+	.lexique_fermer {
+		color:#DE0089;
+		float:right;
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		font-size: 10px;
+		cursor:pointer;
+	}
+	
+	.lexique_colGauche {
+		width:33%;
+		border-right:2px dotted #E3219B;
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		font-size: 11px;
+		font-weight:bold;
+		line-height:25px;
+		color:#808080;
+		vertical-align:top;
+	}
+
+	.lexique_colDroite {
+		width:60%;
+		padding-left:20px;
+		padding-right:15px;
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		font-size: 11px;
+		text-align:justify;
+		color:#000000;
+		vertical-align:top;
+	}
+	
+	.select {
+		color:#DE128F;
+	}
+	
+	.divTexte {
+		width:100%;
+		height:100%;
+	}
+	
+	#contenu {
+		width:100%;
+		height:75%;
+	}
+	
+	.lexique_colGauche a {
+		color:#808080;
+		text-decoration:none;	
+	}
+	
+</style>
+
+<script>
+	function effacer_texte() {
+		document.getElementById("div_asso").style.display='none';
+		document.getElementById("span_asso").className="";
+		document.getElementById("div_certif").style.display='none';
+		document.getElementById("span_certif").className="";		
+		document.getElementById("div_cesu").style.display='none';
+		document.getElementById("span_cesu").className="";
+		document.getElementById("div_enseigne").style.display='none';
+		document.getElementById("span_enseigne").className="";
+		document.getElementById("div_manda").style.display='none';
+		document.getElementById("span_manda").className="";
+		document.getElementById("div_presta").style.display='none';
+		document.getElementById("span_presta").className="";
+		document.getElementById("div_pmo").style.display='none';
+		document.getElementById("span_pmo").className="";
+		document.getElementById("div_reseau").style.display='none';
+		document.getElementById("span_reseau").className="";
+	}	
+
+	function afficher_texte(idDiv) {
+		effacer_texte();
+		
+		document.getElementById("div_" + idDiv).style.display='block';
+		document.getElementById("span_" + idDiv).className='select';
+	}	
+</script>
+
+<div class="lexique_global">
+	<div id="titre">
+		<div class="lexique_fermer" onClick="masquer();"><strong>fermer X</strong></div>
+		<div class="lexique_titre">Lexique</div><br />
+	</div>
+	
+	<div id="contenu">
+		<table style="width:100%; height:100%">
+		<tr>
+			<td id="colGauche" class="lexique_colGauche">
+				<a href="#" onclick="afficher_texte('asso')"><span id="span_asso" class="">Association interm&eacute;diaire</span></a><br />
+				<a href="#" onclick="afficher_texte('certif')"><span id="span_certif" class="">Certification</span></a><br />			
+				<a href="#" onclick="afficher_texte('cesu')"><span id="span_cesu" class="">Cesu pr&eacute;financ&eacute;</span></a><br />
+				<a href="#" onclick="afficher_texte('enseigne')"><span id="span_enseigne" class="">Enseigne</span></a><br />
+				<a href="#" onclick="afficher_texte('manda')"><span id="span_manda" class="">Organisme mandataire</span></a><br />
+				<a href="#" onclick="afficher_texte('presta')"><span id="span_presta" class="">Organisme prestataire</span></a><br />
+				<a href="#" onclick="afficher_texte('pmo')"><span id="span_pmo" class="">Pr&ecirc;t de main d'&oelig;uvre autoris&eacute;</span></a><br />
+				<a href="#" onclick="afficher_texte('reseau')"><span id="span_reseau" class="">R&eacute;seau</span></a><br />
+			</td>
+			<td class="lexique_colDroite">
+				<div id="div_asso" style="display:none" class="divTexte">
+					<div class="lexique_titre_rubrique">Association interm&eacute;diaire : </div><br />
+					Son r&ocirc;le est de favoriser l'insertion des demandeurs d'emploi en difficult&eacute;, en leur proposant des missions de travail et un accompagnement personnalis&eacute;.
+				</div>
+				<div id="div_certif" style="display:none" class="divTexte">
+					<div class="lexique_titre_rubrique">Certification : </div><br />
+					Proc&eacute;dure au terme de laquelle un organisme de services &agrave; la personne est reconnu comme r&eacute;pondant &agrave; un cahier des charges relatif &agrave; la qualit&eacute; 
+					de son organisation et/ou de sa production. Un organisme certifi&eacute; b&eacute;n&eacute;ficie d'un renouvellement automatique de son agr&eacute;ment.
+				</div>
+				<div id="div_cesu" style="display:none" class="divTexte">
+					<div class="lexique_titre_rubrique">Cesu pr&eacute;financ&eacute; : </div><br />
+					C'est un titre sp&eacute;cial de paiement, d'une valeur d&eacute;finie (ex : titre restaurant), qui sert  r&eacute;mun&eacute;rer un salari&eacute; employ&eacute; directement ou &agrave; 
+					payer les prestations de services fournies par un organisme dclar&eacute;. Les Cesu sont attribu&eacute;s au b&eacute;n&eacute;ficiaire par un organisme qui participe &agrave; leur financement : 
+					l'employeur, une collectivit&eacute;, un organisme social, etc.<br /><br />
+					<em>NB : les organismes d&eacute;clar&eacute;s ne peuvent pas &ecirc;tre r&eacute;gl&eacute;s en Cesu d&eacute;claratifs. Ces derniers ne permettent de r&eacute;mun&eacute;rer que les salari&eacute;s 
+					en emploi direct.</em>
+				</div>
+				<div id="div_enseigne" style="display:none" class="divTexte">
+					<div class="lexique_titre_rubrique">Enseigne : </div><br />
+					Organisme assurant l'interm&eacute;diation, partout en France, entre la demande et l'offre de services &agrave; la personne via une plateforme t&eacute;l&eacute;phonique, un site web... jusqu'&agrave; 
+					l'organisation compl&egrave;te de la prestation.
+				</div>
+				<div id="div_manda" style="display:none" class="divTexte">
+					<div class="lexique_titre_rubrique">Organisme mandataire : </div><br />
+					Organisme agissant pour le compte des particuliers employeurs, en mati&egrave;re de recrutement et de gestion administrative des salari&eacute;s.
+				</div>
+				<div id="div_presta" style="display:none" class="divTexte">
+					<div class="lexique_titre_rubrique">Organisme prestataire : </div><br />
+					Organisme facturant des prestations de services &agrave; la personne effectu&eacute;es par des intervenants dont l'organisme est l'employeur.
+				</div>
+				<div id="div_pmo" style="display:none" class="divTexte">
+					<div class="lexique_titre_rubrique">Pr&ecirc;t de main d'&oelig;uvre autoris&eacute; : </div><br />
+					Mis en oeuvre par les associations interm&eacute;diaires et les filiales des entreprises de travail temporaire, c'est un mode o&ugrave; l'intervenant est salari&eacute; de l'organisme mais il est 
+					mis &agrave; la disposition du client qui exerce certaines responsabilit&eacute;s de l'employeur.
+				</div>
+				<div id="div_reseau" style="display:none" class="divTexte">
+					<div class="lexique_titre_rubrique">R&eacute;seau : </div><br />
+					Les organismes de services &agrave; la personne (associations, entreprises, organismes publics) sont, pour bon nombre d'entre eux, f&eacute;d&eacute;r&eacute;s &agrave; des r&eacute;seaux nationaux, 
+					aupr&egrave;s desquels ils peuvent trouver des conseils juridiques et des appuis dans le domaine de la professionnalisation.
+				</div>
+			</td>
+		</tr>
+		</table>
+	</div>
+	
+</div>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Trouver un organisme agr&eacute;&eacute;</title>
+<link rel="stylesheet" href="css/recherche.css" type="text/css" />
+<style type="text/css">
+	p {margin: 0; padding: 5px 0 5px 0;}
+</style>
+<!--
+<script type="text/javascript" language="javascript" src="includes/functions.js"></script>
+<script type="text/javascript" language="javascript" src="includes/ajax.js"></script>
+-->
+<script>
+		tabServiceUrl = new Array();
+		tabServiceUrl[6] = "http://www.servicesalapersonne.gouv.fr/garde-d-enfants-a-domicile-(1488).cml";
+		tabServiceUrl[12] = "http://www.servicesalapersonne.gouv.fr/garde-d-enfants-a-domicile-(1488).cml";
+		tabServiceUrl[27] = "http://www.servicesalapersonne.gouv.fr/accompagnement-d-enfants-dans-leurs-deplacements-(1490).cml";
+		tabServiceUrl[28] = "http://www.servicesalapersonne.gouv.fr/accompagnement-d-enfants-dans-leurs-deplacements-(1490).cml";
+		tabServiceUrl[19] = "http://www.servicesalapersonne.gouv.fr/soutien-scolaire-(1491).cml";
+		tabServiceUrl[20] = "http://www.servicesalapersonne.gouv.fr/cours-a-domicile-(1492).cml";
+		tabServiceUrl[31] = "http://www.servicesalapersonne.gouv.fr/assistance-informatique-et-internet-(1493).cml";
+		tabServiceUrl[35] = "http://www.servicesalapersonne.gouv.fr/assistance-administrative-(1494).cml";
+		tabServiceUrl[14] = "http://www.servicesalapersonne.gouv.fr/travaux-menagers-(1496).cml";
+		tabServiceUrl[17] = "http://www.servicesalapersonne.gouv.fr/collecte-et-livraison-de-linge-repasse-(1497).cml";
+		tabServiceUrl[5] = "http://www.servicesalapersonne.gouv.fr/petits-travaux-de-jardinage-debroussaillage-(1499).cml";
+		tabServiceUrl[9] = "http://www.servicesalapersonne.gouv.fr/petit-bricolage-(1500).cml";
+		tabServiceUrl[34] = "http://www.servicesalapersonne.gouv.fr/gardiennage-entretien-et-surveillance-temporaires-des-residences-principale-et-secondaires-(1501).cml";
+		tabServiceUrl[15] = "http://www.servicesalapersonne.gouv.fr/preparation-de-repas-(4645).cml";
+		tabServiceUrl[16] = "http://www.servicesalapersonne.gouv.fr/preparation-de-repas-a-domicile-(1498).cml";
+		tabServiceUrl[30] = "http://www.servicesalapersonne.gouv.fr/livraison-de-repas-ou-de-courses-a-domicile-(1580).cml";
+		tabServiceUrl[24] = "http://www.servicesalapersonne.gouv.fr/garde-malade-(1495).cml";
+		tabServiceUrl[18] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-agees-(sauf-actes-medicaux)-(1503).cml";
+		tabServiceUrl[22] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-handicapees-(dont-interprete-en-langue-des-signes-technicien-de-l-ecrit-et-codeur-en-langage-(1504).cml";
+		tabServiceUrl[25] = "http://www.servicesalapersonne.gouv.fr/aide-a-la-mobilite-et-transport-(1464).cml";
+		tabServiceUrl[29] = "http://www.servicesalapersonne.gouv.fr/accompagnement-dans-les-promenades-et-les-actes-de-la-vie-courante-(1507).cml";
+		tabServiceUrl[26] = "http://www.servicesalapersonne.gouv.fr/conduite-du-vehicule-personnel-(pour-des-trajets-domicile-travail-en-vacances-ou-pour-des-demarches-administratives)-(1508).cml";
+		tabServiceUrl[33] = "http://www.servicesalapersonne.gouv.fr/soins-esthetiques-(1505).cml";
+		tabServiceUrl[32] = "http://www.servicesalapersonne.gouv.fr/soins-et-promenade-d-animaux-domestiques-(sauf-actes-veterinaires-et-toilettage)-(1509).cml";
+		tabServiceUrl[36] = "http://www.servicesalapersonne.gouv.fr/teleassistance-et-visioassistance-(5361).cml";
+		tabServiceUrl[23] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-handicapees-(dont-interprete-en-langue-des-signes-technicien-de-l-ecrit-et-codeur-en-langage-(1504).cml";
+
+		tabClickTag = new Array();
+		tabClickTag[6] = "fiche_garde_enfant_moins_trois_ans";
+		tabClickTag[12] = "fiche_garde_enfant_plus_trois_ans";
+		tabClickTag[27] = "fiche_accompagnement_enfant_moins_trois_ans";
+		tabClickTag[28] = "fiche_accompagnement_enfant_plus_trois_ans";
+		tabClickTag[19] = "fiche_soutien_scolaire";
+		tabClickTag[20] = "fiche_cours_domicile";
+		tabClickTag[31] = "fiche_assistance_info_internet";
+		tabClickTag[35] = "fiche_assistance_administrative";
+		tabClickTag[14] = "fiche_menage_repassage";
+		tabClickTag[5] = "fiche_petit_jardinage";
+		tabClickTag[9] = "fiche_petit_bricolage";
+		tabClickTag[15] = "fiche_preparation_repas_commissions";
+		tabClickTag[16] = "fiche_livraison_repas_domicile";
+		tabClickTag[17] = "fiche_collecte_livraison_linge";
+		tabClickTag[30] = "fiche_livraison_courses";
+		tabClickTag[34] = "fiche_maintenance_vigilance_residences";
+		tabClickTag[36] = "fiche_tele_visioassistance";
+		tabClickTag[18] = "fiche_aide_personnes_agees";
+		tabClickTag[24] = "fiche_garde_malade";
+		tabClickTag[25] = "fiche_aide_mobilite_transport";
+		tabClickTag[26] = "fiche_conduite_vehicule_perso";
+		tabClickTag[29] = "fiche_transport_accompagnement_pa_hd";
+		tabClickTag[22] = "fiche_assistance_pers_handicapees";
+		tabClickTag[23] = "fiche_interpretes_langues_signes";
+		tabClickTag[32] = "fiche_soins_promenades_animaux";
+		tabClickTag[33] = "fiche_soins_esthetiques";
+		
+		function getUrlFromService(idService) {
+			return tabServiceUrl[idService];
+		}	
+		
+		function getClickTagFromService(idService) {
+			return tabClickTag[idService];
+		}	
+		
+		function Call(pageAppelante, typeAppel, titre, url) {
+			var opt = 'resizable=yes,location=no,menubar=no,scrollbars=no,status=no,toolbar=no,fullscreen=no,dependent=yes,width=600,height=250,left=200,top=200';
+			window.open(pageAppelante + '?b=' + typeAppel + '&t=' + encodeURIComponent(titre) + '&u=' + encodeURIComponent(url), 'addMyLink', opt);
+		}
+
+
+		function ajoutOrganisme() {
+			url = "detail.php?id=18795";
+			
+			Call("http://www.servicesalapersonne.gouv.fr/ANSP/OA/AddToMyLinks.aspx", "OA", "JV(18795)", url) ;
+
+		}
+
+		
+	</script>
+</head>
+<body>
+
+<!-- 20090108 - Marqueurs Xiti -->
+<script type="text/javascript">
+	<!--
+	xtnv=document;xtsd="http://logi141";xtsite="315767";xtn2="2";xtpage="Proximite::Web.ANSP.Public.Quotidien.Cote.Ann.Result.Fiche";xtdi="";
+	//-->
+</script>
+<script type="text/javascript" src="http://www.servicesalapersonne.gouv.fr/ANSP_xtcore.js"></script>
+<object>
+	<noscript>
+		<div id="xiti-logo-noscript">
+			<img width="1" height="1" src="http://logi141.xiti.com/hit.xiti?s=315767&amp;s2=2&amp;p=Proximite::Web.ANSP.Public.Quotidien.Cote.Ann.Result.Fiche&amp;di=&amp;" alt="XiTi" />
+		</div>
+	</noscript>
+</object>
+<!-- ************************* -->
+
+<div id="conteneur" class="conteneur">
+	<div id="bordGauche">&nbsp;</div>
+	<div id="contenu">
+		<div id="ligneTitreResultatsDetail">
+			<div id="imagePro3">&nbsp;</div>
+			<div id="centreTitreHautGauche" class="centreTitreHautGauche"><br />
+				JV							
+			</div>
+			<div id="centreTitreHautDroite" class="centreTitreHautDroite">&nbsp;</div>
+     						<div id="recapitulatifActionsDetail">
+					<div id="retourIcone"></div>
+					<div id="retourTexte"><a href="resultats.php" class="lienActions">retour  la liste</a></div>
+					<div id="retourFin"></div>
+					<div class="cleaner"></div>
+					<div id="imprimerIcone"></div>
+					<div id="imprimerTexte"><a href="#" onclick="window.print();" class="lienActions">imprimer la fiche</a></div>
+					<div id="imprimerFin"></div>
+					<div class="cleaner"></div>
+					<div id="favorisIcone"></div>
+					<div id="favorisTexte"><a href="#" onclick="ajoutOrganisme();" class="lienActions">ajouter &agrave; mes favoris</a></div>
+					<div id="favorisFin"></div>
+					<div class="cleaner"></div>
+					<div id="modifierIconeDetail"></div>
+					<div id="modifierDetail"><a href="recherche.php" class="lienActions">modifier la recherche</a></div>
+					<div id="modifierFinDetail"></div>
+					<div class="cleaner"></div>
+					<div id="nouvelleIconeDetail"></div>
+					<div id="nouvelleTexteDetail"><a href="recherche.php?init=1" class="lienActions">nouvelle recherche</a></div>
+					<div id="nouvelleFinDetail"></div>
+					<div class="cleaner"></div>
+				</div>
+						</div>
+		<div class="cleaner"></div>
+		<div id="bordGaucheDetail">&nbsp;</div>
+		<div id="colonneResultatsDetail">
+			<div id="titre1" class="titreDetail">Contact</div>
+			<div id="contact">
+				<div id="contactColonne1" class="colonneDetail" style="width:33%">
+											<img src="img/icone_mobile.jpg" alt="icone mobile" /> T&eacute;l. : 
+						<span class="txtRose12Gras">0645761102</span>
+										</div>
+				<div id="contactColonne2" class="colonneDetail" style="width:67%">
+										<img src="img/icone_contact.jpg" alt="icone contact" /> Contact : 
+					<span class="txtRose12">
+						<a href="mailto:jvservicesalapersonne65@orange.fr" class="lienRose" style="font-weight:bold;">Monsieur Jacques DASQUE</a><span style="font-size:smaller;">&nbsp;&nbsp;&nbsp;jvservicesalapersonne65@orange.fr</span>					</span> 
+				</div>
+			</div>
+			<div class="cleaner"><br /></div>
+			<div id="titre2" class="titreDetail">Plus d'informations</div>
+			<div id="plusDInfo">
+				<div id="plusDInfoColonne1" class="colonneDetail" style="width:33%">
+					<p class="txtRose12" style="padding-left: 35px;">
+						Agr&eacute;ment qualit&eacute;					</p>
+					
+											<p class="txtRose12"  style="padding-left: 35px;">Mode d'intervention : 
+							<strong>
+							prestataire 							</strong>
+						</p>
+										</div>
+				<div id="plusDInfoColonne2" class="colonneDetail" style="width:33%">
+					<p class="txtRose12" style="padding-left: 35px;">Entrepreneur Individuel</p>					
+											<p class="txtRose12" style="padding-left: 35px;">Type d'implantation : <strong>&eacute;tablissement</strong></p>
+						
+											<p class="txtRose12" style="padding-left: 35px;">Si&egrave;ge social : <strong>oui</strong></p>
+						
+											<p class="txtRose12" style="padding-left: 35px;">&Eacute;tablissement principal : <strong>oui</strong></p>
+						
+									</div>
+				<div id="pluDInfoColonne3" class="colonneDetail" style="width:34%">
+					&nbsp;						<img src="img/logo-cesu-detail.jpg" alt="Ch&egrave;que emploi service universel accept&eacute;" title="Ch&egrave;que emploi service universel accept&eacute;" />
+						</strong>
+
+				</div>
+							</div>
+			<br/><br/>
+			<div class="cleaner"><br /></div>
+			<div id="titre3" class="titreDetail">Services propos&eacute;s</div>
+			<div id="servicesProposes">
+								<div id="servicesColonne1" class="colonneDetailRose">
+					<img src="../../admin/activite/files/accompagnement.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Accompagnement hors domicile PA et/ou PH','A'); window.open(getUrlFromService(29)); return false;" class="lienRoseService">Accompagnement hors domicile PA et/ou PH</a><br /><img src="../../admin/activite/files/conduite.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Conduite du vhicule personnel','A'); window.open(getUrlFromService(26)); return false;" class="lienRoseService">Conduite du vhicule personnel</a><br /><img src="../../admin/activite/files/aide-mobilite.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Aide mobilit et transport de personnes','A'); window.open(getUrlFromService(25)); return false;" class="lienRoseService">Aide mobilit et transport de personnes</a><br /><img src="../../admin/activite/files/garde-malade.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Garde-malade, sauf soins','A'); window.open(getUrlFromService(24)); return false;" class="lienRoseService">Garde-malade, sauf soins</a><br /><img src="../../admin/activite/files/accompagnement.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Aide/Accomp. Fam. Fragilises','A'); window.open(getUrlFromService(21)); return false;" class="lienRoseService">Aide/Accomp. Fam. Fragilises</a><br /><img src="../../admin/activite/files/aide-personnes.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance aux personnes ges','A'); window.open(getUrlFromService(18)); return false;" class="lienRoseService">Assistance aux personnes ges</a><br /><img src="../../admin/activite/files/acompagner-enfant.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Accompagnement/dplacement enfants -3 ans','A'); window.open(getUrlFromService(27)); return false;" class="lienRoseService"><strong>Accompagnement/dplacement enfants -3 ans</strong></a><br />				</div>
+				<div id="servicesColonne2" class="colonneDetailRose">
+					<img src="../../admin/activite/files/animaux.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Soins et promenades d&#39;animaux de compagnie','A'); window.open(getUrlFromService(32)); return false;"  class="lienRoseService">Soins et promenades d&#39;animaux de compagnie</a><br /><img src="../../admin/activite/files/vigilance.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Maintenance et vigilance de rsidence','A'); window.open(getUrlFromService(34)); return false;"  class="lienRoseService">Maintenance et vigilance de rsidence</a><br /><img src="../../admin/activite/files/livraison-courses.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Livraison de courses domicile','A'); window.open(getUrlFromService(30)); return false;"  class="lienRoseService">Livraison de courses domicile</a><br /><img src="../../admin/activite/files/linge.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Collecte et livraison de linge repass','A'); window.open(getUrlFromService(17)); return false;"  class="lienRoseService">Collecte et livraison de linge repass</a><br /><img src="../../admin/activite/files/livraison-repa.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Livraison de repas  domicile','A'); window.open(getUrlFromService(16)); return false;"  class="lienRoseService">Livraison de repas  domicile</a><br /><img src="../../admin/activite/files/prepa_repas.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Commissions et prparation de repas','A'); window.open(getUrlFromService(15)); return false;"  class="lienRoseService">Commissions et prparation de repas</a><br /><img src="../../admin/activite/files/bricolage.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Travaux de petit bricolage','A'); window.open(getUrlFromService(9)); return false;"  class="lienRoseService">Travaux de petit bricolage</a><br />				</div>
+				<div id="servicesColonne3" class="colonneDetailRose">
+					<img src="../../admin/activite/files/jardinage.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Petits travaux de jardinage','A'); window.open(getUrlFromService(5)); return false;"  class="lienRoseService">Petits travaux de jardinage</a><br /><img src="../../admin/activite/files/travaux-menager.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Entretien de la maison et travaux mnagers','A'); window.open(getUrlFromService(14)); return false;"  class="lienRoseService">Entretien de la maison et travaux mnagers</a><br /><img src="../../admin/activite/files/assistance-administrative.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance administrative domicile','A'); window.open(getUrlFromService(35)); return false;"  class="lienRoseService">Assistance administrative domicile</a><br /><img src="../../admin/activite/files/assitance-informatique.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance informatique  domicile','A'); window.open(getUrlFromService(31)); return false;"  class="lienRoseService">Assistance informatique  domicile</a><br /><img src="../../admin/activite/files/acompagner-enfant.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Accomp./dplacement enfants +3 ans','A'); window.open(getUrlFromService(28)); return false;"  class="lienRoseService">Accomp./dplacement enfants +3 ans</a><br /><img src="../../admin/activite/files/garde-enfants.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Garde d&#39;enfant +3 ans  domicile','A'); window.open(getUrlFromService(6)); return false;"  class="lienRoseService">Garde d&#39;enfant +3 ans  domicile</a><br />				</div>
+			</div>
+			<div class="cleaner"><br /></div>
+			<div id="titre4" class="titreDetail">Zones d'intervention</div>
+			<div id="zonesIntervention">
+								<div id="servicesColonne1" class="colonneDetail">
+					ADERVIELLE POUCHERGUES (65240)<br />ALLIER (65360)<br />ANCIZAN (65440)<br />ANERES (65150)<br />ANGOS (65690)<br />ANLA (65370)<br />ANTICHAN (65370)<br />ANTIN (65220)<br />ANTIST (65200)<br />ARAGNOUET (65170)<br />ARCIZAC ADOUR (65360)<br />ARDENGOST (65240)<br />ARGELES (65200)<br />ARIES ESPENAN (65230)<br />ARMENTEULE (65510)<br />ARNE (65670)<br />ARREAU (65240)<br />ARTIGUEMY (65130)<br />ASPIN AURE (65240)<br />ASTUGUE (65200)<br />AUBAREDE (65350)<br />AULON (65440)<br />AUREILHAN (65800)<br />AURENSAN (65390)<br />AVAJAN (65240)<br />AVENTIGNAN (65660)<br />AVEUX (65370)<br />AZET (65170)<br />BAGNERES DE BIGORRE (65200)<br />BANIOS (65200)<br />BARBAZAN DEBAT (65690)<br />BARBAZAN DESSUS (65360)<br />BAREILLES (65240)<br />BARRANCOUEU (65240)<br />BARTHE (65230)<br />BAZET (65460)<br />BAZORDAN (65670)<br />BAZUS AURE (65170)<br />BAZUS NESTE (65250)<br />BEGOLE (65190)<br />BENQUE (65130)<br />BERNAC DEBAT (65360)<br />BERNAC DESSUS (65360)<br />BERNADETS DEBAT (65220)<br />BERNADETS DESSUS (65190)<br />BERTREN (65370)<br />BETBEZE (65230)<br />BETPOUY (65230)<br />BETTES (65130)<br />BEYREDE JUMET (65410)<br />BIZE (65150)<br />BIZOUS (65150)<br />BONNEFONT (65220)<br />BONNEMAZON (65130)<br />BONREPOS (65330)<br />BORDERES LOURON (65590)<br />BORDERES SUR L ECHEZ (65320)<br />BORDES (65190)<br />BOUILH PEREUILH (65350)<br />BOULIN (65350)<br />BOURG DE BIGORRE (65130)<br />BOURISP (65170)<br />BOURS (65460)<br />BRAMEVAQUE (65370)<br />BUGARD (65220)<br />BURG (65190)<br />CABANAC (65350)<br />CADEAC (65240)<br />CADEILHAN TRACHERE (65170)<br />CAHARET (65190)<br />CALAVANTE (65190)<br />CAMOUS (65410)<br />CAMPARAN (65170)<br />CAMPISTROUS (65300)<br />CAMPUZAN (65230)<br />CANTAOUS (65150)<br />CAPVERN (65130)<br />CASTELBAJAC (65330)<br />CASTELNAU MAGNOAC (65230)<br />CASTELVIEILH (65350)<br />CASTERA LANUSSE (65190)<br />CASTERA LOU (65350)<br />CASTERETS (65230)<br />CASTILLON (65130)<br />CAUBOUS (65230)<br />CAZARILH (65370)<br />CAZAUX DEBAT (65590)<br />CAZAUX FRECHET ANERAN CAM (65510)<br />CHELLE DEBAT (65350)<br />CHELLE SPOU (65130)<br />CHIS (65800)<br />CIEUTAT (65200)<br />CIZOS (65230)<br />CLARAC (65190)<br />CLARENS (65300)<br />COLLONGUES (65350)<br />COUSSAN (65350)<br />CRECHETS (65370)<br />DEVEZE (65230)<br />DOURS (65350)<br />ENS (65170)<br />					&nbsp;
+				</div>
+				<div id="servicesColonne2" class="colonneDetail">
+					ESBAREICH (65370)<br />ESCALA (65250)<br />ESCONNETS (65130)<br />ESCOTS (65130)<br />ESPIEILH (65130)<br />ESTAMPURES (65220)<br />ESTARVIELLE (65510)<br />ESTENSAN (65170)<br />FERRERE (65370)<br />FONTRAILLES (65220)<br />FRECHEDE (65220)<br />FRECHENDETS (65130)<br />FRECHET AURE (65240)<br />FRECHOU FRECHET (65190)<br />GALAN (65330)<br />GALEZ (65330)<br />GAUDENT (65370)<br />GAUSSAN (65670)<br />GAYAN (65320)<br />GAZAVE (65250)<br />GEMBRIE (65370)<br />GENEREST (65150)<br />GENOS (65510)<br />GERM (65510)<br />GONEZ (65350)<br />GOUAUX (65440)<br />GOUDON (65190)<br />GOURGUE (65130)<br />GRAILHEN (65170)<br />GUCHAN (65170)<br />GUCHEN (65440)<br />GUIZERIX (65230)<br />HACHAN (65230)<br />HAUBAN (65200)<br />HAUTAGET (65150)<br />HECHES (65250)<br />HIIS (65200)<br />HITTE (65190)<br />HORGUES (65310)<br />HOUEYDETS (65330)<br />HOURC (65350)<br />IBOS (65420)<br />ILHET (65410)<br />ILHEU (65370)<br />IZAOURT (65370)<br />IZAUX (65250)<br />JACQUE (65350)<br />JEZEAU (65240)<br />LA BARTHE DE NESTE (65250)<br />LABASSERE (65200)<br />LAGARDE (65320)<br />LAGRANGE (65300)<br />LALANNE (65230)<br />LALANNE TRIE (65220)<br />LALOUBERE (65310)<br />LAMARQUE RUSTAING (65220)<br />LANCON (65240)<br />LANESPEDE (65190)<br />LANNEMEZAN (65300)<br />LANSAC (65350)<br />LAPEYRE (65220)<br />LARAN (65670)<br />LARROQUE (65230)<br />LASLADES (65350)<br />LASSALES (65670)<br />LESPOUEY (65190)<br />LHEZ (65190)<br />LIBAROS (65330)<br />LIES (65200)<br />LIZOS (65350)<br />LOMBRES (65150)<br />LORTET (65250)<br />LOUDENVIELLE (65510)<br />LOUDERVIELLE (65510)<br />LOUIT (65350)<br />LOURES BAROUSSE (65370)<br />LUBRET ST LUC (65220)<br />LUBY BETMONT (65220)<br />LUC (65190)<br />LUSTAR (65220)<br />LUTILHOUS (65300)<br />MARQUERIE (65350)<br />MARSAS (65200)<br />MARSEILLAN (65350)<br />MASCARAS (65190)<br />MAULEON BAROUSSE (65370)<br />MAUVEZIN (65130)<br />MAZERES DE NESTE (65660)<br />MAZEROLLES (65220)<br />MAZOUAU (65250)<br />MERILHEU (65200)<br />MOLERE (65130)<br />MOMERES (65360)<br />MONLEON MAGNOAC (65670)<br />MONLONG (65670)<br />MONT (65510)<br />MONTASTRUC (65330)<br />MONTEGUT (65150)<br />MONTGAILLARD (65200)<br />MONTIGNAC (65690)<br />MONTOUSSE (65250)<br />					&nbsp;
+				</div>
+				<div id="servicesColonne3" class="colonneDetail">
+					MONTSERIE (65150)<br />MOULEDOUS (65190)<br />MUN (65350)<br />NEUILH (65200)<br />NISTOS (65150)<br />ODOS (65310)<br />OLEAC DEBAT (65350)<br />OLEAC DESSUS (65190)<br />ORDIZAN (65200)<br />ORGAN (65230)<br />ORIEUX (65190)<br />ORIGNAC (65200)<br />ORLEIX (65800)<br />OROIX (65320)<br />OSMETS (65350)<br />OUEILLOUX (65190)<br />OURDE (65370)<br />OURSBELILLE (65490)<br />OZON (65190)<br />PAILHAC (65240)<br />PERE (65130)<br />PEYRAUBE (65190)<br />PEYRET ST ANDRE (65230)<br />PEYRIGUERE (65350)<br />PINAS (65300)<br />PINTAC (65320)<br />POUMAROUS (65190)<br />POUY (65230)<br />POUYASTRUC (65350)<br />POUZAC (65200)<br />PUNTOUS (65230)<br />PUYDARRIEUX (65220)<br />REBOUC (65250)<br />RECURT (65330)<br />REJAUMONT (65300)<br />RICAUD (65190)<br />RIS (65590)<br />SABALOS (65350)<br />SABARROS (65330)<br />SACOUE (65370)<br />SADOURNIN (65220)<br />SAILHAN (65170)<br />SALECHAN (65370)<br />SALLES ADOUR (65360)<br />SAMURAN (65370)<br />SARIAC MAGNOAC (65230)<br />SARLABOUS (65130)<br />SARNIGUET (65390)<br />SARP (65370)<br />SARRANCOLIN (65410)<br />SARROUILLES (65600)<br />SEICH (65150)<br />SEMEAC (65600)<br />SENTOUS (65330)<br />SERE RUSTAING (65220)<br />SINZOS (65190)<br />SIRADAN (65370)<br />SOREAC (65350)<br />SOST (65370)<br />SOUYEAUX (65350)<br />ST ARROMAN (65250)<br />ST LARY SOULAN (65170)<br />ST MARTIN (65360)<br />ST PAUL (65150)<br />STE MARIE (65370)<br />TAJAN (65300)<br />TARASTEIX (65320)<br />TARBES (65000)<br />THEBE (65370)<br />THERMES MAGNOAC (65230)<br />THUY (65350)<br />TIBIRAN JAUNAC (65660)<br />TILHOUSE (65130)<br />TOURNAY (65190)<br />TOURNOUS DARRE (65220)<br />TOURNOUS DEVANT (65330)<br />TRAMEZAIGUES (65170)<br />TREBONS (65200)<br />TRIE SUR BAISE (65220)<br />TROUBAT (65370)<br />TUZAGUET (65150)<br />UGLAS (65300)<br />UZER (65200)<br />VIDOU (65220)<br />VIELLE ADOUR (65360)<br />VIELLE AURE (65170)<br />VIELLE LOURON (65240)<br />VIEUZOS (65230)<br />VIGNEC (65170)<br />VILLEMBITS (65220)<br />VILLEMUR (65230)<br />Arreau<br />Bagnres-de-Bigorre<br />Barthe-de-Neste (La)<br />Bordres-Louron<br />Campan<br />Lannemezan<br />Maulon-Barousse<br />Saint-Laurent-de-Neste<br />Vielle-Aure<br />Hautes-Pyrnes<br />					&nbsp;
+				</div>
+			</div>
+					</div>
+	</div>
+</div>
+</body>
+</html>

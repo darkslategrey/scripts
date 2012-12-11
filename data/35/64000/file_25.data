@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Trouver un organisme agr&eacute;&eacute;</title>
+<link rel="stylesheet" href="css/recherche.css" type="text/css" />
+<style type="text/css">
+	p {margin: 0; padding: 5px 0 5px 0;}
+</style>
+<!--
+<script type="text/javascript" language="javascript" src="includes/functions.js"></script>
+<script type="text/javascript" language="javascript" src="includes/ajax.js"></script>
+-->
+<script>
+		tabServiceUrl = new Array();
+		tabServiceUrl[6] = "http://www.servicesalapersonne.gouv.fr/garde-d-enfants-a-domicile-(1488).cml";
+		tabServiceUrl[12] = "http://www.servicesalapersonne.gouv.fr/garde-d-enfants-a-domicile-(1488).cml";
+		tabServiceUrl[27] = "http://www.servicesalapersonne.gouv.fr/accompagnement-d-enfants-dans-leurs-deplacements-(1490).cml";
+		tabServiceUrl[28] = "http://www.servicesalapersonne.gouv.fr/accompagnement-d-enfants-dans-leurs-deplacements-(1490).cml";
+		tabServiceUrl[19] = "http://www.servicesalapersonne.gouv.fr/soutien-scolaire-(1491).cml";
+		tabServiceUrl[20] = "http://www.servicesalapersonne.gouv.fr/cours-a-domicile-(1492).cml";
+		tabServiceUrl[31] = "http://www.servicesalapersonne.gouv.fr/assistance-informatique-et-internet-(1493).cml";
+		tabServiceUrl[35] = "http://www.servicesalapersonne.gouv.fr/assistance-administrative-(1494).cml";
+		tabServiceUrl[14] = "http://www.servicesalapersonne.gouv.fr/travaux-menagers-(1496).cml";
+		tabServiceUrl[17] = "http://www.servicesalapersonne.gouv.fr/collecte-et-livraison-de-linge-repasse-(1497).cml";
+		tabServiceUrl[5] = "http://www.servicesalapersonne.gouv.fr/petits-travaux-de-jardinage-debroussaillage-(1499).cml";
+		tabServiceUrl[9] = "http://www.servicesalapersonne.gouv.fr/petit-bricolage-(1500).cml";
+		tabServiceUrl[34] = "http://www.servicesalapersonne.gouv.fr/gardiennage-entretien-et-surveillance-temporaires-des-residences-principale-et-secondaires-(1501).cml";
+		tabServiceUrl[15] = "http://www.servicesalapersonne.gouv.fr/preparation-de-repas-(4645).cml";
+		tabServiceUrl[16] = "http://www.servicesalapersonne.gouv.fr/preparation-de-repas-a-domicile-(1498).cml";
+		tabServiceUrl[30] = "http://www.servicesalapersonne.gouv.fr/livraison-de-repas-ou-de-courses-a-domicile-(1580).cml";
+		tabServiceUrl[24] = "http://www.servicesalapersonne.gouv.fr/garde-malade-(1495).cml";
+		tabServiceUrl[18] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-agees-(sauf-actes-medicaux)-(1503).cml";
+		tabServiceUrl[22] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-handicapees-(dont-interprete-en-langue-des-signes-technicien-de-l-ecrit-et-codeur-en-langage-(1504).cml";
+		tabServiceUrl[25] = "http://www.servicesalapersonne.gouv.fr/aide-a-la-mobilite-et-transport-(1464).cml";
+		tabServiceUrl[29] = "http://www.servicesalapersonne.gouv.fr/accompagnement-dans-les-promenades-et-les-actes-de-la-vie-courante-(1507).cml";
+		tabServiceUrl[26] = "http://www.servicesalapersonne.gouv.fr/conduite-du-vehicule-personnel-(pour-des-trajets-domicile-travail-en-vacances-ou-pour-des-demarches-administratives)-(1508).cml";
+		tabServiceUrl[33] = "http://www.servicesalapersonne.gouv.fr/soins-esthetiques-(1505).cml";
+		tabServiceUrl[32] = "http://www.servicesalapersonne.gouv.fr/soins-et-promenade-d-animaux-domestiques-(sauf-actes-veterinaires-et-toilettage)-(1509).cml";
+		tabServiceUrl[36] = "http://www.servicesalapersonne.gouv.fr/teleassistance-et-visioassistance-(5361).cml";
+		tabServiceUrl[23] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-handicapees-(dont-interprete-en-langue-des-signes-technicien-de-l-ecrit-et-codeur-en-langage-(1504).cml";
+
+		tabClickTag = new Array();
+		tabClickTag[6] = "fiche_garde_enfant_moins_trois_ans";
+		tabClickTag[12] = "fiche_garde_enfant_plus_trois_ans";
+		tabClickTag[27] = "fiche_accompagnement_enfant_moins_trois_ans";
+		tabClickTag[28] = "fiche_accompagnement_enfant_plus_trois_ans";
+		tabClickTag[19] = "fiche_soutien_scolaire";
+		tabClickTag[20] = "fiche_cours_domicile";
+		tabClickTag[31] = "fiche_assistance_info_internet";
+		tabClickTag[35] = "fiche_assistance_administrative";
+		tabClickTag[14] = "fiche_menage_repassage";
+		tabClickTag[5] = "fiche_petit_jardinage";
+		tabClickTag[9] = "fiche_petit_bricolage";
+		tabClickTag[15] = "fiche_preparation_repas_commissions";
+		tabClickTag[16] = "fiche_livraison_repas_domicile";
+		tabClickTag[17] = "fiche_collecte_livraison_linge";
+		tabClickTag[30] = "fiche_livraison_courses";
+		tabClickTag[34] = "fiche_maintenance_vigilance_residences";
+		tabClickTag[36] = "fiche_tele_visioassistance";
+		tabClickTag[18] = "fiche_aide_personnes_agees";
+		tabClickTag[24] = "fiche_garde_malade";
+		tabClickTag[25] = "fiche_aide_mobilite_transport";
+		tabClickTag[26] = "fiche_conduite_vehicule_perso";
+		tabClickTag[29] = "fiche_transport_accompagnement_pa_hd";
+		tabClickTag[22] = "fiche_assistance_pers_handicapees";
+		tabClickTag[23] = "fiche_interpretes_langues_signes";
+		tabClickTag[32] = "fiche_soins_promenades_animaux";
+		tabClickTag[33] = "fiche_soins_esthetiques";
+		
+		function getUrlFromService(idService) {
+			return tabServiceUrl[idService];
+		}	
+		
+		function getClickTagFromService(idService) {
+			return tabClickTag[idService];
+		}	
+		
+		function Call(pageAppelante, typeAppel, titre, url) {
+			var opt = 'resizable=yes,location=no,menubar=no,scrollbars=no,status=no,toolbar=no,fullscreen=no,dependent=yes,width=600,height=250,left=200,top=200';
+			window.open(pageAppelante + '?b=' + typeAppel + '&t=' + encodeURIComponent(titre) + '&u=' + encodeURIComponent(url), 'addMyLink', opt);
+		}
+
+
+		function ajoutOrganisme() {
+			url = "detail.php?id=17457";
+			
+			Call("http://www.servicesalapersonne.gouv.fr/ANSP/OA/AddToMyLinks.aspx", "OA", "AQUISERVICES A DOMICILE(17457)", url) ;
+
+		}
+
+		
+	</script>
+</head>
+<body>
+
+<!-- 20090108 - Marqueurs Xiti -->
+<script type="text/javascript">
+	<!--
+	xtnv=document;xtsd="http://logi141";xtsite="315767";xtn2="2";xtpage="Proximite::Web.ANSP.Public.Quotidien.Cote.Ann.Result.Fiche";xtdi="";
+	//-->
+</script>
+<script type="text/javascript" src="http://www.servicesalapersonne.gouv.fr/ANSP_xtcore.js"></script>
+<object>
+	<noscript>
+		<div id="xiti-logo-noscript">
+			<img width="1" height="1" src="http://logi141.xiti.com/hit.xiti?s=315767&amp;s2=2&amp;p=Proximite::Web.ANSP.Public.Quotidien.Cote.Ann.Result.Fiche&amp;di=&amp;" alt="XiTi" />
+		</div>
+	</noscript>
+</object>
+<!-- ************************* -->
+
+<div id="conteneur" class="conteneur">
+	<div id="bordGauche">&nbsp;</div>
+	<div id="contenu">
+		<div id="ligneTitreResultatsDetail">
+			<div id="imagePro3">&nbsp;</div>
+			<div id="centreTitreHautGauche" class="centreTitreHautGauche"><br />
+				AQUISERVICES A DOMICILE							
+			</div>
+			<div id="centreTitreHautDroite" class="centreTitreHautDroite">&nbsp;</div>
+     						<div id="recapitulatifActionsDetail">
+					<div id="retourIcone"></div>
+					<div id="retourTexte"><a href="resultats.php" class="lienActions">retour  la liste</a></div>
+					<div id="retourFin"></div>
+					<div class="cleaner"></div>
+					<div id="imprimerIcone"></div>
+					<div id="imprimerTexte"><a href="#" onclick="window.print();" class="lienActions">imprimer la fiche</a></div>
+					<div id="imprimerFin"></div>
+					<div class="cleaner"></div>
+					<div id="favorisIcone"></div>
+					<div id="favorisTexte"><a href="#" onclick="ajoutOrganisme();" class="lienActions">ajouter &agrave; mes favoris</a></div>
+					<div id="favorisFin"></div>
+					<div class="cleaner"></div>
+					<div id="modifierIconeDetail"></div>
+					<div id="modifierDetail"><a href="recherche.php" class="lienActions">modifier la recherche</a></div>
+					<div id="modifierFinDetail"></div>
+					<div class="cleaner"></div>
+					<div id="nouvelleIconeDetail"></div>
+					<div id="nouvelleTexteDetail"><a href="recherche.php?init=1" class="lienActions">nouvelle recherche</a></div>
+					<div id="nouvelleFinDetail"></div>
+					<div class="cleaner"></div>
+				</div>
+						</div>
+		<div class="cleaner"></div>
+		<div id="bordGaucheDetail">&nbsp;</div>
+		<div id="colonneResultatsDetail">
+			<div id="titre1" class="titreDetail">Contact</div>
+			<div id="contact">
+				<div id="contactColonne1" class="colonneDetail" style="width:33%">
+											<img src="img/icone_mobile.jpg" alt="icone mobile" /> T&eacute;l. : 
+						<span class="txtRose12Gras">0559336210</span>
+										</div>
+				<div id="contactColonne2" class="colonneDetail" style="width:67%">
+											<img src="img/icone_fax.jpg" alt="icone fax" /> Fax : <span class="txtRose12"> 05 59 12 32 89</span><br />
+											<img src="img/icone_contact.jpg" alt="icone contact" /> Contact : 
+					<span class="txtRose12">
+						<a href="mailto:v.busuttil@toutadomservices.com" class="lienRose" style="font-weight:bold;">Madame Valrie BUSUTTIL</a><span style="font-size:smaller;">&nbsp;&nbsp;&nbsp;v.busuttil@toutadomservices.com</span>					</span> 
+				</div>
+			</div>
+			<div class="cleaner"><br /></div>
+			<div id="titre2" class="titreDetail">Plus d'informations</div>
+			<div id="plusDInfo">
+				<div id="plusDInfoColonne1" class="colonneDetail" style="width:33%">
+					<p class="txtRose12" style="padding-left: 35px;">
+						D&eacute;clar&eacute; et Agr&eacute;&eacute;					</p>
+					
+											<p class="txtRose12"  style="padding-left: 35px;">Mode d'intervention : 
+							<strong>
+							prestataire 							</strong>
+						</p>
+												<p><img src="img/icone_url.jpg" alt="icone url" /> <a href="http://serrescastet.toutadomservices.com" class="lienRose" target="_blank">serrescastet.toutadomservices.com</a></p>
+										</div>
+				<div id="plusDInfoColonne2" class="colonneDetail" style="width:33%">
+					<p class="txtRose12" style="padding-left: 35px;">Socit  Responsabilit Limite (SARL)</p>					
+											<p class="txtRose12" style="padding-left: 35px;">Type d'implantation : <strong>&eacute;tablissement</strong></p>
+						
+											<p class="txtRose12" style="padding-left: 35px;">Si&egrave;ge social : <strong>oui</strong></p>
+						
+											<p class="txtRose12" style="padding-left: 35px;">&Eacute;tablissement principal : <strong>oui</strong></p>
+						
+									</div>
+				<div id="pluDInfoColonne3" class="colonneDetail" style="width:34%">
+					&nbsp;						<img src="img/logo-cesu-detail.jpg" alt="Ch&egrave;que emploi service universel accept&eacute;" title="Ch&egrave;que emploi service universel accept&eacute;" />
+						</strong>
+
+				</div>
+							</div>
+			<br/><br/>
+			<div class="cleaner"><br /></div>
+			<div id="titre3" class="titreDetail">Services propos&eacute;s</div>
+			<div id="servicesProposes">
+								<div id="servicesColonne1" class="colonneDetailRose">
+					<img src="../../admin/activite/files/livraison-courses.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Livraison de courses domicile','A'); window.open(getUrlFromService(30)); return false;" class="lienRoseService">Livraison de courses domicile</a><br /><img src="../../admin/activite/files/accompagnement.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Accompagnement hors domicile PA et/ou PH','A'); window.open(getUrlFromService(29)); return false;" class="lienRoseService">Accompagnement hors domicile PA et/ou PH</a><br /><img src="../../admin/activite/files/conduite.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Conduite du vhicule personnel','A'); window.open(getUrlFromService(26)); return false;" class="lienRoseService">Conduite du vhicule personnel</a><br /><img src="../../admin/activite/files/aide-mobilite.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Aide mobilit et transport de personnes','A'); window.open(getUrlFromService(25)); return false;" class="lienRoseService">Aide mobilit et transport de personnes</a><br /><img src="../../admin/activite/files/garde-malade.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Garde-malade, sauf soins','A'); window.open(getUrlFromService(24)); return false;" class="lienRoseService">Garde-malade, sauf soins</a><br /><img src="../../admin/activite/files/aide-personnes.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance aux personnes ges','A'); window.open(getUrlFromService(18)); return false;" class="lienRoseService">Assistance aux personnes ges</a><br />				</div>
+				<div id="servicesColonne2" class="colonneDetailRose">
+					<img src="../../admin/activite/files/acompagner-enfant.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Accompagnement/dplacement enfants -3 ans','A'); window.open(getUrlFromService(27)); return false;"  class="lienRoseService">Accompagnement/dplacement enfants -3 ans</a><br /><img src="../../admin/activite/files/garde-enfants.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Garde d&#39;enfant -3 ans  domicile','A'); window.open(getUrlFromService(12)); return false;"  class="lienRoseService">Garde d&#39;enfant -3 ans  domicile</a><br /><img src="../../admin/activite/files/prepa_repas.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Commissions et prparation de repas','A'); window.open(getUrlFromService(15)); return false;"  class="lienRoseService">Commissions et prparation de repas</a><br /><img src="../../admin/activite/files/bricolage.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Travaux de petit bricolage','A'); window.open(getUrlFromService(9)); return false;"  class="lienRoseService">Travaux de petit bricolage</a><br /><img src="../../admin/activite/files/jardinage.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Petits travaux de jardinage','A'); window.open(getUrlFromService(5)); return false;"  class="lienRoseService">Petits travaux de jardinage</a><br /><img src="../../admin/activite/files/travaux-menager.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Entretien de la maison et travaux mnagers','A'); window.open(getUrlFromService(14)); return false;"  class="lienRoseService">Entretien de la maison et travaux mnagers</a><br />				</div>
+				<div id="servicesColonne3" class="colonneDetailRose">
+					<img src="../../admin/activite/files/assistance-administrative.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance administrative domicile','A'); window.open(getUrlFromService(35)); return false;"  class="lienRoseService"><strong>Assistance administrative domicile</strong></a><br /><img src="../../admin/activite/files/assitance-informatique.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance informatique  domicile','A'); window.open(getUrlFromService(31)); return false;"  class="lienRoseService">Assistance informatique  domicile</a><br /><img src="../../admin/activite/files/cour-domicile.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Cours particuliers  domicile','A'); window.open(getUrlFromService(20)); return false;"  class="lienRoseService">Cours particuliers  domicile</a><br /><img src="../../admin/activite/files/soutien-scolaire.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Soutien scolaire  domicile','A'); window.open(getUrlFromService(19)); return false;"  class="lienRoseService">Soutien scolaire  domicile</a><br /><img src="../../admin/activite/files/garde-enfants.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Garde d&#39;enfant +3 ans  domicile','A'); window.open(getUrlFromService(6)); return false;"  class="lienRoseService">Garde d&#39;enfant +3 ans  domicile</a><br />				</div>
+			</div>
+			<div class="cleaner"><br /></div>
+			<div id="titre4" class="titreDetail">Zones d'intervention</div>
+			<div id="zonesIntervention">
+								<div id="servicesColonne1" class="colonneDetail">
+					ARZACQ ARRAZIGUET (64410)<br />BILLERE (64140)<br />BIZANOS (64320)<br />GELOS (64110)<br />IDRON-OUSSE-SENDETS (64320)<br />JURANCON (64110)<br />LEE (64320)<br />LESCAR (64230)<br />LONS (64140)<br />MONTARDON (64121)<br />					&nbsp;
+				</div>
+				<div id="servicesColonne2" class="colonneDetail">
+					MORLAAS (64160)<br />NAVAILLES ANGOS (64450)<br />PAU (64000)<br />POEY DE LESCAR (64230)<br />SAUVAGNON (64230)<br />SERRES CASTET (64121)<br />THEZE (64450)<br />Billre<br />Garlin<br />Lembeye<br />					&nbsp;
+				</div>
+				<div id="servicesColonne3" class="colonneDetail">
+					Lescar<br />Morlas<br />Pau-Centre<br />Pau-Est<br />Pau-Nord<br />Pau-Ouest<br />Pau-Sud<br />Thze<br />					&nbsp;
+				</div>
+			</div>
+					</div>
+	</div>
+</div>
+</body>
+</html>

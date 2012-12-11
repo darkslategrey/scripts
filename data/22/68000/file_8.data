@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Trouver un organisme agr&eacute;&eacute;</title>
+<link rel="stylesheet" href="css/recherche.css" type="text/css" />
+<style type="text/css">
+	p {margin: 0; padding: 5px 0 5px 0;}
+</style>
+<!--
+<script type="text/javascript" language="javascript" src="includes/functions.js"></script>
+<script type="text/javascript" language="javascript" src="includes/ajax.js"></script>
+-->
+<script>
+		tabServiceUrl = new Array();
+		tabServiceUrl[6] = "http://www.servicesalapersonne.gouv.fr/garde-d-enfants-a-domicile-(1488).cml";
+		tabServiceUrl[12] = "http://www.servicesalapersonne.gouv.fr/garde-d-enfants-a-domicile-(1488).cml";
+		tabServiceUrl[27] = "http://www.servicesalapersonne.gouv.fr/accompagnement-d-enfants-dans-leurs-deplacements-(1490).cml";
+		tabServiceUrl[28] = "http://www.servicesalapersonne.gouv.fr/accompagnement-d-enfants-dans-leurs-deplacements-(1490).cml";
+		tabServiceUrl[19] = "http://www.servicesalapersonne.gouv.fr/soutien-scolaire-(1491).cml";
+		tabServiceUrl[20] = "http://www.servicesalapersonne.gouv.fr/cours-a-domicile-(1492).cml";
+		tabServiceUrl[31] = "http://www.servicesalapersonne.gouv.fr/assistance-informatique-et-internet-(1493).cml";
+		tabServiceUrl[35] = "http://www.servicesalapersonne.gouv.fr/assistance-administrative-(1494).cml";
+		tabServiceUrl[14] = "http://www.servicesalapersonne.gouv.fr/travaux-menagers-(1496).cml";
+		tabServiceUrl[17] = "http://www.servicesalapersonne.gouv.fr/collecte-et-livraison-de-linge-repasse-(1497).cml";
+		tabServiceUrl[5] = "http://www.servicesalapersonne.gouv.fr/petits-travaux-de-jardinage-debroussaillage-(1499).cml";
+		tabServiceUrl[9] = "http://www.servicesalapersonne.gouv.fr/petit-bricolage-(1500).cml";
+		tabServiceUrl[34] = "http://www.servicesalapersonne.gouv.fr/gardiennage-entretien-et-surveillance-temporaires-des-residences-principale-et-secondaires-(1501).cml";
+		tabServiceUrl[15] = "http://www.servicesalapersonne.gouv.fr/preparation-de-repas-(4645).cml";
+		tabServiceUrl[16] = "http://www.servicesalapersonne.gouv.fr/preparation-de-repas-a-domicile-(1498).cml";
+		tabServiceUrl[30] = "http://www.servicesalapersonne.gouv.fr/livraison-de-repas-ou-de-courses-a-domicile-(1580).cml";
+		tabServiceUrl[24] = "http://www.servicesalapersonne.gouv.fr/garde-malade-(1495).cml";
+		tabServiceUrl[18] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-agees-(sauf-actes-medicaux)-(1503).cml";
+		tabServiceUrl[22] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-handicapees-(dont-interprete-en-langue-des-signes-technicien-de-l-ecrit-et-codeur-en-langage-(1504).cml";
+		tabServiceUrl[25] = "http://www.servicesalapersonne.gouv.fr/aide-a-la-mobilite-et-transport-(1464).cml";
+		tabServiceUrl[29] = "http://www.servicesalapersonne.gouv.fr/accompagnement-dans-les-promenades-et-les-actes-de-la-vie-courante-(1507).cml";
+		tabServiceUrl[26] = "http://www.servicesalapersonne.gouv.fr/conduite-du-vehicule-personnel-(pour-des-trajets-domicile-travail-en-vacances-ou-pour-des-demarches-administratives)-(1508).cml";
+		tabServiceUrl[33] = "http://www.servicesalapersonne.gouv.fr/soins-esthetiques-(1505).cml";
+		tabServiceUrl[32] = "http://www.servicesalapersonne.gouv.fr/soins-et-promenade-d-animaux-domestiques-(sauf-actes-veterinaires-et-toilettage)-(1509).cml";
+		tabServiceUrl[36] = "http://www.servicesalapersonne.gouv.fr/teleassistance-et-visioassistance-(5361).cml";
+		tabServiceUrl[23] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-handicapees-(dont-interprete-en-langue-des-signes-technicien-de-l-ecrit-et-codeur-en-langage-(1504).cml";
+
+		tabClickTag = new Array();
+		tabClickTag[6] = "fiche_garde_enfant_moins_trois_ans";
+		tabClickTag[12] = "fiche_garde_enfant_plus_trois_ans";
+		tabClickTag[27] = "fiche_accompagnement_enfant_moins_trois_ans";
+		tabClickTag[28] = "fiche_accompagnement_enfant_plus_trois_ans";
+		tabClickTag[19] = "fiche_soutien_scolaire";
+		tabClickTag[20] = "fiche_cours_domicile";
+		tabClickTag[31] = "fiche_assistance_info_internet";
+		tabClickTag[35] = "fiche_assistance_administrative";
+		tabClickTag[14] = "fiche_menage_repassage";
+		tabClickTag[5] = "fiche_petit_jardinage";
+		tabClickTag[9] = "fiche_petit_bricolage";
+		tabClickTag[15] = "fiche_preparation_repas_commissions";
+		tabClickTag[16] = "fiche_livraison_repas_domicile";
+		tabClickTag[17] = "fiche_collecte_livraison_linge";
+		tabClickTag[30] = "fiche_livraison_courses";
+		tabClickTag[34] = "fiche_maintenance_vigilance_residences";
+		tabClickTag[36] = "fiche_tele_visioassistance";
+		tabClickTag[18] = "fiche_aide_personnes_agees";
+		tabClickTag[24] = "fiche_garde_malade";
+		tabClickTag[25] = "fiche_aide_mobilite_transport";
+		tabClickTag[26] = "fiche_conduite_vehicule_perso";
+		tabClickTag[29] = "fiche_transport_accompagnement_pa_hd";
+		tabClickTag[22] = "fiche_assistance_pers_handicapees";
+		tabClickTag[23] = "fiche_interpretes_langues_signes";
+		tabClickTag[32] = "fiche_soins_promenades_animaux";
+		tabClickTag[33] = "fiche_soins_esthetiques";
+		
+		function getUrlFromService(idService) {
+			return tabServiceUrl[idService];
+		}	
+		
+		function getClickTagFromService(idService) {
+			return tabClickTag[idService];
+		}	
+		
+		function Call(pageAppelante, typeAppel, titre, url) {
+			var opt = 'resizable=yes,location=no,menubar=no,scrollbars=no,status=no,toolbar=no,fullscreen=no,dependent=yes,width=600,height=250,left=200,top=200';
+			window.open(pageAppelante + '?b=' + typeAppel + '&t=' + encodeURIComponent(titre) + '&u=' + encodeURIComponent(url), 'addMyLink', opt);
+		}
+
+
+		function ajoutOrganisme() {
+			url = "detail.php?id=9077";
+			
+			Call("http://www.servicesalapersonne.gouv.fr/ANSP/OA/AddToMyLinks.aspx", "OA", "ASSOCIATION HAUT-RHINOISE D&#39;AIDE AUX PERSONNES AGEES (APALIB&#39;)(9077)", url) ;
+
+		}
+
+		
+	</script>
+</head>
+<body>
+
+<!-- 20090108 - Marqueurs Xiti -->
+<script type="text/javascript">
+	<!--
+	xtnv=document;xtsd="http://logi141";xtsite="315767";xtn2="2";xtpage="Proximite::Web.ANSP.Public.Quotidien.Cote.Ann.Result.Fiche";xtdi="";
+	//-->
+</script>
+<script type="text/javascript" src="http://www.servicesalapersonne.gouv.fr/ANSP_xtcore.js"></script>
+<object>
+	<noscript>
+		<div id="xiti-logo-noscript">
+			<img width="1" height="1" src="http://logi141.xiti.com/hit.xiti?s=315767&amp;s2=2&amp;p=Proximite::Web.ANSP.Public.Quotidien.Cote.Ann.Result.Fiche&amp;di=&amp;" alt="XiTi" />
+		</div>
+	</noscript>
+</object>
+<!-- ************************* -->
+
+<div id="conteneur" class="conteneur">
+	<div id="bordGauche">&nbsp;</div>
+	<div id="contenu">
+		<div id="ligneTitreResultatsDetail">
+			<div id="imagePro3">&nbsp;</div>
+			<div id="centreTitreHautGauche" class="centreTitreHautGauche"><br />
+				APALIB&#39; et FAMI EMPLOI 68							
+			</div>
+			<div id="centreTitreHautDroite" class="centreTitreHautDroite">&nbsp;</div>
+     						<div id="recapitulatifActionsDetail">
+					<div id="retourIcone"></div>
+					<div id="retourTexte"><a href="resultats.php" class="lienActions">retour  la liste</a></div>
+					<div id="retourFin"></div>
+					<div class="cleaner"></div>
+					<div id="imprimerIcone"></div>
+					<div id="imprimerTexte"><a href="#" onclick="window.print();" class="lienActions">imprimer la fiche</a></div>
+					<div id="imprimerFin"></div>
+					<div class="cleaner"></div>
+					<div id="favorisIcone"></div>
+					<div id="favorisTexte"><a href="#" onclick="ajoutOrganisme();" class="lienActions">ajouter &agrave; mes favoris</a></div>
+					<div id="favorisFin"></div>
+					<div class="cleaner"></div>
+					<div id="modifierIconeDetail"></div>
+					<div id="modifierDetail"><a href="recherche.php" class="lienActions">modifier la recherche</a></div>
+					<div id="modifierFinDetail"></div>
+					<div class="cleaner"></div>
+					<div id="nouvelleIconeDetail"></div>
+					<div id="nouvelleTexteDetail"><a href="recherche.php?init=1" class="lienActions">nouvelle recherche</a></div>
+					<div id="nouvelleFinDetail"></div>
+					<div class="cleaner"></div>
+				</div>
+						</div>
+		<div class="cleaner"></div>
+		<div id="bordGaucheDetail">&nbsp;</div>
+		<div id="colonneResultatsDetail">
+			<div id="titre1" class="titreDetail">Contact</div>
+			<div id="contact">
+				<div id="contactColonne1" class="colonneDetail" style="width:33%">
+											<img src="img/icone_mobile.jpg" alt="icone mobile" /> T&eacute;l. : 
+						<span class="txtRose12Gras">0389327878</span>
+										</div>
+				<div id="contactColonne2" class="colonneDetail" style="width:67%">
+											<img src="img/icone_fax.jpg" alt="icone fax" /> Fax : <span class="txtRose12"> 03 89 43 50 17</span><br />
+											<img src="img/icone_contact.jpg" alt="icone contact" /> Contact : 
+					<span class="txtRose12">
+						<a href="mailto:info@famiemploi68.org" class="lienRose" style="font-weight:bold;">Fami Emploi 68</a><span style="font-size:smaller;">&nbsp;&nbsp;&nbsp;info@famiemploi68.org</span>					</span> 
+				</div>
+			</div>
+			<div class="cleaner"><br /></div>
+			<div id="titre2" class="titreDetail">Plus d'informations</div>
+			<div id="plusDInfo">
+				<div id="plusDInfoColonne1" class="colonneDetail" style="width:33%">
+					<p class="txtRose12" style="padding-left: 35px;">
+						Agr&eacute;ment qualit&eacute;					</p>
+					
+											<p class="txtRose12"  style="padding-left: 35px;">Mode d'intervention : 
+							<strong>
+							prestataire mandataire 							</strong>
+						</p>
+												<p><img src="img/icone_url.jpg" alt="icone url" /> <a href="http://www.famiemploi68.org" class="lienRose" target="_blank">www.famiemploi68.org</a></p>
+										</div>
+				<div id="plusDInfoColonne2" class="colonneDetail" style="width:33%">
+					<p class="txtRose12" style="padding-left: 35px;">Association loi 1901</p>					
+											<p class="txtRose12" style="padding-left: 35px;">Type d'implantation : <strong>&eacute;tablissement</strong></p>
+						
+											<p class="txtRose12" style="padding-left: 35px;">Si&egrave;ge social : <strong>oui</strong></p>
+						
+											<p class="txtRose12" style="padding-left: 35px;">&Eacute;tablissement principal : <strong>oui</strong></p>
+						
+											<p>
+						<img src="img/icone_agenda.jpg" alt="icone plaquette" />
+												<a href="../../plaquettes/org7883.pdf" class="lienRose" target="_blank">T&eacute;l&eacute;charger la plaquette </a>(PDF)
+						</p>
+										</div>
+				<div id="pluDInfoColonne3" class="colonneDetail" style="width:34%">
+					&nbsp;						<img src="img/logo-cesu-detail.jpg" alt="Ch&egrave;que emploi service universel accept&eacute;" title="Ch&egrave;que emploi service universel accept&eacute;" />
+						</strong>
+
+				</div>
+									<div id="plusDInfoCommentaire" class="plusDInfoCommentaire" style="clear:both; margin-top:15px; width:29%;">
+						<img src="img/icone_commentaire.jpg" alt="icone commentaire" />
+						APALIB&#39; et FAMI EMPLOI 68 vous parle <a href="#mentions" class="lienRose">*</a> :					</div>
+					<div id="plusDInfoCommentaire2" class="plusDInfoCommentaire2" style="width:71%; margin-top:15px;padding-top:3px;">
+						<div class="txtGris11" style="padding-left: 35px;">FAMI EMPLOI 68 est la marque d&#39;APALIB&#39;, spcialiste dans l&#39;entretien du linge, du logement et la garde d&#39;enfants depuis plus de 15 ans, et vous propose diffrents modes d&#39;intervention avec ses formules  employeur  ou  cl en main . <br /><br />Dans le cadre des formules  employeur , son quipe vous accompagne dans votre rle de particulier employeur, pour recruter et-ou rdiger le contrat de travail de votre employ(e) ou tout au long de votre relation avec ce dernier.<br /><br />Si vous choisissez la formule  cl en main , Fami Emploi 68 s&#39;occupe de tout : du recrutement,  la mise en uvre du service sans oublier le remplacement de votre intervenant(e) en cas de maladie.<br /><br />A vous de choisir ce qui vous convient le mieux !<br /><br />Vos avantages :<br />- Des prestations dans tout le Haut-Rhin<br />- Des interventions 7 jours sur 7<br />- Du personnel qualifi et de confiance<br />- Une exprience de plus de 15 ans dans le secteur de l&#39;aide  la personne<br />- Un service sur mesure<br />- Un Agrment Qualit pour les services  la personne<br />- Des avantages fiscaux: possibilit de rduction ou crdit d&#39;impt  hauteur de 50% (selon lgislation en vigueur)<br />- Une association  but non lucratif<br />- Une association qui dfend des valeurs solidaires<br /><br />=&gt; Prs de 1400 familles font dj confiance  Fami Emploi 68! Pourquoi pas vous ?</div>					</div>
+								</div>
+			<br/><br/>
+			<div class="cleaner"><br /></div>
+			<div id="titre3" class="titreDetail">Services propos&eacute;s</div>
+			<div id="servicesProposes">
+								<div id="servicesColonne1" class="colonneDetailRose">
+					<img src="../../admin/activite/files/prepa_repas.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Commissions et prparation de repas','A'); window.open(getUrlFromService(15)); return false;" class="lienRoseService">Commissions et prparation de repas</a><br /><img src="../../admin/activite/files/livraison-repa.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Livraison de repas  domicile','A'); window.open(getUrlFromService(16)); return false;" class="lienRoseService">Livraison de repas  domicile</a><br /><img src="../../admin/activite/files/assistance-handicapes.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance aux personnes handicapes','A'); window.open(getUrlFromService(22)); return false;" class="lienRoseService"><strong>Assistance aux personnes handicapes</strong></a><br /><img src="../../admin/activite/files/garde-malade.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Garde-malade, sauf soins','A'); window.open(getUrlFromService(24)); return false;" class="lienRoseService">Garde-malade, sauf soins</a><br /><img src="../../admin/activite/files/accompagnement.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Accompagnement hors domicile PA et/ou PH','A'); window.open(getUrlFromService(29)); return false;" class="lienRoseService">Accompagnement hors domicile PA et/ou PH</a><br /><img src="../../admin/activite/files/aide-personnes.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance aux personnes ges','A'); window.open(getUrlFromService(18)); return false;" class="lienRoseService">Assistance aux personnes ges</a><br /><img src="../../admin/activite/files/jardinage.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Petits travaux de jardinage','A'); window.open(getUrlFromService(5)); return false;" class="lienRoseService">Petits travaux de jardinage</a><br />				</div>
+				<div id="servicesColonne2" class="colonneDetailRose">
+					<img src="../../admin/activite/files/linge.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Collecte et livraison de linge repass','A'); window.open(getUrlFromService(17)); return false;"  class="lienRoseService">Collecte et livraison de linge repass</a><br /><img src="../../admin/activite/files/acompagner-enfant.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Accomp./dplacement enfants +3 ans','A'); window.open(getUrlFromService(28)); return false;"  class="lienRoseService">Accomp./dplacement enfants +3 ans</a><br /><img src="../../admin/activite/files/animaux.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Soins et promenades d&#39;animaux de compagnie','A'); window.open(getUrlFromService(32)); return false;"  class="lienRoseService">Soins et promenades d&#39;animaux de compagnie</a><br /><img src="../../admin/activite/files/travaux-menager.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Entretien de la maison et travaux mnagers','A'); window.open(getUrlFromService(14)); return false;"  class="lienRoseService">Entretien de la maison et travaux mnagers</a><br /><img src="../../admin/activite/files/garde-enfants.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Garde d&#39;enfant +3 ans  domicile','A'); window.open(getUrlFromService(6)); return false;"  class="lienRoseService">Garde d&#39;enfant +3 ans  domicile</a><br /><img src="../../admin/activite/files/vigilance.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Maintenance et vigilance de rsidence','A'); window.open(getUrlFromService(34)); return false;"  class="lienRoseService">Maintenance et vigilance de rsidence</a><br /><img src="../../admin/activite/files/assistance-administrative.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance administrative domicile','A'); window.open(getUrlFromService(35)); return false;"  class="lienRoseService">Assistance administrative domicile</a><br />				</div>
+				<div id="servicesColonne3" class="colonneDetailRose">
+					<img src="../../admin/activite/files/livraison-courses.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Livraison de courses domicile','A'); window.open(getUrlFromService(30)); return false;"  class="lienRoseService">Livraison de courses domicile</a><br /><img src="../../admin/activite/files/bricolage.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Travaux de petit bricolage','A'); window.open(getUrlFromService(9)); return false;"  class="lienRoseService">Travaux de petit bricolage</a><br /><img src="../../admin/activite/files/assitance-informatique.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance informatique  domicile','A'); window.open(getUrlFromService(31)); return false;"  class="lienRoseService">Assistance informatique  domicile</a><br /><img src="../../admin/activite/files/aide-mobilite.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Aide mobilit et transport de personnes','A'); window.open(getUrlFromService(25)); return false;"  class="lienRoseService">Aide mobilit et transport de personnes</a><br /><img src="../../admin/activite/files/garde-enfants.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Garde d&#39;enfant -3 ans  domicile','A'); window.open(getUrlFromService(12)); return false;"  class="lienRoseService">Garde d&#39;enfant -3 ans  domicile</a><br /><img src="../../admin/activite/files/accompagnement.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Aide/Accomp. Fam. Fragilises','A'); window.open(getUrlFromService(21)); return false;"  class="lienRoseService">Aide/Accomp. Fam. Fragilises</a><br /><img src="../../admin/activite/files/signes.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Interprte en langue des signes','A'); window.open(getUrlFromService(23)); return false;"  class="lienRoseService">Interprte en langue des signes</a><br />				</div>
+			</div>
+			<div class="cleaner"><br /></div>
+			<div id="titre4" class="titreDetail">Zones d'intervention</div>
+			<div id="zonesIntervention">
+								<div id="servicesColonne1" class="colonneDetail">
+					ARTZENHEIM (68320)<br />ASPACH (68130)<br />ASPACH LE BAS (68700)<br />ASPACH LE HAUT (68700)<br />ATTENSCHWILLER (68220)<br />AUBURE (68150)<br />BALDERSHEIM (68390)<br />BALGAU (68740)<br />BALLERSDORF (68210)<br />BALSCHWILLER (68210)<br />BALTZENHEIM (68320)<br />BANTZENHEIM (68490)<br />BARTENHEIM (68870)<br />BATTENHEIM (68390)<br />BEBLENHEIM (68980)<br />BELLEMAGNY (68210)<br />BENDORF (68480)<br />BENNWIHR (68630)<br />BERENTZWILLER (68130)<br />BERGHEIM (68750)<br />BERGHOLTZ (68500)<br />BERGHOLTZ ZELL (68500)<br />BERNWILLER (68210)<br />BERRWILLER (68500)<br />BETTENDORF (68560)<br />BETTLACH (68480)<br />BIEDERTHAL (68480)<br />BIESHEIM (68600)<br />BILZHEIM (68250)<br />BISCHWIHR (68320)<br />BISEL (68580)<br />BITSCHWILLER LES THANN (68620)<br />BLODELSHEIM (68740)<br />BLOTZHEIM (68730)<br />BOLLWILLER (68540)<br />BOURBACH LE BAS (68290)<br />BOURBACH LE HAUT (68290)<br />BOURGFELDEN (68300)<br />BOURTZWILLER (68200)<br />BOUXWILLER (68480)<br />BRECHAUMONT (68210)<br />BREITENBACH HAUT RHIN (68380)<br />BRETTEN (68780)<br />BRINCKHEIM (68870)<br />BRINIGHOFFEN (68720)<br />BRUEBACH (68440)<br />BRUNSTATT (68350)<br />BUETHWILLER (68210)<br />BUHL (68530)<br />BURNHAUPT LE BAS (68520)<br />BURNHAUPT LE HAUT (68520)<br />BUSCHWILLER (68220)<br />CARSPACH (68130)<br />CERNAY (68700)<br />CHALAMPE (68490)<br />CHAVANNES SUR L ETANG (68210)<br />COLMAR (68000)<br />COURTAVON (68480)<br />DANNEMARIE (68210)<br />DESSENHEIM (68600)<br />DIDENHEIM (68350)<br />DIEFMATTEN (68780)<br />DIETWILLER (68440)<br />DOLLEREN (68290)<br />DURLINSDORF (68480)<br />DURMENACH (68480)<br />DURRENENTZEN (68320)<br />EGLINGEN (68720)<br />EGUISHEIM (68420)<br />ELBACH (68210)<br />EMLINGEN (68130)<br />ENSISHEIM (68190)<br />ESCHBACH AU VAL (68140)<br />ESCHENTZWILLER (68440)<br />ETEIMBES (68210)<br />FALKWILLER (68210)<br />FELDBACH (68640)<br />FELDKIRCH (68540)<br />FELLERING (68470)<br />FERRETTE (68480)<br />FESSENHEIM (68740)<br />FISLIS (68480)<br />FLAXLANDEN (68720)<br />FOLGENSBOURG (68220)<br />FORTSCHWIHR (68320)<br />FRANKEN (68130)<br />FRELAND (68240)<br />FRIESEN (68580)<br />FROENINGEN (68720)<br />FULLEREN (68210)<br />GALFINGUE (68990)<br />GEISHOUSE (68690)<br />GEISPITZEN (68510)<br />GEISWASSER (68600)<br />GILDWILLER (68210)<br />GOLDBACH ALTENBACH (68760)<br />GOMMERSDORF (68210)<br />GRENTZINGEN (68960)<br />GRIESBACH AU VAL (68140)<br />GRUSSENHEIM (68320)<br />GUEBERSCHWIHR (68420)<br />GUEBWILLER (68500)<br />GUEMAR (68970)<br />GUEVENATTEN (68210)<br />GUEWENHEIM (68116)<br />GUNDOLSHEIM (68250)<br />GUNSBACH (68140)<br />HABSHEIM (68440)<br />HAGENBACH (68210)<br />HAGENTHAL LE BAS (68220)<br />HAGENTHAL LE HAUT (68220)<br />HARTMANNSWILLER (68500)<br />HATTSTATT (68420)<br />HAUSGAUEN (68130)<br />HECKEN (68210)<br />HEGENHEIM (68220)<br />HEIDWILLER (68720)<br />HEIMERSDORF (68560)<br />HEIMSBRUNN (68990)<br />HEITEREN (68600)<br />HEIWILLER (68130)<br />HELFRANTZKIRCH (68510)<br />HENFLINGEN (68960)<br />HERRLISHEIM PRES COLMAR (68420)<br />HESINGUE (68220)<br />HETTENSCHLAG (68600)<br />HINDLINGEN (68580)<br />					&nbsp;
+				</div>
+				<div id="servicesColonne2" class="colonneDetail">
+					HIRSINGUE (68560)<br />HIRTZBACH (68118)<br />HIRTZFELDEN (68740)<br />HOCHSTATT (68720)<br />HOHROD (68140)<br />HOLTZWIHR (68320)<br />HOMBOURG (68490)<br />HORBOURG WIHR (68180)<br />HOUSSEN (68125)<br />HUNAWIHR (68150)<br />HUNDSBACH (68130)<br />HUNINGUE (68330)<br />HUSSEREN LES CHATEAUX (68420)<br />HUSSEREN WESSERLING (68470)<br />ILLFURTH (68720)<br />ILLHAEUSERN (68970)<br />ILLZACH (68110)<br />INGERSHEIM (68040)<br />ISSENHEIM (68500)<br />JEBSHEIM (68320)<br />JETTINGEN (68130)<br />JUNGHOLTZ (68500)<br />KAPPELEN (68510)<br />KATZENTHAL (68230)<br />KAYSERSBERG (68240)<br />KEMBS (68680)<br />KIENTZHEIM (68240)<br />KIFFIS (68480)<br />KINGERSHEIM (68260)<br />KIRCHBERG (68290)<br />KNOERINGUE (68220)<br />KOESTLACH (68480)<br />KOETZINGUE (68510)<br />KRUTH (68820)<br />KUNHEIM (68320)<br />LABAROCHE (68910)<br />LANDSER (68440)<br />LAPOUTROIE (68650)<br />LARGITZEN (68580)<br />LAUTENBACH (68610)<br />LAUTENBACHZELL (68610)<br />LAUW (68290)<br />LE BONHOMME (68650)<br />LEIMBACH (68800)<br />LEVONCOURT (68480)<br />LEYMEN (68220)<br />LIEBENSWILLER (68220)<br />LIEBSDORF (68480)<br />LIEPVRE (68660)<br />LIGSDORF (68480)<br />LINSDORF (68480)<br />LINTHAL (68610)<br />LOGELHEIM (68280)<br />LUCELLE (68480)<br />LUEMSCHWILLER (68720)<br />LUTTENBACH PRES MUNSTER (68140)<br />LUTTER (68480)<br />LUTTERBACH (68460)<br />MAGNY (68210)<br />MAGSTATT LE BAS (68510)<br />MAGSTATT LE HAUT (68510)<br />MALMERSPACH (68550)<br />MANSPACH (68210)<br />MASEVAUX (68290)<br />MERTZEN (68210)<br />MERXHEIM (68500)<br />METZERAL (68380)<br />MEYENHEIM (68890)<br />MICHELBACH (68700)<br />MICHELBACH LE BAS (68730)<br />MICHELBACH LE HAUT (68220)<br />MITTELWIHR (68630)<br />MITTLACH (68380)<br />MITZACH (68470)<br />MOERNACH (68480)<br />MOLLAU (68470)<br />MONTREUX JEUNE (68210)<br />MONTREUX VIEUX (68210)<br />MOOSCH (68690)<br />MOOSLARGUE (68580)<br />MORSCHWILLER LE BAS (68790)<br />MORTZWILLER (68780)<br />MOYEN MUESPACH (68640)<br />MUESPACH (68640)<br />MUESPACH LE HAUT (68640)<br />MUHLBACH SUR MUNSTER (68380)<br />MULHOUSE (68100)<br />MUNCHHOUSE (68740)<br />MUNSTER (68140)<br />MUNTZENHEIM (68320)<br />MUNWILLER (68250)<br />MURBACH (68530)<br />NAMBSHEIM (68740)<br />NEUF BRISACH (68600)<br />NEUWILLER (68220)<br />NIEDERBRUCK (68290)<br />NIEDERENTZEN (68250)<br />NIEDERHERGHEIM (68250)<br />NIEDERLARG (68580)<br />NIEDERMORSCHWIHR (68230)<br />NIFFER (68680)<br />OBERBRUCK (68290)<br />OBERDORF (68960)<br />OBERENTZEN (68250)<br />OBERHERGHEIM (68250)<br />OBERLARG (68480)<br />OBERMORSCHWIHR (68420)<br />OBERMORSCHWILLER (68130)<br />OBERSAASHEIM (68600)<br />ODEREN (68830)<br />OLTINGUE (68480)<br />ORBEY (68370)<br />ORSCHWIHR (68500)<br />OSENBACH (68570)<br />OSTHEIM (68150)<br />OTTMARSHEIM (68490)<br />PETIT LANDAU (68490)<br />PFAFFENHEIM (68250)<br />PFASTATT (68120)<br />PFETTERHOUSE (68480)<br />PULVERSHEIM (68840)<br />RAEDERSDORF (68480)<br />RAEDERSHEIM (68190)<br />RAMMERSMATT (68800)<br />RANSPACH (68470)<br />RANSPACH LE BAS (68730)<br />RANSPACH LE HAUT (68220)<br />					&nbsp;
+				</div>
+				<div id="servicesColonne3" class="colonneDetail">
+					RANTZWILLER (68510)<br />REGUISHEIM (68890)<br />REININGUE (68950)<br />RETZWILLER (68210)<br />RIBEAUVILLE (68150)<br />RICHWILLER (68120)<br />RIEDISHEIM (68400)<br />RIEDWIHR (68320)<br />RIESPACH (68640)<br />RIMBACH PRES GUEBWILLER (68500)<br />RIMBACH PRES MASEVAUX (68290)<br />RIMBACHZELL (68500)<br />RIQUEWIHR (68340)<br />RIXHEIM (68170)<br />RODEREN (68800)<br />RODERN (68590)<br />ROGGENHOUSE (68740)<br />ROMAGNY (68210)<br />ROMBACH LE FRANC (68660)<br />ROPPENTZWILLER (68480)<br />RORSCHWIHR (68590)<br />ROSENAU (68128)<br />ROUFFACH (68250)<br />RUEDERBACH (68560)<br />RUELISHEIM (68270)<br />RUMERSHEIM LE HAUT (68740)<br />RUSTENHART (68740)<br />SAUSHEIM (68390)<br />SCHLIERBACH (68440)<br />SCHWEIGHOUSE PRES THANN (68520)<br />SCHWOBEN (68130)<br />SENTHEIM (68780)<br />SEPPOIS LE BAS (68580)<br />SEPPOIS LE HAUT (68580)<br />SEWEN (68290)<br />SICKERT (68290)<br />SIERENTZ (68510)<br />SIGOLSHEIM (68240)<br />SONDERNACH (68380)<br />SONDERSDORF (68480)<br />SOPPE LE BAS (68780)<br />SOPPE LE HAUT (68780)<br />SOULTZ HAUT RHIN (68360)<br />SOULTZBACH LES BAINS (68230)<br />SOULTZEREN (68140)<br />SOULTZMATT (68570)<br />SPECHBACH LE BAS (68720)<br />SPECHBACH LE HAUT (68720)<br />ST AMARIN (68550)<br />ST BERNARD (68720)<br />ST COSME (68210)<br />ST HIPPOLYTE (68590)<br />ST LOUIS (68300)<br />ST ULRICH (68210)<br />STAFFELFELDEN (68850)<br />STE CROIX AUX MINES (68160)<br />STE CROIX EN PLAINE (68127)<br />STE MARIE AUX MINES (68160)<br />STEINBACH (68700)<br />STEINBRUNN LE BAS (68440)<br />STEINBRUNN LE HAUT (68440)<br />STEINSOULTZ (68640)<br />STERNENBERG (68780)<br />STETTEN (68510)<br />STORCKENSOHN (68470)<br />STOSSWIHR (68140)<br />STRUETH (68580)<br />SUNDHOFFEN (68280)<br />TAGOLSHEIM (68720)<br />TAGSDORF (68130)<br />THANN (68800)<br />THANNENKIRCH (68590)<br />TRAUBACH LE BAS (68210)<br />TRAUBACH LE HAUT (68210)<br />TURCKHEIM (68230)<br />UEBERKUMEN (68210)<br />UEBERSTRASS (68580)<br />UFFHEIM (68510)<br />UFFHOLTZ (68700)<br />UNGERSHEIM (68190)<br />URBES (68121)<br />URSCHENHEIM (68320)<br />VALDIEU (68210)<br />VALDIEU LUTRAN (68210)<br />VIEUX FERRETTE (68480)<br />VIEUX THANN (68800)<br />VILLAGE NEUF (68128)<br />VOEGTLINSHOFEN (68420)<br />VOGELGRUN (68600)<br />VOLGELSHEIM (68600)<br />WAHLBACH (68130)<br />WALBACH (68230)<br />WALDIGHOFEN (68640)<br />WALHEIM (68130)<br />WALTENHEIM (68510)<br />WASSERBOURG (68230)<br />WATTWILLER (68700)<br />WECKOLSHEIM (68600)<br />WEGSCHEID (68290)<br />WENTZWILLER (68220)<br />WERENTZHOUSE (68480)<br />WESTHALTEN (68250)<br />WETTOLSHEIM (68920)<br />WICKERSCHWIHR (68320)<br />WIDENSOHLEN (68320)<br />WIHR AU VAL (68230)<br />WIHR EN PLAINE (68180)<br />WILDENSTEIN (68820)<br />WILLER (68960)<br />WILLER SUR THUR (68760)<br />WINKEL (68480)<br />WINTZENHEIM (68920)<br />WITTELSHEIM (68310)<br />WITTENHEIM (68270)<br />WITTERSDORF (68130)<br />WOLFERSDORF (68210)<br />WOLFGANTZEN (68600)<br />WOLSCHWILLER (68480)<br />WUENHEIM (68500)<br />ZAESSINGUE (68130)<br />ZELLENBERG (68340)<br />ZILLISHEIM (68720)<br />ZIMMERBACH (68230)<br />ZIMMERSHEIM (68440)<br />Haut-Rhin<br />					&nbsp;
+				</div>
+			</div>
+							<div class="cleaner"><br /></div>
+				<div id="mentions" class="txtGris10"> <a name="mentions"></a> * Les informations contenues dans ce paragraphe sont des informations commerciales non garanties par l'ANSP </div>
+						</div>
+	</div>
+</div>
+</body>
+</html>

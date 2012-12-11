@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Trouver un organisme agr&eacute;&eacute;</title>
+<link rel="stylesheet" href="css/recherche.css" type="text/css" />
+<style type="text/css">
+	p {margin: 0; padding: 5px 0 5px 0;}
+</style>
+<!--
+<script type="text/javascript" language="javascript" src="includes/functions.js"></script>
+<script type="text/javascript" language="javascript" src="includes/ajax.js"></script>
+-->
+<script>
+		tabServiceUrl = new Array();
+		tabServiceUrl[6] = "http://www.servicesalapersonne.gouv.fr/garde-d-enfants-a-domicile-(1488).cml";
+		tabServiceUrl[12] = "http://www.servicesalapersonne.gouv.fr/garde-d-enfants-a-domicile-(1488).cml";
+		tabServiceUrl[27] = "http://www.servicesalapersonne.gouv.fr/accompagnement-d-enfants-dans-leurs-deplacements-(1490).cml";
+		tabServiceUrl[28] = "http://www.servicesalapersonne.gouv.fr/accompagnement-d-enfants-dans-leurs-deplacements-(1490).cml";
+		tabServiceUrl[19] = "http://www.servicesalapersonne.gouv.fr/soutien-scolaire-(1491).cml";
+		tabServiceUrl[20] = "http://www.servicesalapersonne.gouv.fr/cours-a-domicile-(1492).cml";
+		tabServiceUrl[31] = "http://www.servicesalapersonne.gouv.fr/assistance-informatique-et-internet-(1493).cml";
+		tabServiceUrl[35] = "http://www.servicesalapersonne.gouv.fr/assistance-administrative-(1494).cml";
+		tabServiceUrl[14] = "http://www.servicesalapersonne.gouv.fr/travaux-menagers-(1496).cml";
+		tabServiceUrl[17] = "http://www.servicesalapersonne.gouv.fr/collecte-et-livraison-de-linge-repasse-(1497).cml";
+		tabServiceUrl[5] = "http://www.servicesalapersonne.gouv.fr/petits-travaux-de-jardinage-debroussaillage-(1499).cml";
+		tabServiceUrl[9] = "http://www.servicesalapersonne.gouv.fr/petit-bricolage-(1500).cml";
+		tabServiceUrl[34] = "http://www.servicesalapersonne.gouv.fr/gardiennage-entretien-et-surveillance-temporaires-des-residences-principale-et-secondaires-(1501).cml";
+		tabServiceUrl[15] = "http://www.servicesalapersonne.gouv.fr/preparation-de-repas-(4645).cml";
+		tabServiceUrl[16] = "http://www.servicesalapersonne.gouv.fr/preparation-de-repas-a-domicile-(1498).cml";
+		tabServiceUrl[30] = "http://www.servicesalapersonne.gouv.fr/livraison-de-repas-ou-de-courses-a-domicile-(1580).cml";
+		tabServiceUrl[24] = "http://www.servicesalapersonne.gouv.fr/garde-malade-(1495).cml";
+		tabServiceUrl[18] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-agees-(sauf-actes-medicaux)-(1503).cml";
+		tabServiceUrl[22] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-handicapees-(dont-interprete-en-langue-des-signes-technicien-de-l-ecrit-et-codeur-en-langage-(1504).cml";
+		tabServiceUrl[25] = "http://www.servicesalapersonne.gouv.fr/aide-a-la-mobilite-et-transport-(1464).cml";
+		tabServiceUrl[29] = "http://www.servicesalapersonne.gouv.fr/accompagnement-dans-les-promenades-et-les-actes-de-la-vie-courante-(1507).cml";
+		tabServiceUrl[26] = "http://www.servicesalapersonne.gouv.fr/conduite-du-vehicule-personnel-(pour-des-trajets-domicile-travail-en-vacances-ou-pour-des-demarches-administratives)-(1508).cml";
+		tabServiceUrl[33] = "http://www.servicesalapersonne.gouv.fr/soins-esthetiques-(1505).cml";
+		tabServiceUrl[32] = "http://www.servicesalapersonne.gouv.fr/soins-et-promenade-d-animaux-domestiques-(sauf-actes-veterinaires-et-toilettage)-(1509).cml";
+		tabServiceUrl[36] = "http://www.servicesalapersonne.gouv.fr/teleassistance-et-visioassistance-(5361).cml";
+		tabServiceUrl[23] = "http://www.servicesalapersonne.gouv.fr/assistance-aux-personnes-handicapees-(dont-interprete-en-langue-des-signes-technicien-de-l-ecrit-et-codeur-en-langage-(1504).cml";
+
+		tabClickTag = new Array();
+		tabClickTag[6] = "fiche_garde_enfant_moins_trois_ans";
+		tabClickTag[12] = "fiche_garde_enfant_plus_trois_ans";
+		tabClickTag[27] = "fiche_accompagnement_enfant_moins_trois_ans";
+		tabClickTag[28] = "fiche_accompagnement_enfant_plus_trois_ans";
+		tabClickTag[19] = "fiche_soutien_scolaire";
+		tabClickTag[20] = "fiche_cours_domicile";
+		tabClickTag[31] = "fiche_assistance_info_internet";
+		tabClickTag[35] = "fiche_assistance_administrative";
+		tabClickTag[14] = "fiche_menage_repassage";
+		tabClickTag[5] = "fiche_petit_jardinage";
+		tabClickTag[9] = "fiche_petit_bricolage";
+		tabClickTag[15] = "fiche_preparation_repas_commissions";
+		tabClickTag[16] = "fiche_livraison_repas_domicile";
+		tabClickTag[17] = "fiche_collecte_livraison_linge";
+		tabClickTag[30] = "fiche_livraison_courses";
+		tabClickTag[34] = "fiche_maintenance_vigilance_residences";
+		tabClickTag[36] = "fiche_tele_visioassistance";
+		tabClickTag[18] = "fiche_aide_personnes_agees";
+		tabClickTag[24] = "fiche_garde_malade";
+		tabClickTag[25] = "fiche_aide_mobilite_transport";
+		tabClickTag[26] = "fiche_conduite_vehicule_perso";
+		tabClickTag[29] = "fiche_transport_accompagnement_pa_hd";
+		tabClickTag[22] = "fiche_assistance_pers_handicapees";
+		tabClickTag[23] = "fiche_interpretes_langues_signes";
+		tabClickTag[32] = "fiche_soins_promenades_animaux";
+		tabClickTag[33] = "fiche_soins_esthetiques";
+		
+		function getUrlFromService(idService) {
+			return tabServiceUrl[idService];
+		}	
+		
+		function getClickTagFromService(idService) {
+			return tabClickTag[idService];
+		}	
+		
+		function Call(pageAppelante, typeAppel, titre, url) {
+			var opt = 'resizable=yes,location=no,menubar=no,scrollbars=no,status=no,toolbar=no,fullscreen=no,dependent=yes,width=600,height=250,left=200,top=200';
+			window.open(pageAppelante + '?b=' + typeAppel + '&t=' + encodeURIComponent(titre) + '&u=' + encodeURIComponent(url), 'addMyLink', opt);
+		}
+
+
+		function ajoutOrganisme() {
+			url = "detail.php?id=10355";
+			
+			Call("http://www.servicesalapersonne.gouv.fr/ANSP/OA/AddToMyLinks.aspx", "OA", "Association Dpartementale ADMR de l&#39;Aide  Domicile(10355)", url) ;
+
+		}
+
+		
+	</script>
+</head>
+<body>
+
+<!-- 20090108 - Marqueurs Xiti -->
+<script type="text/javascript">
+	<!--
+	xtnv=document;xtsd="http://logi141";xtsite="315767";xtn2="2";xtpage="Proximite::Web.ANSP.Public.Quotidien.Cote.Ann.Result.Fiche";xtdi="";
+	//-->
+</script>
+<script type="text/javascript" src="http://www.servicesalapersonne.gouv.fr/ANSP_xtcore.js"></script>
+<object>
+	<noscript>
+		<div id="xiti-logo-noscript">
+			<img width="1" height="1" src="http://logi141.xiti.com/hit.xiti?s=315767&amp;s2=2&amp;p=Proximite::Web.ANSP.Public.Quotidien.Cote.Ann.Result.Fiche&amp;di=&amp;" alt="XiTi" />
+		</div>
+	</noscript>
+</object>
+<!-- ************************* -->
+
+<div id="conteneur" class="conteneur">
+	<div id="bordGauche">&nbsp;</div>
+	<div id="contenu">
+		<div id="ligneTitreResultatsDetail">
+			<div id="imagePro3">&nbsp;</div>
+			<div id="centreTitreHautGauche" class="centreTitreHautGauche"><br />
+				Association Dpartementale ADMR de l&#39;Aide  Domicile							
+			</div>
+			<div id="centreTitreHautDroite" class="centreTitreHautDroite">&nbsp;</div>
+     						<div id="recapitulatifActionsDetail">
+					<div id="retourIcone"></div>
+					<div id="retourTexte"><a href="resultats.php" class="lienActions">retour  la liste</a></div>
+					<div id="retourFin"></div>
+					<div class="cleaner"></div>
+					<div id="imprimerIcone"></div>
+					<div id="imprimerTexte"><a href="#" onclick="window.print();" class="lienActions">imprimer la fiche</a></div>
+					<div id="imprimerFin"></div>
+					<div class="cleaner"></div>
+					<div id="favorisIcone"></div>
+					<div id="favorisTexte"><a href="#" onclick="ajoutOrganisme();" class="lienActions">ajouter &agrave; mes favoris</a></div>
+					<div id="favorisFin"></div>
+					<div class="cleaner"></div>
+					<div id="modifierIconeDetail"></div>
+					<div id="modifierDetail"><a href="recherche.php" class="lienActions">modifier la recherche</a></div>
+					<div id="modifierFinDetail"></div>
+					<div class="cleaner"></div>
+					<div id="nouvelleIconeDetail"></div>
+					<div id="nouvelleTexteDetail"><a href="recherche.php?init=1" class="lienActions">nouvelle recherche</a></div>
+					<div id="nouvelleFinDetail"></div>
+					<div class="cleaner"></div>
+				</div>
+						</div>
+		<div class="cleaner"></div>
+		<div id="bordGaucheDetail">&nbsp;</div>
+		<div id="colonneResultatsDetail">
+			<div id="titre1" class="titreDetail">Contact</div>
+			<div id="contact">
+				<div id="contactColonne1" class="colonneDetail" style="width:33%">
+											<img src="img/icone_mobile.jpg" alt="icone mobile" /> T&eacute;l. : 
+						<span class="txtRose12Gras">0232939090</span>
+										</div>
+				<div id="contactColonne2" class="colonneDetail" style="width:67%">
+											<img src="img/icone_fax.jpg" alt="icone fax" /> Fax : <span class="txtRose12"> 02 32 93 90 99</span><br />
+											<img src="img/icone_contact.jpg" alt="icone contact" /> Contact : 
+					<span class="txtRose12">
+						<a href="mailto:info.fede76@admr.org" class="lienRose" style="font-weight:bold;">Madame Jolle JABIOL</a><span style="font-size:smaller;">&nbsp;&nbsp;&nbsp;info.fede76@admr.org</span>					</span> 
+				</div>
+			</div>
+			<div class="cleaner"><br /></div>
+			<div id="titre2" class="titreDetail">Plus d'informations</div>
+			<div id="plusDInfo">
+				<div id="plusDInfoColonne1" class="colonneDetail" style="width:33%">
+					<p class="txtRose12" style="padding-left: 35px;">
+						D&eacute;clar&eacute; et Agr&eacute;&eacute;					</p>
+					
+											<p class="txtRose12"  style="padding-left: 35px;">Mode d'intervention : 
+							<strong>
+							prestataire mandataire 							</strong>
+						</p>
+												<p><img src="img/icone_url.jpg" alt="icone url" /> <a href="http://www.admr.org" class="lienRose" target="_blank">www.admr.org</a></p>
+										</div>
+				<div id="plusDInfoColonne2" class="colonneDetail" style="width:33%">
+					<p class="txtRose12" style="padding-left: 35px;">Association loi 1901</p>					
+											<p class="txtRose12" style="padding-left: 35px;">Type d'implantation : <strong>&eacute;tablissement</strong></p>
+						
+											<p class="txtRose12" style="padding-left: 35px;">Si&egrave;ge social : <strong>oui</strong></p>
+						
+											<p class="txtRose12" style="padding-left: 35px;">&Eacute;tablissement principal : <strong>oui</strong></p>
+						
+									</div>
+				<div id="pluDInfoColonne3" class="colonneDetail" style="width:34%">
+					&nbsp;						<img src="img/logo-cesu-detail.jpg" alt="Ch&egrave;que emploi service universel accept&eacute;" title="Ch&egrave;que emploi service universel accept&eacute;" />
+						</strong>
+
+				</div>
+							</div>
+			<br/><br/>
+			<div class="cleaner"><br /></div>
+			<div id="titre3" class="titreDetail">Services propos&eacute;s</div>
+			<div id="servicesProposes">
+								<div id="servicesColonne1" class="colonneDetailRose">
+					<img src="../../admin/activite/files/aide-personnes.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance aux personnes ges','A'); window.open(getUrlFromService(18)); return false;" class="lienRoseService">Assistance aux personnes ges</a><br /><img src="../../admin/activite/files/garde-malade.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Garde-malade, sauf soins','A'); window.open(getUrlFromService(24)); return false;" class="lienRoseService">Garde-malade, sauf soins</a><br /><img src="../../admin/activite/files/aide-mobilite.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Aide mobilit et transport de personnes','A'); window.open(getUrlFromService(25)); return false;" class="lienRoseService">Aide mobilit et transport de personnes</a><br /><img src="../../admin/activite/files/accompagnement.gif" border="0" style="margin-right:10px; margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Accompagnement hors domicile PA et/ou PH','A'); window.open(getUrlFromService(29)); return false;" class="lienRoseService"><strong>Accompagnement hors domicile PA et/ou PH</strong></a><br />				</div>
+				<div id="servicesColonne2" class="colonneDetailRose">
+					<img src="../../admin/activite/files/assistance-handicapes.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Assistance aux personnes handicapes','A'); window.open(getUrlFromService(22)); return false;"  class="lienRoseService">Assistance aux personnes handicapes</a><br /><img src="../../admin/activite/files/garde-enfants.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Garde d&#39;enfant +3 ans  domicile','A'); window.open(getUrlFromService(6)); return false;"  class="lienRoseService">Garde d&#39;enfant +3 ans  domicile</a><br /><img src="../../admin/activite/files/travaux-menager.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Entretien de la maison et travaux mnagers','A'); window.open(getUrlFromService(14)); return false;"  class="lienRoseService">Entretien de la maison et travaux mnagers</a><br /><img src="../../admin/activite/files/bricolage.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Travaux de petit bricolage','A'); window.open(getUrlFromService(9)); return false;"  class="lienRoseService">Travaux de petit bricolage</a><br />				</div>
+				<div id="servicesColonne3" class="colonneDetailRose">
+					<img src="../../admin/activite/files/prepa_repas.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Commissions et prparation de repas','A'); window.open(getUrlFromService(15)); return false;"  class="lienRoseService">Commissions et prparation de repas</a><br /><img src="../../admin/activite/files/animaux.gif" border="0" style="margin-right:10px;margin-top:1px;vertical-align:middle;" /><a href="#" onclick="xt_med('C','2','Soins et promenades d&#39;animaux de compagnie','A'); window.open(getUrlFromService(32)); return false;"  class="lienRoseService">Soins et promenades d&#39;animaux de compagnie</a><br />				</div>
+			</div>
+			<div class="cleaner"><br /></div>
+			<div id="titre4" class="titreDetail">Zones d'intervention</div>
+			<div id="zonesIntervention">
+								<div id="servicesColonne1" class="colonneDetail">
+					AMFREVILLE LA MI VOIE (76920)<br />ANCEAUMEVILLE (76710)<br />ANGERVILLE BAILLEUL (76110)<br />ANGERVILLE L ORCHER (76280)<br />ANGERVILLE LA MARTEL (76540)<br />ARQUES LA BATAILLE (76880)<br />AUBERMESNIL AUX ERABLES (76340)<br />AUPPEGARD (76730)<br />AUTHIEUX SUR LE PORT ST O (76520)<br />AUTRETOT (76190)<br />AUZOUVILLE SUR RY (76116)<br />AUZOUVILLE SUR SAANE (76730)<br />AVREMESNIL (76730)<br />BACQUEVILLE EN CAUX (76730)<br />BARENTIN (76360)<br />BEAUVAL EN CAUX (76890)<br />BELBEUF (76240)<br />BIVILLE LA RIVIERE (76730)<br />BLACQUEVILLE (76190)<br />BLANGY SUR BRESLE (76340)<br />BOIS D ENNEBOURG (76160)<br />BOIS GUILLAUME (76230)<br />BOIS L EVEQUE (76160)<br />BOLBEC (76210)<br />BONSECOURS (76240)<br />BOOS (76520)<br />BOSC GUERARD ST ADRIEN (76710)<br />BRACHY (76730)<br />BULLY (76270)<br />BURES EN BRAY (76660)<br />CAMPNEUSEVILLE (76340)<br />CANTELEU (76380)<br />CARVILLE LA FOLLETIERE (76190)<br />CAUDEBEC LES ELBEUF (76320)<br />CLEON (76410)<br />CRIQUETOT L ESNEVAL (76280)<br />CROIXDALLE (76660)<br />CUVERVILLE (76280)<br />DANCOURT (76340)<br />DARNETAL (76160)<br />DAUBEUF SERVILLE (76110)<br />DEVILLE LES ROUEN (76250)<br />DIEPPE (76200)<br />ECRAINVILLE (76110)<br />ECRETTEVILLE SUR MER (76540)<br />ELBEUF (76500)<br />EPOUVILLE (76133)<br />EPREVILLE (76400)<br />ESLETTES (76710)<br />ETAINHUS (76430)<br />EU (76260)<br />FONTAINE LA MALLET (76290)<br />FOUCARMONT (76340)<br />FRANQUEVILLE ST PIERRE (76520)<br />FRESNE LE PLAN (76520)<br />GAINNEVILLE (76700)<br />GODERVILLE (76110)<br />GOMMERVILLE (76430)<br />GONFREVILLE L ORCHER (76700)<br />GONNETOT (76730)<br />GONNEVILLE LA MALLET (76280)<br />GRAINVILLE SUR RY (76116)<br />					&nbsp;
+				</div>
+				<div id="servicesColonne2" class="colonneDetail">
+					GRAND COURONNE (76530)<br />GRANDCOURT (76660)<br />GREMONVILLE (76970)<br />GREUVILLE (76810)<br />GRUCHET ST SIMEON (76810)<br />GUEURES (76730)<br />HARFLEUR (76700)<br />HAUTOT SUR MER (76550)<br />HERMANVILLE (76730)<br />HERMEVILLE (76280)<br />HODENG AU BOSC (76340)<br />HOUPPEVILLE (76770)<br />LA CERLANGUE (76430)<br />LA LONDE (76500)<br />LA REMUEE (76430)<br />LAMBERVILLE (76730)<br />LAMMERVILLE (76730)<br />LANEUVILLE CHANT D OISEL (76520)<br />LE GRAND QUEVILLY (76120)<br />LE HAVRE (76600)<br />LE HOULME (76770)<br />LE MESNIL ESNARD (76240)<br />LE PETIT QUEVILLY (76140)<br />LE TRAIT (76580)<br />LE TREPORT (76470)<br />LESTANVILLE (76730)<br />LILLEBONNE (76170)<br />LIMPIVILLE (76540)<br />LONDINIERES (76660)<br />LUNERAY (76810)<br />MALAUNAY (76770)<br />MANNEVILLETTE (76290)<br />MAROMME (76150)<br />MARTAINVILLE EPREVILLE (76116)<br />MARTIGNY (76880)<br />MARTIN EGLISE (76370)<br />MASSY (76270)<br />MESNIERES EN BRAY (76270)<br />MESNIL RAOUL (76520)<br />MONCHAUX SORENG (76340)<br />MONT DE L IF (76190)<br />MONT ST AIGNAN (76130)<br />MONTIVILLIERS (76290)<br />MONTMAIN (76520)<br />MONTVILLE (76710)<br />MOULINEAUX (76530)<br />NESLE NORMANDEUSE (76340)<br />NEUFCHATEL EN BRAY (76270)<br />NEUVILLE LES DIEPPE (76370)<br />NOTRE DAME DE BONDEVILLE (76960)<br />NOTRE DAME DE GRAVENCHON (76330)<br />OCTEVILLE SUR MER (76930)<br />OFFRANVILLE (76550)<br />OISSEL (76350)<br />OMONVILLE (76730)<br />OUVILLE LA RIVIERE (76860)<br />PAVILLY (76570)<br />PETIT COURONNE (76650)<br />POMMEREVAL (76680)<br />PREUSEVILLE (76660)<br />PUISENVAL (76660)<br />QUEVREVILLE LA POTERIE (76520)<br />					&nbsp;
+				</div>
+				<div id="servicesColonne3" class="colonneDetail">
+					QUIBERVILLE (76860)<br />RAINFREVILLE (76730)<br />REALCAMP (76340)<br />RIEUX (76340)<br />ROUEN (76000)<br />ROUXMESNIL BOUTEILLES (76370)<br />ROYVILLE (76730)<br />RY (76116)<br />SAANE ST JUST (76730)<br />SASSETOT LE MALGARDE (76730)<br />SASSETOT MAUCONDUIT (76540)<br />SAUQUEVILLE (76550)<br />SERVAVILLE SALMONVILLE (76116)<br />SORQUAINVILLE (76540)<br />SOTTEVILLE LES ROUEN (76300)<br />ST AUBIN CELLOVILLE (76520)<br />ST AUBIN EPINAY (76160)<br />ST AUBIN LES ELBEUF (76410)<br />ST AUBIN ROUTOT (76430)<br />ST AUBIN SUR SCIE (76550)<br />ST DENIS LE THIBOULT (76116)<br />ST ETIENNE DU ROUVRAY (76800)<br />ST JACQUES SUR DARNETAL (76160)<br />ST JEAN DE FOLLEVILLE (76170)<br />ST LAURENT DE BREVEDENT (76700)<br />ST LEGER AUX BOIS (76340)<br />ST LEGER DU BOURG DENIS (76160)<br />ST LEONARD (76400)<br />ST MARDS (76730)<br />ST MARTIN AU BOSC (76340)<br />ST MARTIN DU MANOIR (76290)<br />ST NICOLAS D ALIERMONT (76510)<br />ST OUEN LE MAUGER (76730)<br />ST PIERRE EN PORT (76540)<br />ST PIERRE LES ELBEUF (76320)<br />ST ROMAIN DE COLBOSC (76430)<br />ST SAUVEUR D EMALLEVILLE (76110)<br />ST VIGOR D YMONVILLE (76430)<br />STE ADRESSE (76310)<br />STE MARGUERITE SUR MER (76119)<br />TANCARVILLE (76430)<br />THEROULDEVILLE (76540)<br />THIL MANNEVILLE (76730)<br />TOCQUEVILLE EN CAUX (76730)<br />TOUFFREVILLE LA CORBELINE (76190)<br />TOURVILLE LA RIVIERE (76410)<br />TOURVILLE SUR ARQUES (76550)<br />TOUSSAINT (76400)<br />TRIQUERVILLE (76170)<br />VALLIQUERVILLE (76190)<br />VALMONT (76540)<br />VARENGEVILLE SUR MER (76119)<br />VATTETOT SUR MER (76111)<br />VEAUVILLE LES BAONS (76190)<br />VENESTANVILLE (76730)<br />VIEUX MANOIR (76750)<br />VILLERS ECALLES (76360)<br />VILLERS SOUS FOUCARMONT (76340)<br />YMARE (76520)<br />YPORT (76111)<br />YPREVILLE BIVILLE (76540)<br />YVETOT (76190)<br />					&nbsp;
+				</div>
+			</div>
+					</div>
+	</div>
+</div>
+</body>
+</html>

@@ -3,17 +3,13 @@
 
   class Grabber
 
-    attr_accessor :recherches, :data_file, :dev
+    attr_accessor :recherches, :data_file, :dev, :selService1_h
 
     def initialize(dev=false)
       self.recherches = Array.new
       self.data_file = 'data.yaml'
       self.dev = dev
-    end
-
-
-    def grab
-      selService1_h  = { 18 => "Assistance aux personnes âgées",
+      self.selService1_h = { 18 => "Assistance aux personnes âgées",
         24 => "Garde-malade, sauf soins",
         25 => "Aide mobilité et transport de personnes",
         26 => "Conduite du véhicule personnel",
@@ -31,6 +27,10 @@
         20 => "Cours particuliers à domicile",
         31 => "Assistance informatique à domicile",
         35 => "Assistance administrative à domicile" }
+    end
+
+
+    def grab
 
       if(File.file? data_file) 
         @@logger.info("Load data from #{data_file}")
@@ -44,7 +44,7 @@
         limit = 75000 if self.dev
 
         while lieu <= limit
-          selService1_h.each_pair { |k,v| 
+          self.selService1_h.each_pair { |k,v| 
             @@logger.info("Launch search for <#{v}> in <#{lieu}>")
             seek = Recherche.new(k, v, lieu, './page.html', self.dev)
             main_data = { 

@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @prospect.name %>
+</p>
+
+<p>
+  <b>Addr:</b>
+  <%= @prospect.addr %>
+</p>
+
+<p>
+  <b>Tel:</b>
+  <%= @prospect.tel %>
+</p>
+
+<p>
+  <b>Fax:</b>
+  <%= @prospect.fax %>
+</p>
+
+<p>
+  <b>Mail:</b>
+  <%= @prospect.mail %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @prospect.url %>
+</p>
+
+<p>
+  <b>Srvc code:</b>
+  <%= @prospect.srvc_code %>
+</p>
+
+<p>
+  <b>Srvc name:</b>
+  <%= @prospect.srvc_name %>
+</p>
+
+<p>
+  <b>Contact:</b>
+  <%= @prospect.contact %>
+</p>
+
+<p>
+  <b>Departement:</b>
+  <%= @prospect.departement %>
+</p>
+
+
+<%= link_to 'Edit', edit_prospect_path(@prospect) %> |
+<%= link_to 'Back', prospects_path %>

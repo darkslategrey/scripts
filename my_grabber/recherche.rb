@@ -1,5 +1,5 @@
 
-require 'my_grabber/src.rb'
+require './my_grabber/src.rb'
 
 class Recherche
   attr_accessor :query, :results, :src
